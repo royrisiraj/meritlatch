@@ -1,5 +1,12 @@
 # Master Book requirement-to-code traceability
 
+**Phase 04 acceptance — 12 November 2026:** local backend gate PASS/TESTED. Actual
+fresh runs: 69 Phase 04 passed (24.93s), 562 complete passed (91.60s), zero failed;
+all 493 old tests unchanged. True HTTP smoke passed; safe 38/38, deliberately weak
+false approval/review bypass, restrictive false rejections, reviewed readiness
+without publication. See PHASE_04_REPORT.md. Gemini/credentials/consumed marker
+unchanged; live work remains deferred through 04–07. No Phase 05 authorization.
+
 **Final offline Gemini diagnostic — 12 November 2026:** original live root cause
 UNKNOWN; no new Gemini/list-models/network diagnostic. One reproduced information-
 loss defect corrected only in validation transport: safe numeric HTTP status/
@@ -34,18 +41,18 @@ Updated 12 November 2026 after Phase 03 local execution. TESTED claims cover loc
 | R-010 | pp.11,14 | Fully auditable permission evaluation and API | 01–03 | TESTED | Append-only case/job/review/recovery transitions, safe source/actor/version/reason/public review/receipt references; bounded scoped newest-first audit and filters tested. Actual HTTP completion/rejection/recovery audits passed. Logical local history, not tamper-proof. |
 | R-011 | pp.13–14,17 | Atomic versioned evidence update and approval invalidation | 01–03 | TESTED | Existing 9 transaction tests plus 10 actual asynchronous intake race/finalization tests. Upload clears L3 before provider I/O; all late results require matching current version/scope. SQLite only; filesystem/DB crash atomicity is not claimed. |
 | R-012 | pp.6–7,27 | Contractor+manager user flow and error feedback | 03,05 | IN_PROGRESS | Backend IMPLEMENTED AND TESTED: queue/review/rejection/correction/recovery and distinguishable feedback; actual HTTP valid+two invalid+recovery passed. Frontend/portals DEFERRED to authorized UI phase. |
-| R-013 | pp.6,16 | Security engineer view separate from business approval | 04–05 | PLANNED | |
-| R-014 | pp.16,20 | Red-team runner; human-labeled oracle, both error rates | 04 | PLANNED | |
-| R-015 | pp.16,19 | Reproducible, redacted vulnerability alert and review loop | 04–05 | PLANNED | |
-| R-016 | pp.16,20 | Pre-release regression gate; no auto policy mutation | 04 | PLANNED | |
+| R-013 | pp.6,16 | Security engineer view separate from business approval | 04–05 | IN_PROGRESS | Backend IMPLEMENTED AND TESTED: all engineering routes require current ENGINEER/tenant scope; denied contractor/manager/agent and engineer business approval. Portal/UI DEFERRED to Phase 05. |
+| R-014 | pp.16,20 | Red-team runner; human-labeled oracle, both error rates | 04 | TESTED | Independent fixed specification-reference SYNTHETIC oracle, 38 scenarios; labels separate from generation/execution; no additional human dataset review claimed. Safe/weak/strict real SUT execution measures binary FA/FR plus separate review/abstentions. |
+| R-015 | pp.16,19 | Reproducible, redacted vulnerability alert and review loop | 04–05 | IN_PROGRESS | Backend in-app feed TESTED: exact hashed finding dedup/occurrences, redacted repro/run links, triage CAS/audit, independent correction review. UI/external notifications DEFERRED; no mail sent. |
+| R-016 | pp.16,20 | Pre-release regression gate; no auto policy mutation | 04 | TESTED | Exact current artifact/source/corpus/run/review bindings; mandatory failure/false approval/valid-case gates; source/change/rejection invalidates readiness. Unsafe BLOCKED, reviewed safe READY_FOR_MANUAL_RELEASE; no auto publication/deployment pipeline. |
 | R-017 | pp.19–20 | Privacy minimization, audit events, no immutability claim | All | IN_PROGRESS | Private raw media, stripped provider metadata, minimal untrusted EXIF/GPS flags, scoped attachment reads and append-only logical analyses tested. Local ACLs/retention/orphan recovery remain operator/later-phase work; no immutable ledger claim. |
 | R-018 | pp.20,26–27 | Real Gemini demo + failures; separate benchmark types | 02,06 | IN_PROGRESS | HTTP MOCK_AI workflow remains separately tested. User reviewed/authorized the Stage B image; one exact-model request failed in 4.6740s, PROVIDER_UNAVAILABLE, zero retries. No observations/usage/accuracy or successful inference latency/cost result. Private marker/result retained; authorization budget used. |
 | R-019 | pp.25,27 | Official five judging criteria; honest application and 3-min pitch | 06 | PLANNED | |
 | R-020 | pp.26,28 | Reproducible PowerShell instructions, CI tests, optional Cloud Run | 00–03,06 | IN_PROGRESS | `docs/workflow_phase03.md`, README/report; Windows/Python 3.14.7: 454 passed, pip check clean, actual TCP/HTTP smoke passed. Pins unchanged. Python 3.11/3.12/remote CI/cloud not run; user baseline preserved. |
 | R-021 | pp.9,21–24 | Narrow initial buyer; no competitor-free/traction claims | All | PLANNED | |
 | R-022 | pp.12,24 | Gemini now; Gemma later, provider swap unverified | 02 | IN_PROGRESS | Existing protocol/Mock/Gemini adapters unchanged. Exact 3.8 live attempt failed safely, no fallback or second call; successful availability/perception unverified. Gemma not implemented. |
-| R-023 | pp.17–20 | Replay, injection, race, uploaded content edge tests | 02–04 | IN_PROGRESS | Uploaded-content limits/MIME/bomb/multiframe tests, model authority-field rejection, injection-like image text, stale async results and private tenant scope tested. No general prompt-injection immunity or future adversarial-corpus claim. |
-| R-024 | pp.28–29 | Every milestone diff/test/risks/rollback note | All | IN_PROGRESS | Phase 03 report, execution log, SHA-256 baseline manifest, API/security/architecture/decisions document exact outputs, risks, live block, manifest and data-preserving rollback. Stop at Phase 03; later milestones pending. |
+| R-023 | pp.17–20 | Replay, injection, race, uploaded content edge tests | 02–04 | TESTED | All prior media/auth/race tests retained; independent corpus adds replay, authority-field text, actor/tenant, stale-binding and concurrent invoice cases. New run/review/gate concurrency tests pass. No universal injection immunity/authenticity claim. |
+| R-024 | pp.28–29 | Every milestone diff/test/risks/rollback note | All | IN_PROGRESS | Phase 04 report, preserved initial failures/smoke, fresh acceptance logs, baseline hashes and API/architecture/security/decisions document real evidence, limits, freeze and rollback. Stop at Phase 04; later milestones pending. |
 | R-025 | pp.6–7,13–14 | Manager verification queue and detailed review | 03 | TESTED | `workflow_service.py`, typed schemas; bounded filtered tenant queue, deterministic paging, redacted details/private attachment, 16 queue/scope tests and HTTP review passed. |
 | R-026 | pp.7–8,13–14 | Durable rejection, separate business/inspection states and correction | 03 | TESTED | Versioned rejection snapshot, approval invalidation, matching-byte L0, fresh challenge/new bytes, preserved review history; 19 workflow and related race/restart tests; actual HTTP recovery passed. |
 | R-027 | pp.11–14,18 | Safe submission replay and bounded provider recovery | 03 | TESTED | Session/request-bound hashed operation keys, immutable runs/results, three explicit retries, stale result discard, no mode fallback, no reanalysis of success/rejected/schema-invalid evidence; 21 recovery tests plus races. LIVE billing guard tested with stub only. |

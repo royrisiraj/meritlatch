@@ -1,4 +1,21 @@
-# SENTINEL//LADDER — Phase 03
+# SENTINEL//LADDER — Phase 04
+
+Phase 04 adds isolated regression runs against a pinned independent synthetic
+oracle, an engineer-only in-app findings API, authenticated remediation review
+and a version/hash-bound release-readiness gate. It never publishes policies.
+See [engineering API and limits](docs/assurance_phase04.md),
+[corpus](fixtures/security/README.md), and [Phase 04 report](tracking/PHASE_04_REPORT.md).
+
+```powershell
+.\.venv\Scripts\python.exe -m backend.tools.smoke_phase04
+```
+
+This runs a real local TCP/HTTP workflow with fictional users and isolated
+SYNTHETIC/MOCK_AI inputs. It reproduces a deliberately weak candidate, blocks its
+gate and checks a corrected safe candidate. Gemini troubleshooting remains
+deferred until Phases 04–07 finish; no live success is claimed. Stop at Phase 04.
+
+## Retained Phase 03 workflow
 
 Phase 03 completes the local authenticated backend workflow: approved job defaults,
 manager verification queue/details, durable evidence rejection, fresh-challenge
@@ -129,5 +146,5 @@ See the [endpoint map](docs/api_phase01.md), [architecture](docs/architecture.md
 The unchanged `backend.app.main:app` is the Phase 00 health-only bootstrap;
 **use the Phase 01 factory startup command above for business APIs**.
 
-No frontend design, actual live Gemini call, payment or cloud deployment was
-performed. Work stops at the Phase 03 gate; Phase 04 requires user authorization.
+Phase 04 performs no live Gemini call, real payment, frontend design or cloud
+deployment. Work stops at its acceptance gate; Phase 05 requires authorization.

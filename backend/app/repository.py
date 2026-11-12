@@ -176,9 +176,12 @@ analysis_results = Table("analysis_results", metadata,
     Column("elapsed_seconds", Float, nullable=False), Column("created_at", Float, nullable=False),
     CheckConstraint("status IN ('SUCCESS','FAILED','STALE')"),
     ForeignKeyConstraint(["tenant_id", "case_id"], ["cases.tenant_id", "cases.id"]))
+from .assurance_schema import register as register_assurance
+SECURITY_APPEND_ONLY = register_assurance(metadata)
 TABLES = {t.name: t for t in metadata.tables.values()}
 APPEND_ONLY = {"policies", "approvals", "evidence", "challenges", "decision_events", "action_runs", "media_uploads", "media_analyses",
                "manager_reviews", "workflow_events", "job_events", "submission_operations", "analysis_runs", "analysis_results"}
+APPEND_ONLY |= SECURITY_APPEND_ONLY
 
 
 class UnitOfWork(Protocol):
@@ -190,6 +193,7 @@ class UnitOfWork(Protocol):
     def recent(self, table: str, keys: dict, order: str, limit: int) -> list[dict]: ...
     def case_page(self, tenant_id: str, cursor: str | None, limit: int, contractor_id: str | None) -> list[dict]: ...
     def audit_page(self, tenant_id: str, case_id: str, before: str | None, event_type: str | None, limit: int) -> list[dict]: ...
+    def page(self, table: str, keys: dict, limit: int, before: str | None = None) -> list[dict]: ...
 
 
 class Repository(Protocol):
@@ -248,6 +252,18 @@ class SQLiteUnitOfWork:
     def add(self, table, values):
         self.connection.execute(insert(TABLES[table]).values(**values))
 
+    def page(self, table, keys, limit, before=None):
+        t = TABLES[table]
+        stmt = select(t).where(*(t.c[k] == v for k,v in keys.items()))
+        if before:
+            prior = self.get(table,id=before,tenant_id=keys["tenant_id"])
+            if not prior:
+                from .errors import not_found
+                raise not_found()
+            stmt = stmt.where(or_(t.c.created_at < prior["created_at"],
+                and_(t.c.created_at == prior["created_at"],t.c.id < prior["id"])))
+        return [dict(row) for row in self.connection.execute(stmt.order_by(t.c.created_at.desc(),t.c.id.desc()).limit(limit)).mappings()]
+
     def change(self, table, keys, values):
         if table in APPEND_ONLY:
             raise ValueError("Append-only table cannot be changed")
@@ -299,6 +315,12 @@ class SQLiteRepository:
                     raise ValueError("Unsupported workflow schema version; restore a compatible database.")
                 if not workflow_versions:
                     conn.execute(insert(workflow_migrations).values(version=1))
+                security_migrations = TABLES["security_schema_migrations"]
+                security_versions = list(conn.execute(select(security_migrations.c.version)).scalars())
+                if security_versions and security_versions != [1]:
+                    raise ValueError("Unsupported security schema version; restore a compatible database.")
+                if not security_versions:
+                    conn.execute(insert(security_migrations).values(version=1))
                 # Backfill only additive metadata. Original history/approvals/media remain unchanged.
                 for case in conn.execute(select(cases)).mappings():
                     found = conn.execute(select(case_workflow.c.case_id).where(case_workflow.c.case_id == case["id"])).first()

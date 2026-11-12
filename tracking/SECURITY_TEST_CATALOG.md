@@ -1,6 +1,24 @@
 # Security and workflow test catalog
 
-Reference: Master Book chapters 4, 9, 12–15 and Appendix B. Expectations must be independent of Gemini. Items below are the cross-phase catalog, not a claim that future red-team/deployment checks ran. Current Phase 03 executed evidence is in `PHASE_03_REPORT.md` and `EXECUTION_LOG.md`: 454 passed, zero failed (375 unchanged + 79 new). Live Gemini, Phase 04 and production/deployment tests remain unverified/deferred.
+Reference: Master Book chapters 4, 9, 12–15 and Appendix B. Expectations must be independent of Gemini. Latest executed local evidence: `PHASE_04_REPORT.md`, `EXECUTION_LOG.md` and acceptance logs — 562 passed, zero failed (493 unchanged + 69 Phase 04). Historical phase results below remain evidence for their scope. Live Gemini remains unsuccessful/deferred; production/deployment benchmarks unverified.
+
+## Phase 04 executed mapping
+
+| Suite | Cases | Assertions audited |
+|---|---:|---|
+| `phase04/test_oracle.py` | 18 | Independent labels never query SUT, deterministic ordering, conflicts/orphans/invalid input/pending review rejection, exact status/permission/reasons and review scoring; weak real policy reproduction. |
+| `phase04/test_scope.py` | 15 | Every engineering route requires bearer/ENGINEER; tenant/cursor and business-role denial, bounds/no arbitrary rule/code, disabled suggestions, engineer denied business approval; current factory OpenAPI versus explicit historical test factory. |
+| `phase04/test_transactions.py` | 15 | Single worker for repeated keys, stale candidate run, logout failure, interrupted/forged/missing/unevaluable results, review CAS/rejection, candidate/gate races, transactional proposal rollback. |
+| `phase04/test_persistence_and_limits.py` | 15 | Restart, additive/unknown migrations, append-only controls, manifest tampering, run limits, credential-free subprocess/timeout, unexpected failure redaction, changed corpus/disabled reviewer. |
+| `phase04/test_workflow.py` | 6 | Real safe/weak subprocess evaluations, false rejections, finding dedup/redaction, independent human-account review, failed weak gate despite sign-off, safe readiness and dismissal preserving failed evidence. |
+
+Fresh real HTTP smoke executes three candidate profiles against 38 fixed synthetic
+scenarios each, uses authenticated engineers/reviewer, records a reproduced A02
+false approval, triages and verifies safe remediation, blocks unsafe/overly strict
+gates, denies business roles and other tenants, and confirms published=false.
+Readonly binding snapshots are not a manager sign-off. Cached actually executed
+synthetic outputs accelerate parent CRUD/race tests; the smoke uses fresh workers.
+No live AI, customer dataset, production accuracy or policy publication claim.
 
 ## Phase 03 executed mapping
 

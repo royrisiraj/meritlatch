@@ -1,6 +1,16 @@
 # SENTINEL//LADDER V2 — status ledger
 
-**Latest checkpoint — final offline Gemini diagnostic, 12 November 2026.**
+**Current checkpoint — Phase 04 acceptance, 12 November 2026: TESTED / LOCAL PASS.**
+Fresh acceptance runs: **69 Phase 04 tests passed in 24.93s; 562 total passed in
+91.60s**, zero failed. All 493 baseline tests remain unchanged. Actual TCP/HTTP
+smoke passed with 38 synthetic scenarios per candidate: safe 38/38, weak candidate
+one binary false approval plus one review bypass, restrictive candidate two false
+rejections. Unsafe gate BLOCKED; reviewed safe gate READY_FOR_MANUAL_RELEASE;
+published=false. See [Phase 04 report](PHASE_04_REPORT.md) and acceptance logs.
+Gemini remains frozen; no private credentials, consumed marker or production policy
+changed. No commit/push/deploy or Phase 05 work. Awaiting user review of this gate.
+
+**Historical checkpoint — final offline Gemini diagnostic, 12 November 2026.**
 Root cause of the historical PROVIDER_UNAVAILABLE: **UNKNOWN**. Local MockTransport
 reproduced diagnostic information loss (HTTP 400 became a generic unavailable
 error with no status). A small validation-transport change now retains numeric
@@ -18,7 +28,7 @@ Proceeding phases use explicitly labeled MOCK_AI/SYNTHETIC data; no fabricated
 LIVE_GEMINI artifacts. The consumed marker/private result are unchanged. Phase 04
 is the next separately authorized work, not implemented in this diagnostic.
 
-**Current checkpoint — 12 November 2026: live validation Stage B.** **FAILED — LIVE API OR SCHEMA ERROR**, reason `PROVIDER_UNAVAILABLE`. User human review recorded, offline preflight READY, then exactly one counted `gemini-3.8-flash` request attempt, zero retries/fallbacks, elapsed 4.6740s. No observations/usage returned; no permission elevation. The one-call budget is used and the private marker/result are preserved. See [validation report](LIVE_GEMINI_VALIDATION_REPORT.md) for current regressions and [execution log](EXECUTION_LOG.md). Stop here; no Phase 04 authorization.
+**Historical checkpoint — 12 November 2026: live validation Stage B.** **FAILED — LIVE API OR SCHEMA ERROR**, reason `PROVIDER_UNAVAILABLE`. User human review recorded, offline preflight READY, then exactly one counted `gemini-3.8-flash` request attempt, zero retries/fallbacks, elapsed 4.6740s. No observations/usage returned; no permission elevation. The one-call budget is used and the private marker/result are preserved. See [validation report](LIVE_GEMINI_VALIDATION_REPORT.md). Subsequent Phase 04 authorization permits no further live calls.
 
 Phase 03 historical local gate: 454 passed, zero failed (375 preserved + 79 new), 67.99s; actual authenticated TCP/HTTP completion, unsafe/wrong-asset denials and rejection/correction/recovery passed using labeled canned MOCK_AI. [Phase 03 report](PHASE_03_REPORT.md) remains its evidence; these were not live vision results. No customer image, paid resource or deployment occurred.
 
@@ -40,8 +50,9 @@ Phase 03 historical local gate: 454 passed, zero failed (375 preserved + 79 new)
 | Manager backend workflow | TESTED | Approved job defaults, queue/filter/paging, detailed review, durable rejection, current L2 sign-off and idempotent simulation; 19 workflow + 16 queue/scope tests | Codex / Phase 03 | No portal; queue scans 500/page, review history caps 100; no real payment |
 | Business/inspection/permission separation | TESTED | Typed workflow projection, independent pure ladder, rejection caps matching bytes at L0 while preserving numeric inspection; valid/unsafe/wrong-asset HTTP paths | Codex / Phase 03 | Badges/action hints are informational; current-state API checks always required |
 | Workflow concurrency and audit | TESTED | 12 new race/rollback cases, 11 audit/persistence cases; focused scope/concurrency 28 passed; public review/receipt references and newest-first scoped audit pages | Codex / Phase 03 | Local SQLite orderings only, no production load/Firestore evidence |
-| Engineer workflow | IN_PROGRESS | Assigned/redacted reads, reviewed-version selection, denied business approval tested | Codex / Phase 01 | No red-team/engineering portal or full release gate |
-| Red-team regression and alerts | PLANNED | | | |
+| Engineer backend workflow | TESTED | Phase 04 authenticated candidate/run/finding/triage/review/gate APIs; 69 phase tests and actual HTTP smoke | Codex / Phase 04 | No portal/UI; account simulation only, not real multi-human operational approval |
+| Independent red-team regression and alerts | TESTED | 38 fixed labeled synthetic scenarios; safe/weak/strict actual evaluations, computed FAR/FRR/review outcomes, deduplicated in-app findings | Codex / Phase 04 | Synthetic benchmark only; no real-world accuracy or live AI generation |
+| Candidate correction and release gate | TESTED | Independent active reviewer, exact artifact/source/corpus/run/version binding; CAS, stale invalidation, failure gates and rollback tests | Codex / Phase 04 | Readiness decision only, published=false; no CI/deployment enforcement or automatic operational policy registration |
 | Full E2E demo and 3 rehearsals | PLANNED | | | |
 | Cloud Run deployment | PLANNED | | | |
 | Buyer discovery interviews | PLANNED | | | |

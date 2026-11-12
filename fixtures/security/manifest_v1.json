@@ -1,0 +1,8 @@
+{
+  "corpus_id": "sentinel-independent-synthetic",
+  "version": "1.0.0",
+  "files": {
+    "scenarios_v1.json": "0c69f056fe11f3412849ce0b2a5ba3a957703a19db905bc765573c6217e5fd5d",
+    "labels_v1.json": "4a949b72c4e3f77ad389589468c3643c5e52c794208d24038bc6c8c1224fd052"
+  }
+}

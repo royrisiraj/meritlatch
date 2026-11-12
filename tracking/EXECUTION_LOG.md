@@ -2764,3 +2764,77 @@ change, commit, push, reset, deploy, paid resource or Phase 04 implementation.
 Evidence: GEMINI_FINAL_DIAGNOSTIC.md, GEMINI_FINAL_REQUEST_SNAPSHOT.json and
 GEMINI_FINAL_PYTEST_OUTPUT.txt. Future authorized phases use explicit MOCK_AI or
 SYNTHETIC fixtures. Gemini troubleshooting deferred through completion of 04–07.
+
+
+## Phase 04 recovered implementation and final acceptance — 12 November 2026
+
+Continued the recovered Phase 04 work; did not restart it. Baseline checkpoint
+f4ed39e retained. Added isolated independent synthetic regression execution,
+engineer-only tenant-scoped findings/review/readiness APIs and persistence. Audit
+corrected only cross-tenant scenario actor metadata; independent labels unchanged.
+Historical Phase 01 schema conflict was fixed through explicit legacy test-factory
+configuration, with current default factory coverage added. Original tests intact.
+
+Historical evidence is preserved: PHASE_04_TEST_OUTPUT.txt and its INITIAL copy
+record 560 passed / one failed in 96.05s; earlier HTTP logs record their successful
+source-specific runs. User-reported recovery results (69; 562 in 87.04s) remain
+separate from the fresh executed acceptance results below. No log overwritten.
+
+Fresh exact commands (separate PowerShell processes, new ignored .venv temp roots):
+
+```powershell
+$phase04Temp = Join-Path (Resolve-Path .venv).Path ('phase04-acceptance-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $phase04Temp | Out-Null
+$env:TEMP = $phase04Temp
+$env:TMP = $phase04Temp
+$env:TMPDIR = $phase04Temp
+.\.venv\Scripts\python.exe -m pytest backend/tests/phase04 -q -p no:cacheprovider --basetemp (Join-Path $phase04Temp 'pytest') | Tee-Object -FilePath tracking/PHASE_04_ACCEPTANCE_SCOPE_OUTPUT.txt
+exit $LASTEXITCODE
+```
+
+Actual: 69 passed in 24.93s, exit 0.
+
+```powershell
+$phase04Temp = Join-Path (Resolve-Path .venv).Path ('phase04-regression-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $phase04Temp | Out-Null
+$env:TEMP = $phase04Temp
+$env:TMP = $phase04Temp
+$env:TMPDIR = $phase04Temp
+.\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider --basetemp (Join-Path $phase04Temp 'pytest') | Tee-Object -FilePath tracking/PHASE_04_ACCEPTANCE_TEST_OUTPUT.txt
+exit $LASTEXITCODE
+```
+
+Actual: 562 passed in 91.60s (0:01:31), zero failed, exit 0.
+
+```powershell
+$phase04Temp = Join-Path (Resolve-Path .venv).Path ('phase04-http-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $phase04Temp | Out-Null
+$env:TEMP = $phase04Temp
+$env:TMP = $phase04Temp
+$env:TMPDIR = $phase04Temp
+.\.venv\Scripts\python.exe -m backend.tools.smoke_phase04 | Tee-Object -FilePath tracking/PHASE_04_ACCEPTANCE_HTTP_SMOKE_OUTPUT.txt
+exit $LASTEXITCODE
+```
+
+Actual exit 0: PASS Phase 04 actual TCP/HTTP; SYNTHETIC and isolated MOCK_AI only;
+Gemini frozen; no publication. Safe 38/38, false approvals 0/26, false rejections
+0/6; weak 36/38 with genuine A02 false approval and P15 review bypass; strict
+19/38 with two false rejections. Safe ready only after independent reviewer;
+unsafe gates BLOCKED; all published=false. Exact denominators, run IDs and
+limitations: [PHASE_04_REPORT.md](PHASE_04_REPORT.md).
+
+```powershell
+.\.venv\Scripts\python.exe -m pip check
+```
+
+Actual: No broken requirements found., exit 0. No dependency install/change.
+All 493 baseline tests preserved; 29 original test file hashes and eight protected
+source/private/dependency file hashes match (mismatches=[]). No credentials printed,
+Gemini/network diagnostic, marker reset, actual business approval/payment, policy
+publication, commit, push, deploy or Phase 05 work. Temp workaround changes only
+per-process TEMP/TMP/TMPDIR; no Windows ACL change/unrelated deletion.
+
+Updated STATUS_LEDGER, REQUIREMENT_MATRIX, SECURITY_TEST_CATALOG and Phase 04 report.
+Final diff/link/hash/Git checks and full file manifest appear in that report.
+Phase 04 local backend gate PASS / TESTED; human review and commit remain pending.
+Gemini remains deferred through completion of Phases 04–07.

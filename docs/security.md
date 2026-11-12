@@ -1,5 +1,21 @@
 # Security and limits
 
+Phase 04 assurance controls and scope are documented in
+[`assurance_phase04.md`](assurance_phase04.md). ENGINEER-only tenant-wide synthetic
+security access does not grant business-manager approval or access to another
+tenant. Current actor identity is rechecked on mutations/finalization. Review
+revision CAS and independent reviewer identity prevent self/stale sign-off;
+source/corpus/candidate changes invalidate readiness. Failed or interrupted runs
+cannot pass a gate; dismissed findings retain their failing evidence.
+
+This is a local trusted-code assurance runner, not an arbitrary-code sandbox,
+production fraud benchmark or policy publisher. Subprocess time/count bounds,
+credential-free environment, fixed commands, no external sockets and safe output
+validation are tested. Total retention/storage quotas and distributed rate limits
+are not implemented. The existing offline policy registrar is a separate trusted
+operator path, not automatically driven by these test candidates. Live Gemini
+remains deferred through Phases 04–07; no provider/configuration/key changes.
+
 Phase 03 current workflow controls: [`workflow_phase03.md`](workflow_phase03.md),
 `backend/tests/phase03/`, and the [report](../tracking/PHASE_03_REPORT.md).
 Manager-only tenant-scoped queue/review/rejection cannot authorize through badges.

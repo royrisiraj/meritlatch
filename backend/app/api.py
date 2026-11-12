@@ -24,6 +24,8 @@ from .perception import MockPerceptionProvider
 from .workflow_service import WorkflowService
 from .workflow_models import RejectionRequest, ReanalysisRequest, VerificationQueue, ReviewDetails, BusinessStatus, CaseDetailsResponse, PolicyTemplate
 from .models import InspectionStatus
+from .assurance_service import AssuranceService
+from .assurance_router import build_router as build_assurance_router
 
 bearer = HTTPBearer(auto_error=False)
 
@@ -34,7 +36,7 @@ def bearer_token(credentials: HTTPAuthorizationCredentials | None = Depends(bear
     return credentials.credentials
 
 
-def create_app(settings: Settings | None = None, repository=None, clock=None, perception_provider=None, media_storage=None):
+def create_app(settings: Settings | None = None, repository=None, clock=None, perception_provider=None, media_storage=None, *, enable_assurance: bool = True):
     settings = settings or Settings.from_env()
     owned = repository is None
     repository = repository or SQLiteRepository(settings.database_path)
@@ -56,11 +58,14 @@ def create_app(settings: Settings | None = None, repository=None, clock=None, pe
         if owned:
             repository.close()
 
-    app = FastAPI(title="SENTINEL//LADDER", version="0.3.0", redoc_url=None, lifespan=lifespan)
+    app = FastAPI(title="SENTINEL//LADDER", version="0.4.0", redoc_url=None, lifespan=lifespan)
     app.state.service = service
     app.state.settings = settings
     app.state.media = media
     app.state.workflow = workflow
+    if enable_assurance:
+        app.state.assurance = AssuranceService(service)
+        app.include_router(build_assurance_router(app.state.assurance,bearer_token))
 
     @app.middleware("http")
     async def operational_headers(request: Request, call_next):

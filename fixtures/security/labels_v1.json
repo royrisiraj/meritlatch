@@ -1,0 +1,578 @@
+{
+  "corpus_id": "sentinel-independent-synthetic",
+  "version": "1.0.0",
+  "label_origin": "FIXED_MASTER_BOOK_SPECIFICATION_NOT_POLICY_OUTPUT",
+  "human_review_claimed": false,
+  "labels": [
+    {
+      "scenario_id": "P01",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "ALLOW",
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": [
+          "EVIDENCE_SATISFIES_POLICY"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P02",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "ALLOW",
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": [
+          "EVIDENCE_SATISFIES_POLICY"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P03",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "ALLOW",
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": [
+          "EVIDENCE_SATISFIES_POLICY"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P04",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "ALLOW",
+        "inspection_status": "OBSERVATION_PENDING",
+        "max_permission": 1,
+        "required_reasons": [
+          "PRESSURE_MISSING"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P05",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "EVIDENCE_MISSING",
+        "max_permission": 0,
+        "required_reasons": [
+          "OBSERVATION_MISSING"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P06",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "EVIDENCE_MISSING",
+        "max_permission": 0,
+        "required_reasons": [
+          "ASSET_MISMATCH"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P07",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "EVIDENCE_MISSING",
+        "max_permission": 0,
+        "required_reasons": [
+          "CHALLENGE_MISMATCH"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P08",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "EVIDENCE_MISSING",
+        "max_permission": 0,
+        "required_reasons": [
+          "CHALLENGE_MISMATCH"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P09",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "EVIDENCE_MISSING",
+        "max_permission": 0,
+        "required_reasons": [
+          "CHALLENGE_EXPIRED"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P10",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "OBSERVATION_PENDING",
+        "max_permission": 1,
+        "required_reasons": [
+          "PRESSURE_MISSING"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P11",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "REVIEW_REQUIRED",
+        "max_permission": 0,
+        "required_reasons": [
+          "INVALID_OBSERVATION"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P12",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "REVIEW_REQUIRED",
+        "max_permission": 0,
+        "required_reasons": [
+          "INVALID_OBSERVATION"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P13",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "NEEDS_REVIEW",
+        "inspection_status": "REVIEW_REQUIRED",
+        "max_permission": 1,
+        "required_reasons": [
+          "UNIT_UNSUPPORTED"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P14",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "REVIEW_REQUIRED",
+        "max_permission": 0,
+        "required_reasons": [
+          "INVALID_OBSERVATION"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P15",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "NEEDS_REVIEW",
+        "inspection_status": "SAFETY_ALERT",
+        "max_permission": 1,
+        "required_reasons": [
+          "PRESSURE_OUT_OF_RANGE"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P16",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "NEEDS_REVIEW",
+        "inspection_status": "SAFETY_ALERT",
+        "max_permission": 1,
+        "required_reasons": [
+          "CALIBRATION_EXPIRED"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P17",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "NEEDS_REVIEW",
+        "inspection_status": "REVIEW_REQUIRED",
+        "max_permission": 1,
+        "required_reasons": [
+          "UNCERTAIN_OBSERVATION"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P18",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "REVIEW_REQUIRED",
+        "max_permission": 0,
+        "required_reasons": [
+          "INVALID_OBSERVATION"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P19",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": [
+          "HUMAN_APPROVAL_NOT_IMPLEMENTED"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P20",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "REVIEW_REQUIRED",
+        "max_permission": 0,
+        "required_reasons": [
+          "POLICY_CONTEXT_MISMATCH"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P21",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "OBSERVATION_PENDING",
+        "max_permission": 1,
+        "required_reasons": [
+          "CALIBRATION_MISSING"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P22",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "NEEDS_REVIEW",
+        "inspection_status": "REVIEW_REQUIRED",
+        "max_permission": 1,
+        "required_reasons": [
+          "EQUIPMENT_STATUS_MISMATCH"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P23",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "OBSERVATION_PENDING",
+        "max_permission": 1,
+        "required_reasons": [
+          "EQUIPMENT_STATUS_MISSING"
+        ]
+      }
+    },
+    {
+      "scenario_id": "P24",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.7-8,13,18,20; accepted independent domain invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "NEEDS_REVIEW",
+        "inspection_status": "REVIEW_REQUIRED",
+        "max_permission": 0,
+        "required_reasons": [
+          "UNCERTAIN_OBSERVATION"
+        ]
+      }
+    },
+    {
+      "scenario_id": "A01",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.13-14,17-18; authenticated API invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "ALLOW",
+        "http_status": 200,
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": [
+          "EVIDENCE_SATISFIES_POLICY"
+        ]
+      }
+    },
+    {
+      "scenario_id": "A02",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.13-14,17-18; authenticated API invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "http_status": 200,
+        "inspection_status": "SAFETY_ALERT",
+        "max_permission": 1,
+        "required_reasons": [
+          "PRESSURE_OUT_OF_RANGE",
+          "PERMISSION_INSUFFICIENT"
+        ]
+      }
+    },
+    {
+      "scenario_id": "A03",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.13-14,17-18; authenticated API invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "http_status": 403,
+        "inspection_status": null,
+        "max_permission": null,
+        "required_reasons": [
+          "ROLE_FORBIDDEN"
+        ]
+      }
+    },
+    {
+      "scenario_id": "A04",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.13-14,17-18; authenticated API invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "http_status": 403,
+        "inspection_status": null,
+        "max_permission": null,
+        "required_reasons": [
+          "ROLE_FORBIDDEN"
+        ]
+      }
+    },
+    {
+      "scenario_id": "A05",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.13-14,17-18; authenticated API invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "http_status": 404,
+        "inspection_status": null,
+        "max_permission": null,
+        "required_reasons": [
+          "NOT_FOUND"
+        ]
+      }
+    },
+    {
+      "scenario_id": "A06",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.13-14,17-18; authenticated API invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "http_status": 404,
+        "inspection_status": null,
+        "max_permission": null,
+        "required_reasons": [
+          "NOT_FOUND"
+        ]
+      }
+    },
+    {
+      "scenario_id": "A07",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.13-14,17-18; authenticated API invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "http_status": 409,
+        "inspection_status": null,
+        "max_permission": null,
+        "required_reasons": [
+          "EXACT_DUPLICATE"
+        ]
+      }
+    },
+    {
+      "scenario_id": "A08",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.13-14,17-18; authenticated API invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "http_status": 409,
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": [
+          "VERSION_CONFLICT"
+        ]
+      }
+    },
+    {
+      "scenario_id": "A09",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book pp.13-14,17-18; authenticated API invariants",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "http_status": 409,
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": [
+          "VERSION_CONFLICT"
+        ]
+      }
+    },
+    {
+      "scenario_id": "B01",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book p.14 atomic approval dimensions; read-only synthetic snapshot",
+      "mandatory": true,
+      "expected": {
+        "decision": "ALLOW",
+        "inspection_status": "APPROVED_BY_HUMAN",
+        "max_permission": 3,
+        "required_reasons": []
+      }
+    },
+    {
+      "scenario_id": "B02",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book p.14 atomic approval dimensions; read-only synthetic snapshot",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": []
+      }
+    },
+    {
+      "scenario_id": "B03",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book p.14 atomic approval dimensions; read-only synthetic snapshot",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": []
+      }
+    },
+    {
+      "scenario_id": "B04",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book p.14 atomic approval dimensions; read-only synthetic snapshot",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": []
+      }
+    },
+    {
+      "scenario_id": "B05",
+      "scenario_version": 1,
+      "basis": "MASTER_BOOK_SPECIFICATION",
+      "reference": "Master Book p.14 atomic approval dimensions; read-only synthetic snapshot",
+      "mandatory": true,
+      "expected": {
+        "decision": "DENY",
+        "inspection_status": "EVIDENCE_COMPLETE",
+        "max_permission": 2,
+        "required_reasons": []
+      }
+    }
+  ]
+}

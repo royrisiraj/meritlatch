@@ -182,3 +182,38 @@ restore only reviewed application/docs changes from baseline. Do not point old
 Phase 02 business code at upgraded data: it does not enforce Phase 03 rejections
 or recovery-attempt semantics. No schema downgrade or data deletion is authorized.
 No rollback was executed.
+
+## Phase 04 decisions — 12 November 2026
+
+1. Extend baseline f4ed39e; preserve all 493 baseline tests and Gemini/private
+   frozen files. API paths remain /v1/. The normal factory enables assurance;
+   the historical Phase 01 internal test factory explicitly disables it to retain
+   its no-red-team contract. Separate tests verify the current normal factory's
+   real engineering OpenAPI/bearer surface. No existing assertion was edited.
+2. Use a fixed specification-reference SYNTHETIC corpus with separate input and
+   label files, pinned manifest, conflict checks and deterministic ordering. No
+   additional human dataset review, live AI suggestion or SUT-derived label is
+   claimed. Suggestion route is authenticated/audited BLOCKED under the freeze.
+3. Use fixed credential-free subprocesses and disposable synthetic SQLite/apps,
+   with explicit count/deadline/output checks. API-boundary cases execute real
+   authentication/transactions; binding-only cases use read-only fictional
+   snapshots and create no manager approvals. This is not OS hostile-code isolation.
+4. Three source profiles exist only for candidate tests: safe, weakened pressure
+   max, overly restrictive min. Candidate metadata never enters operational policy
+   tables. Gate readiness is evidence for manual release, not a deploy/publish API.
+   Existing trusted offline policy registration keeps its prior controls.
+5. Keep binary metrics and three-way review/abstention scoring separate. Wrong
+   inspection/permission/reasons fail the scenario even if decision is restrictive.
+   Zero rate denominators are null/N/A. Every mandatory mismatch blocks readiness.
+6. Deduplicate findings by exact scoped evidence fingerprint; append each run
+   occurrence. Dismissal does not erase failures. Proposals/reviews/gates are
+   append-only; review revision and candidate revision are separate CAS bindings.
+   A new review rejection or changed candidate/source/corpus invalidates readiness.
+7. Preserve historical failed/test outputs. Final acceptance reruns use new ignored
+   writable .venv temp roots and --basetemp to avoid the user's Windows Temp ACL
+   issue. No system permissions or unrelated temp files are changed. One audit
+   correction aligns cross-tenant scenario metadata with its actual Tenant B actor;
+   expected labels and test count remain unchanged.
+
+Stop at Phase 04. Gemini troubleshooting stays deferred until Phases 04–07 finish.
+No UI/Phase 05, commit, push, deployment, paid infrastructure or live model call.

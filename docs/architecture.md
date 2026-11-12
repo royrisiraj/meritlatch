@@ -1,5 +1,17 @@
 # Architecture
 
+Phase 04 adds a separate engineering plane within the existing factory:
+[`assurance_phase04.md`](assurance_phase04.md). Typed models/router, source-
+controlled input generator and independent labels, isolated SUT adapters/worker,
+comparison/scoring, and tenant-scoped orchestration remain distinct modules.
+The worker runs fixed trusted Python in a disposable local process/SQLite scope;
+no production repository, provider credential or arbitrary code is passed in.
+The coordinator persists candidate metadata, immutable run/result/review/gate
+history and deduplicated findings in additive security-schema namespace v1.
+Human-account review and exact source/artifact/corpus/version bindings precede
+readiness; no automatic policy registration/publication/deployment is introduced.
+Actual identity and API-boundary tests supplement pure policy/binding snapshots.
+
 Current Phase 03 workflow: [`workflow_phase03.md`](workflow_phase03.md).
 `workflow_service.py` composes the existing case service for bounded manager
 queue/details and durable rejection; `workflow_models.py` defines public typed
