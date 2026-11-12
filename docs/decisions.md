@@ -133,3 +133,52 @@ baseline copy, and remove only new Phase 02 code if requested. Additive media
 tables/files can remain safely preserved when running old code; do not drop them
 or delete evidence as an automatic downgrade. Leave user deletions unchanged.
 Do not reset the repository, remove the existing commit, or discard user data.
+
+## Phase 03 decisions — 12 November 2026
+
+1. Extend user baseline `0727e05`; initial working tree was clean. Preserve every
+   baseline test byte and pure policy/model/provider/dependency file. No rebuild,
+   new dependencies, handover restoration, commit or reset. New workflow APIs
+   consistently use `/v1/` and the existing factory.
+2. A job is created with required same-tenant assignments and approved source
+   template/default integer amount. Cases inherit these defaults; managers retain
+   existing per-case amount/version selection. Job ASSIGNED is assignment state,
+   while independent cases project explicit business states. Badges never grant
+   authority; pure policy and existing role/action checks remain unchanged.
+3. Manager rejection is an immutable safe enum snapshot and atomic CAS. Match
+   digest as well as recorded version to prevent identical rejected bytes from
+   escaping rejection through metadata/retry changes. Correction needs a fresh
+   contractor challenge and corrected new bytes. Preserve inspection status and
+   all old evidence/reviews. Rejecting a completed binding is denied so a receipt
+   cannot be rewritten. Later evidence cycles preserve historical receipts.
+4. Retain the original private approval binding for exact legacy compatibility.
+   Its bound case version changes on every invoice revision; clearing approval
+   and incrementing explicit invoice metadata are atomic. New public review rows
+   record invoice revision as well. Same valid current reapproval is a no-op,
+   protecting receipt idempotency. Never expose private approval credentials.
+5. Add optional request/session/challenge/bytes-bound upload idempotency without
+   weakening default exact-byte duplicate detection. Replays do not call models.
+   Separately allow at most three explicit same-mode recoveries for transient,
+   stale or sufficiently aged pending analysis. Successful but insufficient,
+   schema-invalid, blocked and rejected evidence require correction. Recovery
+   results use the existing two-phase CAS and cannot overwrite newer state.
+6. Add workflow schema namespace v1, leaving core/media v1 unchanged. Backfill
+   only actual known timestamps/invoice counts/legacy approval snapshots. Label
+   legacy event state LEGACY_RECORDED; never invent old transitions. New event
+   details use internal transactional sequence, public scoped UUID cursors and
+   bounded newest-first audit. This intentional ordering change preserves the
+   old list body and is documented/tested. Queue scans 500/page; review history
+   caps 100 with flag. Full old-media download/retention/orphan repair deferred.
+7. Actual HTTP smoke provisions isolated test identities, then uses HTTP for all
+   business transitions and actual JPEG uploads. Its named canned MOCK_AI fixture
+   is not optical extraction; default mock remains UNKNOWN. No live Gemini call
+   occurred and model name/adapter/guards remain unchanged. LIVE_GEMINI is BLOCKED
+   - AWAITING AUTHORIZATION. Per current user's gate, this separate dependency
+   does not prevent local Phase 03 mock-backed acceptance.
+
+Phase 03 rollback is documented in its report: stop server, back up SQLite with
+its backup API plus private media, retain upgraded database/history offline, and
+restore only reviewed application/docs changes from baseline. Do not point old
+Phase 02 business code at upgraded data: it does not enforce Phase 03 rejections
+or recovery-attempt semantics. No schema downgrade or data deletion is authorized.
+No rollback was executed.

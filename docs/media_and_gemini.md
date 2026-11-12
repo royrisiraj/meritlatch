@@ -3,6 +3,11 @@
 Use the existing `backend.app.api:create_app --factory`. No old backend rebuild,
 frontend, video, cloud adapter or real financial action is introduced.
 
+Phase 03 extends this retained intake with manager review/rejection, safely bound
+upload replay and explicit provider reanalysis. Current recovery/API contracts:
+[`workflow_phase03.md`](workflow_phase03.md). Live verification remains separately
+BLOCKED - AWAITING AUTHORIZATION.
+
 ## Upload contract
 
 `POST /v1/cases/{case_id}/evidence` accepts the raw JPEG/PNG bytes as its body.
@@ -127,10 +132,14 @@ selected transient server statuses; quota/auth errors are not retried. No quota,
 latency, cost or extraction-accuracy benchmark is claimed. Unknown SDK errors are
 redacted. Failed analysis persists REVIEW_REQUIRED/max 0 and returns 502/504.
 
-There is no automatic reanalysis job or retry endpoint. After a failed/pending
-attempt, request review and submit fresh evidence with a current challenge;
-byte-identical resubmission remains a duplicate. This conservative behavior can
-reject legitimate retries and needs a reviewed recovery design in a later phase.
+There is no automatic reanalysis job. Phase 03 adds an explicitly authorized
+reanalysis endpoint for recoverable failed/stale/interrupted attempts and an
+optional operation-bound upload idempotency key. Default byte-identical upload
+still returns EXACT_DUPLICATE. Successful but insufficient/unsafe observations,
+schema-invalid/blocked results and rejected evidence need correction, not repeat
+inference. Recovery preserves original bytes/evidence version, records separate
+attempts, rechecks current state and is bounded to three explicit retries. See
+the Phase 03 contract for session/challenge/version/billing and replay rules.
 
 ## Windows commands
 

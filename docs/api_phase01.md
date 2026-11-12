@@ -1,12 +1,14 @@
 # Phase 01 API contract
 
-Historical Phase 01 endpoint baseline. Phase 02 adds authenticated image upload
+Historical Phase 01 endpoint baseline. Current Phase 03 extensions and bounded
+audit ordering/pagination are in [`workflow_phase03.md`](workflow_phase03.md).
+Phase 02 adds authenticated image upload
 and scoped private-content retrieval; current contracts are in
 [`media_and_gemini.md`](media_and_gemini.md). Existing endpoints retain their roles.
 
 Run `backend.app.api:create_app --factory`. All business paths use `/v1/...`;
 there is no `/api/v1` alias. Use `Authorization: Bearer <opaque token>`.
-Health/docs/schema are public. No fixture/upload, account/role provisioning,
+Health/docs/schema are public. No fixture, account/role provisioning,
 policy publishing or red-team HTTP route exists.
 
 | Method | Path | Caller / behavior |
@@ -58,8 +60,9 @@ session; case creation does not issue a manager-session challenge for a contract
 ```
 
 The response has the server token, scope, evidence session, expiry and new version.
-Genuine media intake awaits Phase 02. Tests/smoke use a visibly SYNTHETIC internal
-factory, never a route.
+Phase 02 genuine media intake is documented separately. Phase 01's historical
+tests/smoke use a visibly SYNTHETIC internal factory, never a route. Phase 03's
+actual HTTP smoke uses image uploads and labeled canned MOCK_AI observations.
 
 Evaluate or execute an action as assigned agent:
 

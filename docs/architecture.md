@@ -1,6 +1,22 @@
 # Architecture
 
-Current Phase 02 additions: [`media_and_gemini.md`](media_and_gemini.md).
+Current Phase 03 workflow: [`workflow_phase03.md`](workflow_phase03.md).
+`workflow_service.py` composes the existing case service for bounded manager
+queue/details and durable rejection; `workflow_models.py` defines public typed
+schemas and business-state projection. Business status is independent of inspection
+and permission, and is never an input to authorization. Existing role/action
+checks and pure policy remain authoritative.
+
+SQLite workflow migration v1 adds job defaults/events, case creation/invoice
+metadata, public manager review snapshots, redacted event details with transaction
+ordering, upload operation bindings and separate recovery runs/results. Core and
+media schema v1/history remain unchanged. Legacy metadata is derived only from
+known audit/approval records, with LEGACY_RECORDED audit states. Recovery is an
+explicit contractor request, bound to original current evidence/session/challenge;
+provider I/O still runs outside the lock, and finalization rechecks CAS/scope.
+At most three recovery runs; no scheduler, background retry or fallback exists.
+
+Phase 02 additions: [`media_and_gemini.md`](media_and_gemini.md).
 `media_service.py` authenticates/validates intake, atomically reserves a new
 non-authorizing evidence version, runs a perception provider outside the DB lock,
 then rechecks identity/version/challenge before appending the final observation.
@@ -12,8 +28,8 @@ existing core tables/schema/test files are preserved. The pure policy is unchang
 
 ## Phase 01 foundation retained
 
-One FastAPI application, one synchronous case service, one SQLite database. No
-microservices, provider SDKs, UI, bank integration or cloud resources.
+One FastAPI application, one case service and workflow/media orchestration, one
+SQLite database. No microservices, UI, bank integration or cloud resources.
 
 `backend/app/api.py:create_app` composes the authenticated application.
 `backend/app/main.py:app` is the unchanged Phase 00 metadata-only component; its
@@ -45,7 +61,7 @@ or roll back together.
 
 Evidence is append-only metadata with increasing versions. In Phase 01, the
 internal test factory hashes exact UTF-8 canonical synthetic observation JSON
-bytes, not real media. There is no HTTP intake route. Normal settings refuse test
+bytes, not real media. There is no HTTP synthetic intake route. Normal settings refuse test
 evidence intake and promotion of saved test artifacts.
 
 Approval binds tenant, case, job, asset/job version, action, integer amount,

@@ -1,5 +1,23 @@
 # Security and limits
 
+Phase 03 current workflow controls: [`workflow_phase03.md`](workflow_phase03.md),
+`backend/tests/phase03/`, and the [report](../tracking/PHASE_03_REPORT.md).
+Manager-only tenant-scoped queue/review/rejection cannot authorize through badges.
+Rejection stores the authenticated snapshot, clears approval atomically and caps
+matching bytes at L0; a fresh contractor challenge and new eligible bytes are
+required. Invoice/policy changes and stale/concurrent requests cannot undo it.
+Completed receipts remain historical rather than being rewritten by rejection.
+
+Optional upload replay binds hashed key to actor/auth session/case/original
+expected version/challenge/evidence session/bytes/MIME and reauthorizes current
+scope. Explicit recovery reads digest-checked private bytes, enforces same mode,
+valid original session/challenge, deadline grace and three-run limit, then uses
+the existing two-phase CAS. Successful/blocked/schema-invalid/rejected evidence
+cannot be retried into approval. Live recovery also needs per-request billable
+consent; all live verification remains BLOCKED. No credential or observation
+injection endpoint was added. Review/event/operation/recovery histories reject
+ordinary mutation; privileged database tampering remains possible.
+
 Phase 02's current media/provider boundaries and remaining risks are in
 [`media_and_gemini.md`](media_and_gemini.md). New controls include bounded signature
 and decoder validation, scoped exact duplicates/private reads, two-phase CAS
@@ -47,7 +65,7 @@ or immutable ledger**.
 
 No HTTP synthetic intake exists. Only explicit Python test factories enable it;
 normal settings also refuse promotion of previously persisted test artifacts.
-No model adapter or authority-bearing model tools exist. Offline policy version
+Model adapters have no authority-bearing tools. Offline policy version
 registration needs two independently authenticated engineers, a review reference
 and a structural regression guard. It does not activate the version. Assigned
 engineers may select an already registered version, invalidating approval. The
@@ -66,16 +84,19 @@ Remaining risks:
   provider, global/IP abuse prevention or distributed throttling. An attacker can
   use account-specific throttling to deny login to a known username. Use loopback
   and fictional data only.
-- No safe media intake, scoped media-duplicate lookup, private storage, retention/
-  deletion workflow or Gemini. Synthetic hashes identify fixture bytes only.
-  Incorrect but compliant observations can pass; there is no physical truth or
-  authenticity guarantee.
+- Safe JPEG/PNG intake/private storage and bounded explicit provider recovery
+  exist; retention/deletion, orphan repair and automated crash recovery do not.
+  Synthetic hashes identify fixture JSON bytes; image hashes identify exact
+  original media. Incorrect but compliant observations can pass; there is no
+  physical truth, authenticity or verified live image-reading guarantee.
 - SQLite serializes writers; busy conflicts fail closed. Tests establish local
   orderings, not arbitrary production load or Firestore correctness.
-- Only initial schema migration version 1 exists. Future migrations need explicit
-  backup/downgrade planning; there is no automatic downgrade.
+- Core, media and workflow migrations each retain additive version 1. Back up
+  database and media before upgrade; there is no automatic downgrade. Queue
+  filtering scans at most 500 cases per page; review history is capped at 100,
+  with truncation flag and paged audit. Old media downloads remain current-only.
 - Only Python 3.14.7 was executed. Python 3.11/3.12 and remote CI remain unverified.
-  The existing Starlette/HTTPX deprecation warning remains visible.
+  Dependency verification passes; no production load/compatibility claim follows.
 - Local database/backup ACLs depend on the Windows operator. No external audit
   retention or cryptographic event attestation is implemented.
 

@@ -5,7 +5,7 @@ import asyncio
 from pathlib import Path
 import re
 
-from fastapi import FastAPI, Depends, Request, Header
+from fastapi import FastAPI, Depends, Request, Header, Query
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, Response
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -21,6 +21,9 @@ from .settings import Settings
 from .media_service import MediaService
 from .media_storage import LocalPrivateMediaStorage
 from .perception import MockPerceptionProvider
+from .workflow_service import WorkflowService
+from .workflow_models import RejectionRequest, ReanalysisRequest, VerificationQueue, ReviewDetails, BusinessStatus, CaseDetailsResponse, PolicyTemplate
+from .models import InspectionStatus
 
 bearer = HTTPBearer(auto_error=False)
 
@@ -45,6 +48,7 @@ def create_app(settings: Settings | None = None, repository=None, clock=None, pe
         from .gemini_provider import GeminiPerceptionProvider
         perception_provider = GeminiPerceptionProvider(settings)
     media = MediaService(service, perception_provider, media_storage or LocalPrivateMediaStorage(settings.media_root))
+    workflow = WorkflowService(service)
 
     @asynccontextmanager
     async def lifespan(app):
@@ -52,10 +56,11 @@ def create_app(settings: Settings | None = None, repository=None, clock=None, pe
         if owned:
             repository.close()
 
-    app = FastAPI(title="SENTINEL//LADDER", version="0.2.0", redoc_url=None, lifespan=lifespan)
+    app = FastAPI(title="SENTINEL//LADDER", version="0.3.0", redoc_url=None, lifespan=lifespan)
     app.state.service = service
     app.state.settings = settings
     app.state.media = media
+    app.state.workflow = workflow
 
     @app.middleware("http")
     async def operational_headers(request: Request, call_next):
@@ -107,6 +112,10 @@ def create_app(settings: Settings | None = None, repository=None, clock=None, pe
     def me(token: str = Depends(bearer_token)):
         return service.me(token)
 
+    @app.get("/v1/policy-templates", response_model=list[PolicyTemplate], tags=["jobs"])
+    def templates(token: str = Depends(bearer_token)):
+        return workflow.templates(token)
+
     @app.post("/v1/jobs", status_code=201, tags=["jobs"])
     def create_job(data: JobCreate, token: str = Depends(bearer_token)):
         return service.create_job(token, data.model_dump())
@@ -130,6 +139,13 @@ def create_app(settings: Settings | None = None, repository=None, clock=None, pe
     @app.post("/v1/cases", status_code=201, tags=["cases"])
     def create_case(data: CaseCreate, token: str = Depends(bearer_token)):
         return service.create_case(token, data.model_dump())
+
+    @app.get("/v1/cases", response_model=VerificationQueue, tags=["review"])
+    def verification_queue(token: str = Depends(bearer_token), limit: int = Query(25, ge=1, le=100),
+            cursor: str | None = Query(None, min_length=1, max_length=100), business_status: BusinessStatus | None = None,
+            inspection_status: InspectionStatus | None = None, approval_eligible: bool | None = None,
+            contractor_id: str | None = Query(None, min_length=1, max_length=100), attention_only: bool = True):
+        return workflow.queue(token, limit, cursor, business_status, inspection_status, approval_eligible, contractor_id, attention_only)
 
     @app.get("/v1/cases/{case_id}", tags=["cases"])
     def get_case(case_id: str, token: str = Depends(bearer_token)):
@@ -158,20 +174,41 @@ def create_app(settings: Settings | None = None, repository=None, clock=None, pe
         return service.approve(token, case_id, data.expected_case_version)
 
     @app.get("/v1/cases/{case_id}/audit", tags=["review"])
-    def audit(case_id: str, token: str = Depends(bearer_token)):
-        return service.audit(token, case_id)
+    def audit(case_id: str, response: Response, token: str = Depends(bearer_token), limit: int = Query(100, ge=1, le=100),
+            before_event_id: str | None = Query(None, min_length=1, max_length=100),
+            event_type: str | None = Query(None, pattern=r"^[A-Z_]{1,60}$")):
+        rows = service.audit(token, case_id, limit, before_event_id, event_type)
+        if len(rows) == limit:
+            response.headers["X-Audit-Next-Cursor"] = rows[-1]["id"]
+        return rows
+
+    @app.get("/v1/cases/{case_id}/review", response_model=ReviewDetails, tags=["review"])
+    def review_details(case_id: str, token: str = Depends(bearer_token)):
+        return workflow.details(token, case_id)
+
+    @app.post("/v1/cases/{case_id}/rejections", response_model=CaseDetailsResponse, tags=["review"])
+    def reject(case_id: str, data: RejectionRequest, token: str = Depends(bearer_token)):
+        return workflow.reject(token, case_id, data.expected_case_version, data.reason)
 
     @app.post("/v1/cases/{case_id}/evidence", tags=["evidence"], openapi_extra={"requestBody": {"required": True,
         "content": {kind: {"schema": {"type": "string", "format": "binary"}} for kind in ("image/jpeg", "image/png")}}})
     async def upload_evidence(case_id: str, request: Request, token: str = Depends(bearer_token),
             expected: str | None = Header(None, alias="X-Expected-Case-Version"),
             challenge_id: str | None = Header(None, alias="X-Challenge-ID"),
-            evidence_session_id: str | None = Header(None, alias="X-Evidence-Session-ID")):
+            evidence_session_id: str | None = Header(None, alias="X-Evidence-Session-ID"),
+            operation_key: str | None = Header(None, alias="Idempotency-Key")):
         await asyncio.to_thread(media.gate, token, case_id)
         if expected is None or not re.fullmatch(r"[1-9][0-9]{0,9}", expected) or not challenge_id or not evidence_session_id or max(len(challenge_id), len(evidence_session_id)) > 100:
             raise AppError(422, "INVALID_EVIDENCE_BINDING", "Provide the current case version, issued challenge ID and evidence session in the documented headers.")
+        if operation_key is not None and not re.fullmatch(r"[A-Za-z0-9_-]{16,128}", operation_key):
+            raise AppError(422, "INVALID_OPERATION_KEY", "Use a random operation key of 16–128 URL-safe characters.")
         status, view = await media.submit(token, case_id, int(expected), challenge_id, evidence_session_id,
-                                         await request.body(), request.headers.get("content-type", "application/octet-stream"))
+                                         await request.body(), request.headers.get("content-type", "application/octet-stream"), operation_key)
+        return JSONResponse(status_code=status, content=view)
+
+    @app.post("/v1/cases/{case_id}/evidence/{evidence_id}/reanalysis", tags=["evidence"], responses={code: {"model": CaseDetailsResponse} for code in (200, 202, 502, 504)})
+    async def reanalysis(case_id: str, evidence_id: str, data: ReanalysisRequest, token: str = Depends(bearer_token)):
+        status, view = await media.reanalyze(token, case_id, evidence_id, data.expected_case_version, data.idempotency_key, data.allow_billable)
         return JSONResponse(status_code=status, content=view)
 
     @app.get("/v1/cases/{case_id}/evidence/{evidence_id}/content", tags=["evidence"])

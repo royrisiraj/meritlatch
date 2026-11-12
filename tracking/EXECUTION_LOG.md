@@ -2570,3 +2570,64 @@ Exit 0:
 ```
 
 The two handover deletions predated Phase 02 and were left unchanged. Existing commit `a7e7156` remains the only commit; no files were staged or committed. `git remote` returned no names. No remote, push, deployment, paid resource or Phase 03 work was performed.
+
+## Phase 03 — executed local backend workflow (12 November 2026)
+
+User authorized Phase 03 only against committed Phase 02 baseline `0727e05`.
+Initial `git status --short` was empty; log showed `0727e05` then `a7e7156`.
+Read the authoritative/requested documents and relevant implementation before
+editing. Preserved the baseline, private data and intentionally deleted handovers.
+No commit, push, reset, remote, deployment, paid resource, live AI call or Phase 04.
+
+Full exact command output/chunks:
+[PHASE_03_EXECUTION_EVIDENCE.txt](PHASE_03_EXECUTION_EVIDENCE.txt).
+Implementation/manifest/endpoints/state/recovery/security/risks/rollback/startup:
+[PHASE_03_REPORT.md](PHASE_03_REPORT.md) and
+[workflow_phase03.md](../docs/workflow_phase03.md).
+
+Actual verification:
+
+| Command | Actual result |
+|---|---|
+| `.\.venv\Scripts\python.exe -m pytest` before changes | 375 passed in 46.40s, exit 0 |
+| `.\.venv\Scripts\python.exe -m compileall -q backend/app` | No output, exit 0 |
+| `.\.venv\Scripts\python.exe -m pytest -x` after integration | 375 passed in 47.33s, exit 0 |
+| `.\.venv\Scripts\python.exe -m pytest backend/tests/phase03 -x` final phase run | 79 passed in 16.84s, exit 0 |
+| `.\.venv\Scripts\python.exe -m pytest` final full suite | **454 passed in 67.99s (0:01:07)**, exit 0 |
+| `.\.venv\Scripts\python.exe -m pytest backend/tests/phase03/test_transactions.py backend/tests/phase03/test_queue_and_scope.py` | 28 passed in 8.58s, exit 0 |
+| `.\.venv\Scripts\python.exe -m pip check` | No broken requirements found., exit 0 |
+| Pre-edit manifest SHA-256 verification, exact Python command in evidence | 20 baseline test files checked; mismatches=[], exit 0 |
+| `git diff --` pure policy/models/providers/pins/old suites | Empty stdout, exit 0 |
+| `git diff --check` | Exit 0; no whitespace errors, existing Windows LF/CRLF notices |
+| `.\.venv\Scripts\python.exe -m backend.tools.smoke_phase03 --scenario all` | PASS actual TCP/HTTP, exit 0 |
+| Same smoke with `--scenario complete` | COMPLETED, case 5/evidence 1/L3; receipt idempotent; stale VERSION_CONFLICT; exit 0 |
+| Same smoke with `--scenario unsafe` | SAFETY_ALERT, case 4/evidence 1/max L1; restricted action DENY; exit 0 |
+| Same smoke with `--scenario wrong-asset` | EVIDENCE_MISSING, case 4/evidence 1/L0; ASSET_MISMATCH/DENY; exit 0 |
+| `.\.venv\Scripts\python.exe -m backend.tools.smoke_gemini --check` | Expected exit 1, BLOCKED, network_called=false, LIVE_APPROVAL_AND_FICTIONAL_IMAGE_CONSENT_REQUIRED |
+
+Smoke `all` additionally demonstrates manager rejection at case 5/evidence 1/L0,
+fresh challenge/corrected JPEG version 2, deliberately failed provider, explicit
+bounded reanalysis plus replay, approval and completion at case 11/evidence 2/L3.
+Rejection history preserved. Actual HTTP only for business operations; no manual
+SQLite transition edits. Provider fixture:
+CONTROLLED_CANNED_MOCK_AI_NOT_OPTICAL_EXTRACTION, mode MOCK_AI.
+Normal mock remains UNKNOWN. Credentials/challenge values not printed. Temporary
+server/database/files cleaned up without touching user runtime data.
+
+375 original tests remain byte-for-byte identical (20-file SHA-256 manifest).
+79 new: workflow 19, queue/scope 16, recovery 21, transactions 12,
+audit/persistence 11. All recorded Phase 03 test runs passed; no test assertion
+weakened. Coverage not measured. Python 3.14.7/Windows only executed;
+Python 3.11/3.12, remote CI, production load and distributed adapters NOT RUN.
+No Phase 03 dependency changes or package installation.
+
+Local Phase 03 gate **PASS / TESTED**, awaiting user review. LIVE_GEMINI remains
+**BLOCKED - AWAITING AUTHORIZATION**, independently of local acceptance.
+No live perception/accuracy, physical authenticity, tamper-proof ledger,
+real payment or production-readiness claim. Stop at Phase 03.
+
+Final documentation check: 12 Markdown files, missing relative targets=[]; exit 0.
+The first final `git diff --check` found one extra EOF blank in this appended log;
+removed it and reran successfully (exit 0; only Windows LF/CRLF notices).
+Final `git status --short --untracked-files=all`: 16 modified and 14 new files,
+no deletions, no staged changes. Full status is in the Phase 03 report and evidence.

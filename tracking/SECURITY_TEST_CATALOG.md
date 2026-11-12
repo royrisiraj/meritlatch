@@ -1,6 +1,21 @@
 # Security and workflow test catalog
 
-Reference: Master Book chapters 4, 9, 12–15 and Appendix B. Create test implementation and label expectations independently of Gemini. These are **planned** tests; do not report passing totals until executed.
+Reference: Master Book chapters 4, 9, 12–15 and Appendix B. Expectations must be independent of Gemini. Items below are the cross-phase catalog, not a claim that future red-team/deployment checks ran. Current Phase 03 executed evidence is in `PHASE_03_REPORT.md` and `EXECUTION_LOG.md`: 454 passed, zero failed (375 unchanged + 79 new). Live Gemini, Phase 04 and production/deployment tests remain unverified/deferred.
+
+## Phase 03 executed mapping
+
+| Suite | Cases | Security behavior |
+|---|---:|---|
+| `backend/tests/phase03/test_workflow.py` | 19 | Approved manager job defaults/exact currency, L0/L1/L2/L3 separation, safe enum rejection, fresh correction, stale approval denial, preserved reviews, idempotent completion/reapproval. |
+| `backend/tests/phase03/test_queue_and_scope.py` | 16 | Scoped manager queue/filter/paging/details, wrong roles/tenant/cursors, protected endpoints, redacted observations/media/internal secrets. |
+| `backend/tests/phase03/test_recovery.py` | 21 | Session-bound upload keys, replay without more inference, failed/stale/pending grace recovery, no reanalysis of success/unsafe/schema-invalid/rejected, three-run limit, restart and billable guard with no network. |
+| `backend/tests/phase03/test_transactions.py` | 12 | Approve/reject races, reject during analysis, upload collisions/same-key requests, recovery vs newer evidence/invoice/policy/expiry/assignment, atomic rollback. |
+| `backend/tests/phase03/test_audit_and_persistence.py` | 11 | Scoped paged audit/public references/redaction, append-only histories, restart, legacy approval migration and unknown-version denial. |
+
+All 375 prior tests also passed unchanged; hashes are in
+`PHASE_03_BASELINE_TEST_HASHES.json`. Real loopback HTTP smoke demonstrates one
+completed path, unsafe and wrong-asset denials, and rejection/correction/provider
+recovery with labeled canned MOCK_AI. It does not measure optical extraction.
 
 ## Core policy (minimum)
 - valid asset+current challenge+complete fictional sensor observations: L2 allowed for `prepare_invoice`, but **not** L3.

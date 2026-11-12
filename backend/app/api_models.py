@@ -23,11 +23,15 @@ class JobCreate(DataModel):
     contractor_id: str = Field(min_length=1, max_length=100)
     engineer_id: str = Field(min_length=1, max_length=100)
     service_agent_id: str = Field(min_length=1, max_length=100)
+    policy_id: str | None = Field(default=None, min_length=1, max_length=100)
+    policy_version: str | None = Field(default=None, min_length=1, max_length=100)
+    invoice_amount_paise: int = Field(default=500000, strict=True, gt=0, le=100000000)
 
 
 class CaseCreate(DataModel):
     job_id: str = Field(min_length=1, max_length=100)
-    invoice_amount_paise: int = Field(default=500000, strict=True, gt=0, le=100000000)
+    invoice_amount_paise: int | None = Field(default=None, strict=True, gt=0, le=100000000)
+    policy_version: str | None = Field(default=None, min_length=1, max_length=100)
 
 
 class Versioned(DataModel):

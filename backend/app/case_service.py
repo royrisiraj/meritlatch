@@ -17,6 +17,7 @@ from .policy import authorize
 from .repository import Repository
 from .settings import Settings
 from .media_state import media_observation
+from .workflow_models import project_business
 
 
 def uid():
@@ -74,6 +75,8 @@ class CaseService:
         case = tx.get("cases", id=case_id, tenant_id=actor["tenant_id"])
         if not case:
             raise not_found()
+        meta = tx.get("case_workflow", tenant_id=actor["tenant_id"], case_id=case_id)
+        case["invoice_revision"] = meta["invoice_revision"] if meta else 1
         return case, self._job(tx, actor, case["job_id"])
 
     @staticmethod
@@ -81,13 +84,41 @@ class CaseService:
         if case["version"] != expected:
             raise conflict()
 
-    def _event(self, tx, actor, case, event_type, now, action=None, decision=None, reasons=()):
+    def _event(self, tx, actor, case, event_type, now, action=None, decision=None, reasons=(), review_reference=None, completion_reference=None, source_evidence=None):
         ev = tx.get("evidence", id=case["evidence_id"]) if case["evidence_id"] else None
-        tx.add("decision_events", dict(id=uid(), tenant_id=case["tenant_id"], case_id=case["id"],
+        audit_ev = source_evidence or ev
+        event_id = uid()
+        tx.add("decision_events", dict(id=event_id, tenant_id=case["tenant_id"], case_id=case["id"],
             actor_id=actor["id"], event_type=event_type, case_version=case["version"],
-            evidence_version=case["evidence_version"], evidence_sha256=ev["sha256"] if ev else None,
-            policy_version=case["policy_version"], action=action, decision=decision,
+            evidence_version=audit_ev["version"] if audit_ev else case["evidence_version"], evidence_sha256=audit_ev["sha256"] if audit_ev else None,
+            policy_version=case["policy_version"], action=action, decision=decision or "RECORDED",
             reason_codes_json=canonical(list(reasons)), created_at=now))
+        job = tx.get("jobs", tenant_id=case["tenant_id"], id=case["job_id"])
+        base, current_ev, challenge = self._base(tx, case, job, now)
+        approval = self._valid_approval(tx, case, job, base, current_ev, challenge)
+        projected = {**base, "max_permission": 3} if approval else base
+        completed = bool(approval and tx.get("action_runs", case_id=case["id"], action=Action.COMPLETE_SIMULATED_ACTION.value, binding_sha256=approval["binding_sha256"]))
+        rejected = self._rejected(tx, case, ev)
+        tx.add("workflow_events", dict(event_id=event_id, tenant_id=case["tenant_id"], case_id=case["id"], job_id=job["id"],
+            business_status=project_business(case, projected, bool(rejected), completed), source_mode=audit_ev["artifact_mode"] if audit_ev else None,
+            source_evidence_id=audit_ev["id"] if audit_ev else None,
+            review_reference=review_reference, completion_reference=completion_reference))
+
+    def _rejected(self, tx, case, ev):
+        return tx.get("manager_reviews", tenant_id=case["tenant_id"], case_id=case["id"],
+                      decision="REJECTED", evidence_sha256=ev["sha256"]) if ev else None
+
+    def _job_view(self, tx, job):
+        meta = tx.get("job_workflow", job_id=job["id"], tenant_id=job["tenant_id"])
+        return {**job, "business_status": "ASSIGNED", "policy_id": meta["policy_id"] if meta else self.template.policy_id,
+            "policy_version": meta["policy_version"] if meta else self.template.version,
+            "invoice_amount_paise": meta["invoice_amount_paise"] if meta else 500000,
+            "created_at": meta["created_at"] if meta else None,
+            "recent_events": tx.recent("job_events", {"tenant_id": job["tenant_id"], "job_id": job["id"]}, "created_at", 20)}
+
+    def _job_event(self, tx, actor, job, kind, now):
+        tx.add("job_events", dict(id=uid(), tenant_id=job["tenant_id"], job_id=job["id"], actor_id=actor["id"],
+                                 job_version=job["version"], event_type=kind, created_at=now))
 
     def login(self, tenant_id, username, password):
         bucket = digest([tenant_id, username])
@@ -142,7 +173,12 @@ class CaseService:
                 user = tx.get("users", id=data[field], tenant_id=actor["tenant_id"], active=True)
                 if not user or user["role"] != role:
                     raise AppError(422, "INVALID_ASSIGNMENT", "Choose an active account with the required role in this tenant.")
-            job = dict(id=uid(), tenant_id=actor["tenant_id"], version=1, **data)
+            selected_id = data.get("policy_id") or self.template.policy_id
+            selected_version = data.get("policy_version") or self.template.version
+            if (selected_id, selected_version) != (self.template.policy_id, self.template.version):
+                raise AppError(422, "POLICY_NOT_REVIEWED", "Select an existing approved template; managers cannot create policy rules.")
+            job = dict(id=uid(), tenant_id=actor["tenant_id"], version=1,
+                       **{key: data[key] for key in ("asset_id", "contractor_id", "engineer_id", "service_agent_id")})
             try:
                 policy = Policy.model_validate({**self.template.model_dump(), "tenant_id": job["tenant_id"],
                                                 "job_id": job["id"], "asset_id_expected": job["asset_id"]})
@@ -153,7 +189,10 @@ class CaseService:
             tx.add("policies", dict(id=uid(), tenant_id=job["tenant_id"], job_id=job["id"], version=policy.version,
                 config_json=policy.model_dump_json(), author_id="SOURCE_CONTROL", reviewer_id="PHASE_00_ACCEPTED",
                 review_reference="policies/maintenance_v1.json; accepted Phase 00 regression suite"))
-            return job
+            tx.add("job_workflow", dict(job_id=job["id"], tenant_id=job["tenant_id"], policy_id=selected_id,
+                policy_version=selected_version, invoice_amount_paise=data.get("invoice_amount_paise", 500000), created_at=now))
+            self._job_event(tx, actor, job, "JOB_CREATED_AND_ASSIGNED", now)
+            return self._job_view(tx, job)
 
     def list_jobs(self, token):
         with self.repository.transaction() as tx:
@@ -164,13 +203,13 @@ class CaseService:
                 keys["contractor_id"] = actor["id"]
             if actor["role"] == Role.ENGINEER:
                 keys["engineer_id"] = actor["id"]
-            return tx.find("jobs", **keys)
+            return [self._job_view(tx, job) for job in tx.find("jobs", **keys)]
 
     def get_job(self, token, job_id):
         with self.repository.transaction() as tx:
             actor = self._actor(tx, token, self._now())
             self._role(actor, Role.CONTRACTOR, Role.MANAGER, Role.ENGINEER)
-            return self._job(tx, actor, job_id)
+            return self._job_view(tx, self._job(tx, actor, job_id))
 
     def create_case(self, token, data):
         with self.repository.transaction() as tx:
@@ -178,10 +217,15 @@ class CaseService:
             actor = self._actor(tx, token, now)
             self._role(actor, Role.MANAGER)
             job = self._job(tx, actor, data["job_id"])
+            defaults = self._job_view(tx, job)
+            version = data.get("policy_version") or defaults["policy_version"]
+            if not tx.get("policies", tenant_id=actor["tenant_id"], job_id=job["id"], version=version):
+                raise AppError(422, "POLICY_NOT_REVIEWED", "Choose an approved policy version for this job.")
             case = dict(id=uid(), tenant_id=actor["tenant_id"], job_id=job["id"], version=1,
                 evidence_version=0, evidence_id=None, approval_id=None, challenge_id=None,
-                policy_version=self.template.version, invoice_amount_paise=data["invoice_amount_paise"])
+                policy_version=version, invoice_amount_paise=data.get("invoice_amount_paise") or defaults["invoice_amount_paise"])
             tx.add("cases", case)
+            tx.add("case_workflow", dict(case_id=case["id"], tenant_id=case["tenant_id"], created_at=now, invoice_revision=1))
             self._event(tx, actor, case, "CASE_CREATED", now)
             return self._view(tx, actor, case, job, now)
 
@@ -236,6 +280,10 @@ class CaseService:
             elif result["inspection_status"] == "OBSERVATION_PENDING":
                 result["inspection_status"] = "REVIEW_REQUIRED"
                 result["guidance"] = "Resubmit legible required measurements or request human review; incomplete model observations cannot earn L2."
+        rejection = self._rejected(tx, case, ev)
+        if rejection:
+            result.update(max_permission=0, decision="DENY", reason_codes=[*result["reason_codes"], "MANAGER_REJECTED_EVIDENCE", rejection["reason_code"]],
+                          guidance="Manager rejected these evidence bytes. Request a fresh challenge and submit corrected new evidence.")
         return result, ev, challenge
 
     def _binding(self, case, job, ev, challenge, reviewer_id, reviewed_version):
@@ -247,10 +295,9 @@ class CaseService:
             reviewer_id=reviewer_id, challenge_id=challenge["id"], evidence_session_id=challenge["evidence_session_id"],
             auth_session_id=challenge["auth_session_id"], challenge_expires_at=challenge["expires_at"])
 
-    def _refresh(self, tx, actor, case, job, now):
-        result, ev, challenge = self._base(tx, case, job, now)
+    def _valid_approval(self, tx, case, job, result, ev, challenge):
         approval = tx.get("approvals", id=case["approval_id"], tenant_id=case["tenant_id"]) if case["approval_id"] else None
-        if case["approval_id"]:
+        if approval:
             reviewer = tx.get("users", id=approval["reviewer_id"], tenant_id=case["tenant_id"], active=True) if approval else None
             valid = bool(approval and reviewer and reviewer["role"] == Role.MANAGER and ev and challenge and
                 reviewer["id"] != ev["submitted_by"] and result["max_permission"] == 2 and
@@ -259,6 +306,13 @@ class CaseService:
                 binding = self._binding(case, job, ev, challenge, reviewer["id"], approval["reviewed_case_version"])
                 valid = digest(binding) == approval["binding_sha256"] and canonical(binding) == approval["binding_json"]
             if valid:
+                return approval
+        return None
+
+    def _refresh(self, tx, actor, case, job, now):
+        result, ev, challenge = self._base(tx, case, job, now)
+        if case["approval_id"]:
+            if self._valid_approval(tx, case, job, result, ev, challenge):
                 result.update(max_permission=3, inspection_status="APPROVED_BY_HUMAN", decision="ALLOW",
                               reason_codes=["CURRENT_HUMAN_APPROVAL"], guidance="Only simulated completion is authorized; no payment or equipment control exists.")
             else:
@@ -289,6 +343,43 @@ class CaseService:
                     view["observation"] = {k: v for k, v in (extracted or {}).items() if k != "challenge_text_observed"}
                     view["media"] = dict(mime_type=upload["mime_type"], width=upload["width"], height=upload["height"],
                         byte_size=upload["byte_size"], provenance=json.loads(upload["provenance_json"]))
+        else:
+            upload = None
+        meta = tx.get("case_workflow", tenant_id=case["tenant_id"], case_id=case["id"])
+        rejected = self._rejected(tx, case, ev)
+        history = tx.recent("manager_reviews", {"tenant_id": case["tenant_id"], "case_id": case["id"]}, "effective_case_version", 1)
+        fields = view.get("observation", {})
+        missing = [name for name in ("asset_id_observed", "pressure_value", "pressure_unit", "equipment_status", "calibration_expiry_date") if fields.get(name) in (None, "UNKNOWN", "")]
+        available = ["view_case", "view_audit"] if actor["role"] != Role.SERVICE_AGENT else []
+        if actor["role"] == Role.CONTRACTOR:
+            available += ["request_challenge", "submit_corrected_evidence"]
+            if upload and not rejected:
+                challenge = tx.get("challenges", id=case["challenge_id"])
+                runs = tx.recent("analysis_runs", {"tenant_id": case["tenant_id"], "case_id": case["id"], "evidence_id": ev["id"]}, "started_case_version", 3)
+                failed = analysis and analysis["status"] != "SUCCESS" and analysis["reason_code"] not in {"PROVIDER_INVALID_OBSERVATION", "PROVIDER_BLOCKED"}
+                aged = not analysis and now >= (runs[0]["created_at"] if runs else upload["created_at"]) + self.settings.provider_timeout_seconds + 5
+                if (failed or aged) and len(runs) < 3 and self._challenge_valid(tx, case, job, challenge, now) and challenge["auth_session_id"] == actor["session_id"] and self.settings.provider_mode == upload["provider_mode"]:
+                    available.append("request_reanalysis")
+        approval_eligible = bool(result["max_permission"] == 2 and result["decision"] == "ALLOW" and ev and ev["submitted_by"] != actor["id"] and actor["role"] == Role.MANAGER)
+        if actor["role"] == Role.MANAGER:
+            available += ["view_review", "change_invoice"]
+            if approval_eligible: available.append("approve_simulation")
+            if ev and not rejected and not completed: available.append("reject_evidence")
+        for action in Action:
+            try:
+                if self._authorize_action(actor, action, result)["decision"] == "ALLOW": available.append(action.value)
+            except AppError:
+                pass
+        view.update(evidence_id=ev["id"] if ev else None, contractor_id=job["contractor_id"],
+            invoice_revision=meta["invoice_revision"] if meta else 1, created_at=meta["created_at"] if meta else None,
+            submitted_at=upload["created_at"] if upload else None, processing_status=view.get("analysis_status", "NOT_SUBMITTED" if not ev else "COMPLETE"),
+            business_status=project_business(case, result, bool(rejected), completed),
+            review_state="REJECTED" if rejected else "APPROVED" if result["max_permission"] == 3 else "AWAITING_REVIEW" if result["max_permission"] == 2 else "CORRECTION_REQUIRED" if history and history[0]["decision"] == "REJECTED" else "NOT_REVIEWED",
+            approval_eligible=approval_eligible, available_actions=sorted(set(available)),
+            missing_fields=missing if actor["role"] in {Role.MANAGER, Role.CONTRACTOR} else [],
+            uncertain_fields=fields.get("uncertain_fields", []) if actor["role"] in {Role.MANAGER, Role.CONTRACTOR} else [])
+        view.setdefault("provider_mode", ev["artifact_mode"] if ev else None)
+        view["last_review"] = {key: history[0][key] for key in ("id", "decision", "reviewer_id", "created_at", "evidence_version", "reviewed_case_version", "reason_code")} if history else None
         return view
 
     def get_case(self, token, case_id):
@@ -400,7 +491,7 @@ class CaseService:
                     receipt = dict(id=uid(), tenant_id=case["tenant_id"], case_id=case_id, action=action.value,
                                    binding_sha256=binding, actor_id=actor["id"], created_at=now)
                     tx.add("action_runs", receipt)
-                    self._event(tx, actor, case, "SIMULATED_ACTION_EXECUTED", now, action.value, "ALLOW", result["reason_codes"])
+                    self._event(tx, actor, case, "SIMULATED_ACTION_EXECUTED", now, action.value, "ALLOW", result["reason_codes"], completion_reference=receipt["id"])
             if not execute or result["decision"] != "ALLOW":
                 self._event(tx, actor, case, "ACTION_EVALUATED", now, action.value, result["decision"], result["reason_codes"])
             return status, {**result, "case_version": case["version"], "action": action.value, "simulated": True,
@@ -414,6 +505,8 @@ class CaseService:
             case, job = self._case(tx, actor, case_id)
             self._version(case, expected)
             result, ev, ch = self._base(tx, case, job, now)
+            if self._valid_approval(tx, case, job, result, ev, ch):
+                return {**self._view(tx, actor, case, job, now), "already_approved": True}
             if not ev or result["max_permission"] != 2 or result["decision"] != "ALLOW":
                 raise AppError(409, "L2_REQUIRED", "Review complete current evidence under the approved policy before signing off.")
             if ev["submitted_by"] == actor["id"]:
@@ -424,8 +517,15 @@ class CaseService:
                 binding_json=canonical(binding), binding_sha256=digest(binding), created_at=now)
             tx.add("approvals", approval)
             case = tx.cas_case(case, expected, {"approval_id": approval["id"]})
+            review_id = uid()
+            meta = tx.get("case_workflow", tenant_id=case["tenant_id"], case_id=case_id)
+            tx.add("manager_reviews", dict(id=review_id, tenant_id=case["tenant_id"], case_id=case_id, decision="APPROVED",
+                reviewer_id=actor["id"], created_at=now, reviewed_case_version=expected, effective_case_version=case["version"],
+                evidence_id=ev["id"], evidence_version=ev["version"], evidence_sha256=ev["sha256"], policy_version=case["policy_version"],
+                invoice_amount_paise=case["invoice_amount_paise"], invoice_revision=meta["invoice_revision"] if meta else 1,
+                challenge_id=ch["id"], reason_code=None, internal_approval_id=approval["id"]))
             self._event(tx, actor, case, "MANAGER_APPROVED_SIMULATION", now,
-                        Action.COMPLETE_SIMULATED_ACTION.value, "ALLOW", ["CURRENT_HUMAN_APPROVAL"])
+                        Action.COMPLETE_SIMULATED_ACTION.value, "ALLOW", ["CURRENT_HUMAN_APPROVAL"], review_reference=review_id)
             return self._view(tx, actor, case, job, now)
 
     def change_invoice(self, token, case_id, expected, amount):
@@ -435,6 +535,8 @@ class CaseService:
             self._role(actor, Role.MANAGER)
             case, job = self._case(tx, actor, case_id)
             self._version(case, expected)
+            meta = tx.get("case_workflow", tenant_id=case["tenant_id"], case_id=case_id)
+            tx.change("case_workflow", {"case_id": case_id, "tenant_id": case["tenant_id"]}, {"invoice_revision": meta["invoice_revision"] + 1})
             case = tx.cas_case(case, expected, {"invoice_amount_paise": amount, "approval_id": None})
             self._event(tx, actor, case, "INVOICE_CHANGED", now, reasons=["APPROVAL_INVALIDATED"])
             return self._view(tx, actor, case, job, now)
@@ -466,9 +568,11 @@ class CaseService:
             for case in tx.find("cases", tenant_id=actor["tenant_id"], job_id=job_id):
                 case = tx.cas_case(case, case["version"], dict(approval_id=None, challenge_id=None, evidence_id=None))
                 self._event(tx, actor, case, "JOB_REASSIGNED", now, reasons=["APPROVAL_INVALIDATED", "NEW_EVIDENCE_REQUIRED"])
-            return {**job, "contractor_id": contractor_id, "version": expected + 1}
+            updated = {**job, "contractor_id": contractor_id, "version": expected + 1}
+            self._job_event(tx, actor, updated, "CONTRACTOR_REASSIGNED", now)
+            return self._job_view(tx, updated)
 
-    def audit(self, token, case_id):
+    def audit(self, token, case_id, limit=100, before=None, event_type=None):
         with self.repository.transaction() as tx:
             now = self._now()
             actor = self._actor(tx, token, now)
@@ -476,6 +580,5 @@ class CaseService:
             case, job = self._case(tx, actor, case_id)
             case, result = self._refresh(tx, actor, case, job, now)
             self._event(tx, actor, case, "AUDIT_READ", now)
-            rows = sorted(tx.find("decision_events", tenant_id=actor["tenant_id"], case_id=case_id),
-                          key=lambda row: (row["created_at"], row["id"]))[-100:]
+            rows = tx.audit_page(actor["tenant_id"], case_id, before, event_type, limit)
             return [{k: v for k, v in row.items() if k != "reason_codes_json"} | {"reason_codes": json.loads(row["reason_codes_json"])} for row in rows]

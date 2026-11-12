@@ -1,4 +1,22 @@
-# SENTINEL//LADDER — Phase 02
+# SENTINEL//LADDER — Phase 03
+
+Phase 03 completes the local authenticated backend workflow: approved job defaults,
+manager verification queue/details, durable evidence rejection, fresh-challenge
+correction, operation-bound upload replay, explicit bounded provider recovery,
+and paged redacted history. See [workflow API and startup](docs/workflow_phase03.md)
+and [Phase 03 execution report](tracking/PHASE_03_REPORT.md).
+
+All 375 previous tests remain byte-for-byte unchanged. Run the true HTTP workflow:
+
+```powershell
+.\.venv\Scripts\python.exe -m backend.tools.smoke_phase03 --scenario all
+```
+
+The smoke uses real JPEG bytes and labeled canned MOCK_AI observations, not optical
+extraction. LIVE_GEMINI is **BLOCKED - AWAITING AUTHORIZATION**. Local Phase 03
+verification does not establish live perception accuracy or production readiness.
+
+## Retained Phase 02 media foundation
 
 Phase 02 adds authenticated JPEG/PNG evidence upload, bounded safe decoding,
 private local storage, tenant-scoped exact-byte duplicate checks and untrusted
@@ -23,8 +41,8 @@ Authenticated local maintenance cases, SQLAlchemy/SQLite persistence, backend
 tenant/job/role checks, unpredictable bound challenges, deterministic L0–L2
 eligibility, and separate manager-approved **simulated** L3 completion.
 
-All 266 Phase 00/01 tests are preserved unchanged. Current execution evidence is
-in the Phase 02 report. Only Windows/Python 3.14.7 was executed; Python 3.11/3.12
+All 266 Phase 00/01 tests are preserved unchanged. Phase 02 execution evidence is
+in its historical report. Only Windows/Python 3.14.7 was executed; Python 3.11/3.12
 and remote CI remain unverified. The Master Book PDF controls the product.
 
 ## Windows PowerShell startup
@@ -111,5 +129,5 @@ See the [endpoint map](docs/api_phase01.md), [architecture](docs/architecture.md
 The unchanged `backend.app.main:app` is the Phase 00 health-only bootstrap;
 **use the Phase 01 factory startup command above for business APIs**.
 
-No frontend design, actual live Gemini call, payment, cloud deployment or Phase 03
-work was performed. Phase 02 ends at its gate; live verification remains blocked.
+No frontend design, actual live Gemini call, payment or cloud deployment was
+performed. Work stops at the Phase 03 gate; Phase 04 requires user authorization.
