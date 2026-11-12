@@ -1,5 +1,9 @@
 # Phase 01 API contract
 
+Historical Phase 01 endpoint baseline. Phase 02 adds authenticated image upload
+and scoped private-content retrieval; current contracts are in
+[`media_and_gemini.md`](media_and_gemini.md). Existing endpoints retain their roles.
+
 Run `backend.app.api:create_app --factory`. All business paths use `/v1/...`;
 there is no `/api/v1` alias. Use `Authorization: Bearer <opaque token>`.
 Health/docs/schema are public. No fixture/upload, account/role provisioning,

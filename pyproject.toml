@@ -3,7 +3,7 @@ name = "sentinel-ladder"
 version = "0.0.0"
 description = "Phase 00 deterministic fictional inspection policy and health API"
 requires-python = ">=3.11"
-dependencies = ["fastapi==0.162.5", "pydantic==2.14.3", "uvicorn==0.54.0", "SQLAlchemy==2.1.8"]
+dependencies = ["fastapi==0.162.5", "pydantic==2.14.3", "uvicorn==0.54.0", "SQLAlchemy==2.1.8", "pillow==13.0.0", "google-genai==3.2.0", "python-dotenv==1.2.4"]
 
 [tool.pytest.ini_options]
 testpaths = ["backend/tests"]

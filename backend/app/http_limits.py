@@ -1,12 +1,14 @@
 """Bound JSON request bodies before parsing, including chunked/missing-length input."""
 
 from fastapi.responses import JSONResponse
+import re
 
 
 class BoundedBody:
-    def __init__(self, app, maximum=16384):
+    def __init__(self, app, maximum=16384, image_maximum=None):
         self.app = app
         self.maximum = maximum
+        self.image_maximum = image_maximum
 
     async def __call__(self, scope, receive, send):
         if scope["type"] != "http":
@@ -14,14 +16,15 @@ class BoundedBody:
             return
         messages = []
         size = 0
+        maximum = self.image_maximum if self.image_maximum and scope["method"] == "POST" and re.fullmatch(r"/v1/cases/[^/]+/evidence", scope["path"]) else self.maximum
         while True:
             message = await receive()
             if message["type"] == "http.disconnect":
                 return
             size += len(message.get("body", b""))
-            if size > self.maximum:
+            if size > maximum:
                 response = JSONResponse(status_code=413, headers={"Cache-Control": "no-store", "X-Content-Type-Options": "nosniff"},
-                    content={"decision": "DENY", "reason_codes": ["REQUEST_TOO_LARGE"], "guidance": "Use a JSON request under 16 KiB."})
+                    content={"decision": "DENY", "reason_codes": ["REQUEST_TOO_LARGE"], "guidance": "Use a request within the configured body limit."})
                 await response(scope, receive, send)
                 return
             messages.append(message)

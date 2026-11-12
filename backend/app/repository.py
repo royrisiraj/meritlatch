@@ -95,6 +95,25 @@ action_runs = Table("action_runs", metadata,
     Column("created_at", Float, nullable=False), UniqueConstraint("case_id", "action", "binding_sha256"),
     ForeignKeyConstraint(["tenant_id", "case_id"], ["cases.tenant_id", "cases.id"]))
 migrations = Table("schema_migrations", metadata, Column("version", Integer, primary_key=True))
+media_migrations = Table("media_schema_migrations", metadata, Column("version", Integer, primary_key=True))
+media_uploads = Table("media_uploads", metadata,
+    Column("id", String, primary_key=True), Column("tenant_id", String, nullable=False),
+    Column("case_id", String, nullable=False), Column("evidence_id", String, ForeignKey("evidence.id"), unique=True, nullable=False),
+    Column("storage_key", String, unique=True, nullable=False), Column("sha256", String, nullable=False),
+    Column("provider_sha256", String, nullable=False), Column("mime_type", String, nullable=False),
+    Column("byte_size", Integer, nullable=False), Column("width", Integer, nullable=False), Column("height", Integer, nullable=False),
+    Column("provenance_json", String, nullable=False), Column("provider_mode", String, nullable=False),
+    Column("accepted_case_version", Integer, nullable=False), Column("created_at", Float, nullable=False),
+    UniqueConstraint("tenant_id", "sha256"),
+    ForeignKeyConstraint(["tenant_id", "case_id"], ["cases.tenant_id", "cases.id"]))
+media_analyses = Table("media_analyses", metadata,
+    Column("id", String, primary_key=True), Column("tenant_id", String, nullable=False),
+    Column("case_id", String, nullable=False), Column("evidence_id", String, ForeignKey("evidence.id"), unique=True, nullable=False),
+    Column("status", String, nullable=False), Column("observation_json", String), Column("reason_code", String),
+    Column("model_id", String, nullable=False), Column("model_version", String),
+    Column("elapsed_seconds", Float, nullable=False), Column("created_at", Float, nullable=False),
+    CheckConstraint("status IN ('SUCCESS','FAILED','STALE')"),
+    ForeignKeyConstraint(["tenant_id", "case_id"], ["cases.tenant_id", "cases.id"]))
 TABLES = {t.name: t for t in metadata.tables.values()}
 
 
@@ -127,7 +146,7 @@ class SQLiteUnitOfWork:
         self.connection.execute(insert(TABLES[table]).values(**values))
 
     def change(self, table, keys, values):
-        if table in {"policies", "approvals", "evidence", "challenges", "decision_events", "action_runs"}:
+        if table in {"policies", "approvals", "evidence", "challenges", "decision_events", "action_runs", "media_uploads", "media_analyses"}:
             raise ValueError("Append-only table cannot be changed")
         t = TABLES[table]
         result = self.connection.execute(update(t).where(*(t.c[k] == v for k, v in keys.items())).values(**values))
@@ -167,7 +186,12 @@ class SQLiteRepository:
                     raise ValueError("Unsupported database schema version; restore a compatible database.")
                 if not versions:
                     conn.execute(insert(migrations).values(version=1))
-                for name in ("policies", "approvals", "evidence", "challenges", "decision_events", "action_runs"):
+                media_versions = list(conn.execute(select(media_migrations.c.version)).scalars())
+                if media_versions and media_versions != [1]:
+                    raise ValueError("Unsupported media schema version; restore a compatible database.")
+                if not media_versions:
+                    conn.execute(insert(media_migrations).values(version=1))
+                for name in ("policies", "approvals", "evidence", "challenges", "decision_events", "action_runs", "media_uploads", "media_analyses"):
                     for operation in ("UPDATE", "DELETE"):
                         conn.exec_driver_sql(f"CREATE TRIGGER IF NOT EXISTS {name}_no_{operation.lower()} "
                             f"BEFORE {operation} ON {name} BEGIN SELECT RAISE(ABORT, 'append-only record'); END")

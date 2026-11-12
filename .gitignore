@@ -12,6 +12,8 @@ htmlcov/
 *.sqlite-wal
 *.sqlite-shm
 backend/private_media/
+fixtures/live_inputs/
+*.local.json
 node_modules/
 dist/
 *.egg-info/

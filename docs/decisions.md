@@ -80,3 +80,56 @@ from a saved copy and use `backend.app.main:app` for metadata-only operation.
 Remove only the new Phase 01 files listed in its report after review; do not
 delete the SQLite database or run destructive Git cleanup. No schema downgrade,
 rollback, commit, push or deployment was performed.
+
+## Phase 02 decisions — 12 November 2026
+
+1. Extend the existing `backend.app.api:create_app --factory`. Preserve all 266
+   existing tests byte-for-byte, the accepted pure engine/models and user commit
+   `a7e7156`. Preserve the user's two pre-existing handover-file deletions. No
+   new commit or reconstruction of missing instructions is authorized.
+2. Use a raw JPEG/PNG body with explicit case-version/challenge/evidence-session
+   headers. Avoid accepting observation JSON or trusting filenames/MIME. Disabled
+   mode returns a scoped 404 after authentication; the earlier tests for absent
+   intake in unconfigured normal operation therefore remain valid. Enabled mode
+   has independent positive/negative image tests and an actual HTTP smoke.
+3. Retain append-only core evidence. Add append-only media-upload/analysis tables
+   and a separate initial media-schema migration; do not rewrite the established
+   core version-1 migration or history. Phase 01 data is preserved in migration
+   tests. New evidence stores original-byte SHA-256; legacy SYNTHETIC records keep
+   their canonical-JSON digests. The two digest meanings are documented explicitly.
+4. Reserve pending evidence and clear approval atomically before provider I/O.
+   Recheck identity, case/evidence/policy/amount revision and challenge validity
+   when finalizing. Do not hold a SQLite lock over network calls. Late results
+   append a stale-analysis record and never replace current evidence authority.
+5. Keep provider input to decoded metadata-stripped pixels and a source reference;
+   do not supply expected answers, policies, actor secrets or approvals. Strict
+   observation fields cannot assign roles/tiers/payments. SDK tools/function
+   calling/automatic continuation and SDK hidden retries are disabled.
+6. Modes are explicit: DISABLED by default, MOCK_AI for development/tests, or
+   LIVE_GEMINI with a private key and explicit billing opt-in. Never fall back.
+   Mock data cannot remain eligible after leaving mock mode. Existing SYNTHETIC
+   injection remains internal-only. No synthetic HTTP route exists.
+7. Official Google documentation lists stable `gemini-3.6-flash` with image input
+   and structured outputs; use it as configurable default. This is documentation
+   verification, not authenticated account/model availability or live success.
+   Live smoke additionally needs a consented fictional image and human-reviewed
+   ground truth; neither was supplied and no billable call was approved. Report
+   live verification BLOCKED while keeping local mock/SDK-stub evidence separate.
+8. Pillow, google-genai, dotenv and their new transitive dependencies are pinned;
+   prior pins are unchanged. SDK-required httpx2 is now installed and Starlette
+   uses it, so the previous TestClient deprecation warning is no longer emitted.
+   A new decoder-warning test initially failed in fixture rendering before the
+   validator ran; image creation was moved before the lowered test limit, keeping
+   the rejection assertion. No original assertion was changed.
+9. JPEG/PNG only; MP4/APNG and reanalysis/recovery/retention workflows are deferred.
+   Duplicate bytes are conservatively rejected, including failed-attempt retries;
+   no fraud finding is inferred. Storage is private by server routing, with local
+   ACLs still an operator responsibility. Crash orphans/pending rows cannot grant
+   permission, but automatic cleanup is not implemented.
+
+Phase 02 rollback (not executed): stop the server, preserve/back up the SQLite
+database and private media, restore only the Phase 02 tracked edits from a reviewed
+baseline copy, and remove only new Phase 02 code if requested. Additive media
+tables/files can remain safely preserved when running old code; do not drop them
+or delete evidence as an automatic downgrade. Leave user deletions unchanged.
+Do not reset the repository, remove the existing commit, or discard user data.

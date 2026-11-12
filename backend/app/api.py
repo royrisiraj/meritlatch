@@ -1,12 +1,13 @@
 """Phase 01 application factory. No synthetic intake or policy-publishing route."""
 
 from contextlib import asynccontextmanager
+import asyncio
 from pathlib import Path
 import re
 
-from fastapi import FastAPI, Depends, Request
+from fastapi import FastAPI, Depends, Request, Header
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
 from .api_models import Login, JobCreate, CaseCreate, ChallengeRequest, ActionRequest, Versioned, InvoiceChange, PolicyChange, AssignmentChange
@@ -17,6 +18,9 @@ from .main import healthz, Health
 from .http_limits import BoundedBody
 from .repository import SQLiteRepository
 from .settings import Settings
+from .media_service import MediaService
+from .media_storage import LocalPrivateMediaStorage
+from .perception import MockPerceptionProvider
 
 bearer = HTTPBearer(auto_error=False)
 
@@ -27,12 +31,20 @@ def bearer_token(credentials: HTTPAuthorizationCredentials | None = Depends(bear
     return credentials.credentials
 
 
-def create_app(settings: Settings | None = None, repository=None, clock=None):
+def create_app(settings: Settings | None = None, repository=None, clock=None, perception_provider=None, media_storage=None):
     settings = settings or Settings.from_env()
     owned = repository is None
     repository = repository or SQLiteRepository(settings.database_path)
     template = load_policy(Path(__file__).resolve().parents[2] / "policies/maintenance_v1.json")
     service = CaseService(repository, settings, template, clock)
+    if perception_provider is not None and perception_provider.mode != settings.provider_mode:
+        raise ValueError("Injected provider must match the explicitly configured provider mode.")
+    if perception_provider is None and settings.provider_mode == "MOCK_AI":
+        perception_provider = MockPerceptionProvider()
+    if perception_provider is None and settings.provider_mode == "LIVE_GEMINI":
+        from .gemini_provider import GeminiPerceptionProvider
+        perception_provider = GeminiPerceptionProvider(settings)
+    media = MediaService(service, perception_provider, media_storage or LocalPrivateMediaStorage(settings.media_root))
 
     @asynccontextmanager
     async def lifespan(app):
@@ -40,15 +52,17 @@ def create_app(settings: Settings | None = None, repository=None, clock=None):
         if owned:
             repository.close()
 
-    app = FastAPI(title="SENTINEL//LADDER", version="0.1.0", redoc_url=None, lifespan=lifespan)
+    app = FastAPI(title="SENTINEL//LADDER", version="0.2.0", redoc_url=None, lifespan=lifespan)
     app.state.service = service
     app.state.settings = settings
+    app.state.media = media
 
     @app.middleware("http")
     async def operational_headers(request: Request, call_next):
         # No cookies/CORS: credentials are explicit Authorization headers only.
         size = request.headers.get("content-length", "0")
-        if not size.isdigit() or int(size) > 16384:
+        maximum = settings.max_image_bytes if settings.provider_mode != "DISABLED" and request.method == "POST" and re.fullmatch(r"/v1/cases/[^/]+/evidence", request.url.path) else 16384
+        if not size.isdigit() or len(size) > 12 or int(size) > maximum:
             return JSONResponse(status_code=413, content={"decision": "DENY", "reason_codes": ["REQUEST_TOO_LARGE"], "guidance": "Use a JSON request under 16 KiB."})
         try:
             response = await call_next(request)
@@ -77,7 +91,7 @@ def create_app(settings: Settings | None = None, repository=None, clock=None):
         return JSONResponse(status_code=500, content={"decision": "DENY", "reason_codes": ["INTERNAL_ERROR"],
                                                      "guidance": "Request failed. Reload current state and contact the local operator before retrying."})
 
-    app.add_middleware(BoundedBody)
+    app.add_middleware(BoundedBody, image_maximum=settings.max_image_bytes if settings.provider_mode != "DISABLED" else None)
 
     app.add_api_route("/healthz", healthz, methods=["GET"], response_model=Health, tags=["health"])
 
@@ -146,5 +160,24 @@ def create_app(settings: Settings | None = None, repository=None, clock=None):
     @app.get("/v1/cases/{case_id}/audit", tags=["review"])
     def audit(case_id: str, token: str = Depends(bearer_token)):
         return service.audit(token, case_id)
+
+    @app.post("/v1/cases/{case_id}/evidence", tags=["evidence"], openapi_extra={"requestBody": {"required": True,
+        "content": {kind: {"schema": {"type": "string", "format": "binary"}} for kind in ("image/jpeg", "image/png")}}})
+    async def upload_evidence(case_id: str, request: Request, token: str = Depends(bearer_token),
+            expected: str | None = Header(None, alias="X-Expected-Case-Version"),
+            challenge_id: str | None = Header(None, alias="X-Challenge-ID"),
+            evidence_session_id: str | None = Header(None, alias="X-Evidence-Session-ID")):
+        await asyncio.to_thread(media.gate, token, case_id)
+        if expected is None or not re.fullmatch(r"[1-9][0-9]{0,9}", expected) or not challenge_id or not evidence_session_id or max(len(challenge_id), len(evidence_session_id)) > 100:
+            raise AppError(422, "INVALID_EVIDENCE_BINDING", "Provide the current case version, issued challenge ID and evidence session in the documented headers.")
+        status, view = await media.submit(token, case_id, int(expected), challenge_id, evidence_session_id,
+                                         await request.body(), request.headers.get("content-type", "application/octet-stream"))
+        return JSONResponse(status_code=status, content=view)
+
+    @app.get("/v1/cases/{case_id}/evidence/{evidence_id}/content", tags=["evidence"])
+    def private_content(case_id: str, evidence_id: str, token: str = Depends(bearer_token)):
+        data, mime = media.content(token, case_id, evidence_id)
+        return Response(data, media_type=mime, headers={"Content-Disposition": "attachment; filename=evidence-image",
+                                                       "Content-Security-Policy": "default-src 'none'; sandbox"})
 
     return app

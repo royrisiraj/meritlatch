@@ -1,0 +1,24 @@
+{
+  "origin": "CONSENTED_FICTIONAL_NO_CUSTOMER_DATA",
+  "human_reviewed": false,
+  "reviewed_by": "REPLACE_WITH_HUMAN_REVIEWER",
+  "expected_observation": {
+    "asset_id_observed": "PUMP-042",
+    "challenge_text_observed": "MANUALLY_RECORD_VISIBLE_FICTIONAL_CHALLENGE",
+    "pressure_value": 35.0,
+    "pressure_unit": "PSI",
+    "equipment_status": "RUNNING",
+    "calibration_expiry_date": "2099-12-31",
+    "uncertain_fields": [],
+    "conflicting_fields": []
+  },
+  "policy_context": {
+    "tenant_id": "synthetic-org-a",
+    "job_id": "synthetic-job-001",
+    "asset_id_expected": "PUMP-042",
+    "approved_policy_version": "1.0.0",
+    "expected_challenge": "MANUALLY_RECORD_VISIBLE_FICTIONAL_CHALLENGE",
+    "challenge_expires_at": "2026-11-12T07:00:00Z",
+    "evaluated_at": "2026-11-12T06:00:00Z"
+  }
+}

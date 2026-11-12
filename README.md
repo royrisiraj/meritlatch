@@ -1,12 +1,31 @@
-# SENTINEL//LADDER — Phase 01
+# SENTINEL//LADDER — Phase 02
+
+Phase 02 adds authenticated JPEG/PNG evidence upload, bounded safe decoding,
+private local storage, tenant-scoped exact-byte duplicate checks and untrusted
+perception adapters. The existing case factory and pure policy remain the
+foundation. See [media/Gemini contracts, configuration and commands](docs/media_and_gemini.md)
+and [Phase 02 report](tracking/PHASE_02_REPORT.md).
+
+`DISABLED` is the default provider mode. For a reproducible actual HTTP image
+workflow without network inference:
+
+```powershell
+.\.venv\Scripts\python.exe -m backend.tools.smoke_phase02
+```
+
+This uses a real image POST and a clearly labeled canned `MOCK_AI` observation.
+The separate live Gemini check is BLOCKED pending explicit billable-call approval,
+credentials and independently reviewed fictional input; no live success is claimed.
+
+## Retained Phase 01 foundation
 
 Authenticated local maintenance cases, SQLAlchemy/SQLite persistence, backend
 tenant/job/role checks, unpredictable bound challenges, deterministic L0–L2
 eligibility, and separate manager-approved **simulated** L3 completion.
 
-All 113 Phase 00 tests are preserved unchanged. The complete suite has 266 passing
-tests locally. Only Windows/Python 3.14.7 was executed; Python 3.11/3.12 and remote
-CI remain unverified. The Master Book PDF in `reference/` controls the product.
+All 266 Phase 00/01 tests are preserved unchanged. Current execution evidence is
+in the Phase 02 report. Only Windows/Python 3.14.7 was executed; Python 3.11/3.12
+and remote CI remain unverified. The Master Book PDF controls the product.
 
 ## Windows PowerShell startup
 
@@ -65,10 +84,11 @@ invoice-change invalidation, audit and logout. It prints no credentials,
 challenges or raw observations, then closes its server/database and removes its
 temporary artifacts.
 
-**Synthetic evidence uses an internal test factory, never an HTTP endpoint.**
-Normal operation can create/review L0 cases and issue challenges. Media submission
-and Gemini await Phase 02. Normal settings also refuse to promote saved test
-artifacts. No complete media workflow or real-world verification is claimed.
+**Synthetic observation injection remains internal/test-only.** Phase 02 accepts
+actual image bytes when an explicit provider mode is configured; HTTP cannot
+inject observations. Normal settings refuse saved SYNTHETIC observations, and
+MOCK_AI artifacts cannot masquerade as live results. No real-world verification
+or live extraction accuracy is claimed.
 
 ## Permissions
 
@@ -91,5 +111,5 @@ See the [endpoint map](docs/api_phase01.md), [architecture](docs/architecture.md
 The unchanged `backend.app.main:app` is the Phase 00 health-only bootstrap;
 **use the Phase 01 factory startup command above for business APIs**.
 
-No frontend design, live Gemini, payments, cloud deployment or Phase 02 work was
-performed. Phase 01 ends at its gate.
+No frontend design, actual live Gemini call, payment, cloud deployment or Phase 03
+work was performed. Phase 02 ends at its gate; live verification remains blocked.

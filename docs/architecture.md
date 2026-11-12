@@ -1,4 +1,16 @@
-# Phase 01 architecture
+# Architecture
+
+Current Phase 02 additions: [`media_and_gemini.md`](media_and_gemini.md).
+`media_service.py` authenticates/validates intake, atomically reserves a new
+non-authorizing evidence version, runs a perception provider outside the DB lock,
+then rechecks identity/version/challenge before appending the final observation.
+`media.py` decodes bounded JPEG/PNG; `media_storage.py` is private local storage
+behind a protocol. `perception.py` is the untrusted observation protocol/mock;
+`gemini_provider.py` wraps the official SDK without policy or role authority.
+Append-only media tables use an additive media-schema migration namespace;
+existing core tables/schema/test files are preserved. The pure policy is unchanged.
+
+## Phase 01 foundation retained
 
 One FastAPI application, one synchronous case service, one SQLite database. No
 microservices, provider SDKs, UI, bank integration or cloud resources.

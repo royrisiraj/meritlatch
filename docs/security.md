@@ -1,4 +1,14 @@
-# Phase 01 security and limits
+# Security and limits
+
+Phase 02's current media/provider boundaries and remaining risks are in
+[`media_and_gemini.md`](media_and_gemini.md). New controls include bounded signature
+and decoder validation, scoped exact duplicates/private reads, two-phase CAS
+analysis, immutable logical analysis records, schema/semantic validation,
+provider timeout/error denial and explicit provenance modes. Gemini has no
+authorizing tools or approval credentials. Live verification is BLOCKED; mocked
+transport tests do not establish real perception accuracy or injection immunity.
+
+## Retained Phase 01 security baseline (historical scope)
 
 Evidence: `tracking/EXECUTION_LOG.md`, `tracking/PHASE_01_REPORT.md`, and
 `backend/tests/phase01/`. These are local SYNTHETIC authorization tests, not

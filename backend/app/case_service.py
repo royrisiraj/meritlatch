@@ -16,6 +16,7 @@ from .models import Observation, Policy, EvaluationContext, Action
 from .policy import authorize
 from .repository import Repository
 from .settings import Settings
+from .media_state import media_observation
 
 
 def uid():
@@ -200,6 +201,11 @@ class CaseService:
         challenge = tx.get("challenges", id=case["challenge_id"], tenant_id=case["tenant_id"], case_id=case["id"]) if case["challenge_id"] else None
         ev = tx.get("evidence", id=case["evidence_id"], tenant_id=case["tenant_id"], case_id=case["id"]) if case["evidence_id"] else None
         observation = json.loads(ev["observation_json"]) if ev else None
+        upload, analysis = None, None
+        if ev:
+            upload, analysis, extracted = media_observation(tx, case, ev)
+            if upload:
+                observation = extracted
         ctx = EvaluationContext(tenant_id=case["tenant_id"], job_id=job["id"], asset_id_expected=job["asset_id"],
             approved_policy_version=case["policy_version"], expected_challenge=challenge["token"] if challenge else "NO_ACTIVE_CHALLENGE",
             challenge_expires_at=datetime.fromtimestamp(challenge["expires_at"] if challenge else now, timezone.utc),
@@ -214,9 +220,22 @@ class CaseService:
                 result["inspection_status"] = "EVIDENCE_MISSING"
             result["reason_codes"] = list(dict.fromkeys([*result["reason_codes"], "CHALLENGE_OR_SESSION_INVALID"]))
             result["guidance"] = "Request a fresh challenge in your active session and resubmit evidence."
-        if ev and (ev["artifact_mode"] != "SYNTHETIC" or not self.settings.allow_synthetic):
+        if ev and not upload and (ev["artifact_mode"] != "SYNTHETIC" or not self.settings.allow_synthetic):
             result.update(max_permission=0, decision="DENY", inspection_status="REVIEW_REQUIRED",
                           reason_codes=["TEST_EVIDENCE_DISABLED"], guidance="Phase 01 accepts synthetic observations only in its internal test factory.")
+        if upload:
+            if upload["provider_mode"] == "MOCK_AI" and self.settings.provider_mode != "MOCK_AI":
+                result.update(max_permission=0, decision="DENY", inspection_status="REVIEW_REQUIRED",
+                    reason_codes=["MOCK_EVIDENCE_DISABLED"], guidance="Mock observations cannot authorize actions outside explicit mock mode.")
+            elif not analysis:
+                result.update(max_permission=0, decision="DENY", inspection_status="OBSERVATION_PENDING",
+                    reason_codes=["OBSERVATION_PENDING"], guidance="Analysis is pending; no restricted action is eligible.")
+            elif analysis["status"] != "SUCCESS":
+                result.update(max_permission=0, decision="DENY", inspection_status="REVIEW_REQUIRED",
+                    reason_codes=[analysis["reason_code"] or "PROVIDER_FAILED"], guidance="Analysis failed or became stale. Request review and submit new evidence with a current challenge.")
+            elif result["inspection_status"] == "OBSERVATION_PENDING":
+                result["inspection_status"] = "REVIEW_REQUIRED"
+                result["guidance"] = "Resubmit legible required measurements or request human review; incomplete model observations cannot earn L2."
         return result, ev, challenge
 
     def _binding(self, case, job, ev, challenge, reviewer_id, reviewed_version):
@@ -259,6 +278,17 @@ class CaseService:
                     evidence_sha256=ev["sha256"] if ev else None, artifact_mode=ev["artifact_mode"] if ev else None)
         if ev and actor["role"] in {Role.MANAGER, Role.CONTRACTOR}:
             view["observation"] = {k: v for k, v in json.loads(ev["observation_json"]).items() if k != "challenge_text_observed"}
+        if ev:
+            upload, analysis, extracted = media_observation(tx, case, ev)
+            if upload:
+                view.update(evidence_id=ev["id"], provider_mode=upload["provider_mode"],
+                    analysis_status=analysis["status"] if analysis else "PENDING",
+                    model_id=analysis["model_id"] if analysis else None,
+                    model_version=analysis["model_version"] if analysis else None)
+                if actor["role"] in {Role.MANAGER, Role.CONTRACTOR}:
+                    view["observation"] = {k: v for k, v in (extracted or {}).items() if k != "challenge_text_observed"}
+                    view["media"] = dict(mime_type=upload["mime_type"], width=upload["width"], height=upload["height"],
+                        byte_size=upload["byte_size"], provenance=json.loads(upload["provenance_json"]))
         return view
 
     def get_case(self, token, case_id):
