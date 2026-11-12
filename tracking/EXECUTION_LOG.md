@@ -2681,3 +2681,48 @@ See LIVE_GEMINI_VALIDATION_REPORT.md and
 LIVE_GEMINI_VALIDATION_COMMAND_OUTPUT.txt for actual commands, output, manifest,
 risks and next gate. Stage A ends awaiting human image/ground-truth confirmation.
 No commit, push, reset, deployment, resource provisioning or Phase 04 work.
+
+## Controlled Gemini 3.8 validation — Stage B (12 November 2026)
+
+User personally confirmed the displayed fictional image and ground truth, then
+authorized Stage B subject to preflight. Initial Git status clean; baseline
+dff9f41. No source/test/configuration/dependency changes in this stage.
+
+Recorded human_reviewed=true, explicit conversation reviewer and UTC timestamp
+2026-11-12T16:16:45.498201+00:00. Verified original image SHA-256 and exact user
+values unchanged; stored existing review_digest binding. No secret displayed.
+
+Offline detailed --check with exact gemini-3.8-flash/LIVE_GEMINI/attempts=1/
+deadline=60 overrides: READY, reason_codes=[], human_reviewed=true,
+network_called=false, budget unused, exit 0. Key presence=true only.
+Focused one-send guard suite: 24 passed in 3.09s; exit 0.
+
+Executed existing guarded live command EXACTLY ONCE, with explicit network
+permission, --allow-billable and --confirm-fictional-consent. Actual exit 1:
+FAILED - LIVE API OR SCHEMA ERROR, PROVIDER_UNAVAILABLE, DENY,
+network_called=true, request_count=1, retry_count=0,
+elapsed_seconds=4.6740025999988575, transport_metadata={}.
+No observations, returned model version, usage or specific HTTP status retained.
+No retry, fallback, availability probe, mock substitution or additional API call.
+
+Preserved ignored one_live_attempt.local.json reservation and
+tracking/LIVE_GEMINI_VALIDATION.local.json result. Budget used. Do not clear the
+marker or change output names to repeat a call. Count is attempted local sends,
+not proof of provider processing/billing; exact cause/status not established.
+
+Post-request actual checks:
+- .\.venv\Scripts\python.exe -m pytest: 478 passed in 58.30s, zero failed, exit 0.
+- .\.venv\Scripts\python.exe -m pip check: No broken requirements found.; exit 0.
+- 37 baseline test/source/policy/manager/dependency/config hashes: mismatches=[].
+- git diff -- backend: empty, exit 0. All 478 previous tests unchanged.
+- Git ignores .env, reviewed truth, marker, baseline snapshot and private output.
+  .env/image/provider/runner/policy/manager logic/pins unchanged.
+
+Updated current report/status/matrix/media documentation; exact command/stdout
+evidence appended to LIVE_GEMINI_VALIDATION_COMMAND_OUTPUT.txt. Live outcome
+FAILED, not a perception pass or expected-value fixture success. Pure policy
+cannot evaluate nonexistent live observations; failure remained DENY.
+No costs/usage/remote processing, real-world accuracy or authenticity invented.
+
+Stop before Phase 04. No commit, push, deploy, history reset, runtime database/
+media deletion, actual payment, equipment control or cloud provisioning.

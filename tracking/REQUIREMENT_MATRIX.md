@@ -1,11 +1,13 @@
 # Master Book requirement-to-code traceability
 
-**Live validation Stage A update — 12 November 2026:** 478 passed, zero failed
-(454 unchanged + 24 new offline tests). R-008/R-018/R-022 remain IN_PROGRESS:
-exact `gemini-3.8-flash` configured through temporary overrides, one-call billing
-scope authorized, ignored fictional image/ground truth prepared with human review
-false. Offline preflight blocks only on human confirmation; zero inference calls.
-See `LIVE_GEMINI_VALIDATION_REPORT.md`. No Phase 04 work or live accuracy claim.
+**Live validation Stage B update — 12 November 2026:** R-008/R-018/R-022 remain
+IN_PROGRESS. User confirmed the exact fictional image/ground truth; preflight
+READY. The one authorized `gemini-3.8-flash` attempt failed PROVIDER_UNAVAILABLE,
+4.6740s, one counted send/zero retries, no fallback. No returned observations,
+usage, live perception success or model availability claim. The request budget
+is used; marker/result retained and no further request authorized. Existing 478
+tests/source remain unchanged; current executed regressions are recorded in
+`LIVE_GEMINI_VALIDATION_REPORT.md`. No Phase 04 work.
 
 Updated 12 November 2026 after Phase 03 local execution. TESTED claims cover local SYNTHETIC/MOCK_AI, SDK stubs and SQLite only; no live Gemini result exists. **454 passed** (375 preserved + 79 new), zero failed; 20 baseline test file hashes unchanged. Focused authorization/concurrency: 28 passed; real TCP/HTTP valid, unsafe, wrong-asset and recovery journeys passed. Evidence: `tracking/EXECUTION_LOG.md`, `tracking/PHASE_03_REPORT.md`, `docs/workflow_phase03.md`. LIVE_GEMINI is BLOCKED - AWAITING AUTHORIZATION. Master Book pages are 1-indexed.
 
@@ -18,7 +20,7 @@ Updated 12 November 2026 after Phase 03 local execution. TESTED claims cover loc
 | R-005 | pp.11–12,18 | Session-bound unpredictable challenge, expiry | 01–02 | TESTED | 13 challenge tests cover secrets-generated tokens, tenant/job/asset/case/auth/evidence-session bindings, expiry, rotation, limits and client override denial. No media-authenticity claim. |
 | R-006 | pp.11–12,18 | MIME-independent media validation, limits and private storage | 02 | TESTED | `media.py`, `media_storage.py`, `test_media.py`, decoder-bomb/EXIF/GPS/private-read tests; actual JPEG HTTP smoke. Bounds, format mismatch, truncation, multiframe rejection, random private names and scoped reads verified. JPEG/PNG only. |
 | R-007 | pp.11–12 | Exact hash and scoped duplicate lookup | 02 | TESTED | Exact original SHA-256 plus normalized provider-input digest; `test_exact_duplicate_lookup_is_tenant_scoped_and_does_not_prove_fraud`, private read digest validation, tenant/sha uniqueness. Same bytes allowed in a different tenant; duplicate errors reveal no other case reference. |
-| R-008 | pp.12–13 | Gemini adapter, schema-valid+semantic uncertainty handling | 02 | IN_PROGRESS | `perception.py`, `gemini_provider.py`, `test_gemini.py`, `test_observations.py`: strict schema/numeric/date/conflict/authority-field tests and SDK stubs passed. Actual Gemini image extraction/account availability BLOCKED pending approval and manually reviewed fictional input. |
+| R-008 | pp.12–13 | Gemini adapter, schema-valid+semantic uncertainty handling | 02 | IN_PROGRESS | Schema/semantic/SDK tests retained. Stage B human-reviewed exact 3.8 sample, preflight READY; one attempted request failed PROVIDER_UNAVAILABLE, zero retries. No typed live observation or account availability result; no fallback. |
 | R-009 | pp.8,13,18 | Numeric+unit+date policy, unsafe readings restrict | 01–03 | TESTED | Original numeric/unit/date tests retained; `test_persisted_invalid_observation_stays_restricted` and typed intake rejection passed. Synthetic metadata only; no numeric vision accuracy tested. |
 | R-010 | pp.11,14 | Fully auditable permission evaluation and API | 01–03 | TESTED | Append-only case/job/review/recovery transitions, safe source/actor/version/reason/public review/receipt references; bounded scoped newest-first audit and filters tested. Actual HTTP completion/rejection/recovery audits passed. Logical local history, not tamper-proof. |
 | R-011 | pp.13–14,17 | Atomic versioned evidence update and approval invalidation | 01–03 | TESTED | Existing 9 transaction tests plus 10 actual asynchronous intake race/finalization tests. Upload clears L3 before provider I/O; all late results require matching current version/scope. SQLite only; filesystem/DB crash atomicity is not claimed. |
@@ -28,11 +30,11 @@ Updated 12 November 2026 after Phase 03 local execution. TESTED claims cover loc
 | R-015 | pp.16,19 | Reproducible, redacted vulnerability alert and review loop | 04–05 | PLANNED | |
 | R-016 | pp.16,20 | Pre-release regression gate; no auto policy mutation | 04 | PLANNED | |
 | R-017 | pp.19–20 | Privacy minimization, audit events, no immutability claim | All | IN_PROGRESS | Private raw media, stripped provider metadata, minimal untrusted EXIF/GPS flags, scoped attachment reads and append-only logical analyses tested. Local ACLs/retention/orphan recovery remain operator/later-phase work; no immutable ledger claim. |
-| R-018 | pp.20,26–27 | Real Gemini demo + failures; separate benchmark types | 02,06 | IN_PROGRESS | Real HTTP MOCK_AI image smoke passed; separate opt-in live runner exists and --check reported BLOCKED/network_called=false. No approved billable call, supplied consented image or human ground truth; no live accuracy/latency/cost claim. |
+| R-018 | pp.20,26–27 | Real Gemini demo + failures; separate benchmark types | 02,06 | IN_PROGRESS | HTTP MOCK_AI workflow remains separately tested. User reviewed/authorized the Stage B image; one exact-model request failed in 4.6740s, PROVIDER_UNAVAILABLE, zero retries. No observations/usage/accuracy or successful inference latency/cost result. Private marker/result retained; authorization budget used. |
 | R-019 | pp.25,27 | Official five judging criteria; honest application and 3-min pitch | 06 | PLANNED | |
 | R-020 | pp.26,28 | Reproducible PowerShell instructions, CI tests, optional Cloud Run | 00–03,06 | IN_PROGRESS | `docs/workflow_phase03.md`, README/report; Windows/Python 3.14.7: 454 passed, pip check clean, actual TCP/HTTP smoke passed. Pins unchanged. Python 3.11/3.12/remote CI/cloud not run; user baseline preserved. |
 | R-021 | pp.9,21–24 | Narrow initial buyer; no competitor-free/traction claims | All | PLANNED | |
-| R-022 | pp.12,24 | Gemini now; Gemma later, provider swap unverified | 02 | IN_PROGRESS | Provider protocol, explicit Mock/Gemini implementations, no fallback and configurable model. Live availability/perception unverified; Gemma not implemented. |
+| R-022 | pp.12,24 | Gemini now; Gemma later, provider swap unverified | 02 | IN_PROGRESS | Existing protocol/Mock/Gemini adapters unchanged. Exact 3.8 live attempt failed safely, no fallback or second call; successful availability/perception unverified. Gemma not implemented. |
 | R-023 | pp.17–20 | Replay, injection, race, uploaded content edge tests | 02–04 | IN_PROGRESS | Uploaded-content limits/MIME/bomb/multiframe tests, model authority-field rejection, injection-like image text, stale async results and private tenant scope tested. No general prompt-injection immunity or future adversarial-corpus claim. |
 | R-024 | pp.28–29 | Every milestone diff/test/risks/rollback note | All | IN_PROGRESS | Phase 03 report, execution log, SHA-256 baseline manifest, API/security/architecture/decisions document exact outputs, risks, live block, manifest and data-preserving rollback. Stop at Phase 03; later milestones pending. |
 | R-025 | pp.6–7,13–14 | Manager verification queue and detailed review | 03 | TESTED | `workflow_service.py`, typed schemas; bounded filtered tenant queue, deterministic paging, redacted details/private attachment, 16 queue/scope tests and HTTP review passed. |

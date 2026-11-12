@@ -13,6 +13,9 @@ a7e7156 feat: completion of addition of backend capable of maintaining authorisa
 
 Exit code: 0
 
+
+
+
 --- Final Git/documentation checks ---
 
 PS> git status --short --untracked-files=all
@@ -483,5 +486,262 @@ Exit code: 0
 --- Recorded command/chunk 28 ---
 PS> .\.venv\Scripts\python.exe -m pip check
 No broken requirements found.
+
+Exit code: 0
+
+# Stage B: user-confirmed single live attempt — 12 November 2026
+
+Initial working tree clean; user baseline dff9f41. User confirmed exact image/ground truth. One live attempted send, zero retries/fallbacks; PROVIDER_UNAVAILABLE. After the failure, only local regressions/file checks/documentation; no more inference.
+
+--- Stage B command/chunk ---
+PS> git log --oneline -4
+dff9f41 feat: test of gemini workflow - pass
+562e5eb feat: implementation of end-to-end workflow
+0727e05 feat: addition of evidence processing pipeline
+a7e7156 feat: completion of addition of backend capable of maintaining authorisation rules
+
+Exit code: 0
+
+--- Stage B command/chunk ---
+PS> @'
+from pathlib import Path
+from hashlib import sha256
+from datetime import datetime, timezone
+import json, subprocess
+from backend.tools.smoke_gemini import review_digest
+
+root=Path('fixtures/live_inputs/gemini_3_8_validation')
+truth_path=root/'ground_truth.json'
+image_path=root/'pump_inspection.png'
+assert not (root/'one_live_attempt.local.json').exists(), 'Prior request reservation exists: STOP; no second request'
+assert not Path('tracking/LIVE_GEMINI_VALIDATION.local.json').exists(), 'Prior result exists: STOP; no second request'
+truth=json.loads(truth_path.read_text(encoding='utf-8'))
+expected=dict(asset_id_observed='PUMP-042', challenge_text_observed='DEMO-7C4A-9F2B',
+    pressure_value=35.0, pressure_unit='PSI', equipment_status='RUNNING',
+    calibration_expiry_date='2099-12-31', uncertain_fields=[], conflicting_fields=[])
+assert truth['expected_observation']==expected, 'Expected values differ from user confirmation'
+assert truth['validation_model']=='gemini-3.8-flash'
+assert sha256(image_path.read_bytes()).hexdigest()==truth['image_sha256']=='1d5cb9324088ec180cd70725f14ac33157f5a77c7a5935bd7ee85cf4c7c6046f'
+assert truth['human_reviewed'] is False, 'Existing review state changed; inspect before proceeding'
+snapshot=root/'stage_b_baseline_hashes.local.json'
+assert not snapshot.exists(), 'Preserve existing Stage B snapshot; inspect before proceeding'
+paths=list(Path('backend/tests').rglob('*.py'))+[Path(p) for p in (
+    'backend/app/policy.py','backend/app/models.py','backend/app/case_service.py','backend/app/gemini_provider.py',
+    'backend/tools/smoke_gemini.py','backend/tools/live_validation_guard.py','backend/requirements.txt','pyproject.toml','.env')]
+snapshot.write_text(json.dumps({str(p):sha256(p.read_bytes()).hexdigest() for p in paths},indent=2),encoding='utf-8')
+truth['human_reviewed']=True
+truth['reviewed_by']='USER_EXPLICIT_CONFIRMATION_IN_CONVERSATION'
+truth['human_reviewed_at_utc']=datetime.now(timezone.utc).isoformat()
+truth['human_review_confirmation']='User personally confirmed image needle, scale, asset, 35 PSI, RUNNING, 2099-12-31 and DEMO-7C4A-9F2B; authorized Stage B subject to preflight.'
+truth['human_review_sha256']=review_digest(truth)
+truth_path.write_text(json.dumps(truth,indent=2)+'\n',encoding='utf-8')
+print(json.dumps(dict(human_reviewed=True, reviewer='USER_EXPLICIT_CONFIRMATION_IN_CONVERSATION',
+    image_digest_unchanged=True, expected_values_unchanged=True, review_binding_valid=truth['human_review_sha256']==review_digest(truth),
+    request_budget_unused=True, baseline_files=len(paths), network_called=False)))
+'@ | .\.venv\Scripts\python.exe -X utf8 -
+{"human_reviewed": true, "reviewer": "USER_EXPLICIT_CONFIRMATION_IN_CONVERSATION", "image_digest_unchanged": true, "expected_values_unchanged": true, "review_binding_valid": true, "request_budget_unused": true, "baseline_files": 37, "network_called": false}
+
+Exit code: 0
+
+--- Stage B command/chunk ---
+PS> $env:GEMINI_MODEL = 'gemini-3.8-flash'
+$env:SENTINEL_PROVIDER_MODE = 'LIVE_GEMINI'
+$env:SENTINEL_ALLOW_BILLABLE = 'true'
+$env:SENTINEL_PROVIDER_ATTEMPTS = '1'
+$env:SENTINEL_PROVIDER_TIMEOUT_SECONDS = '60'
+.\.venv\Scripts\python.exe -m backend.tools.smoke_gemini --check --env-file .env --image fixtures/live_inputs/gemini_3_8_validation/pump_inspection.png --ground-truth fixtures/live_inputs/gemini_3_8_validation/ground_truth.json --output tracking/LIVE_GEMINI_VALIDATION.local.json
+{"status": "READY", "provider_mode": "LIVE_GEMINI", "network_called": false, "request_count": 0, "retry_count": 0, "checks": {"GEMINI_API_KEY_PRESENT": true, "requested_model_id": "gemini-3.8-flash", "provider_mode": "LIVE_GEMINI", "model_exact": true, "one_attempt": true, "billing_scope_configured": true, "timeout_seconds": 60.0, "max_output_tokens": 2048, "thinking_level": "LOW", "sdk_retries": 0, "redirects": false, "automatic_continuation": false, "tools_enabled": false, "request_budget": 1, "image_valid": true, "image_sha256": "1d5cb9324088ec180cd70725f14ac33157f5a77c7a5935bd7ee85cf4c7c6046f", "width": 1800, "height": 1200, "private_inputs": true, "structured_schema_available": true, "human_reviewed": true, "expected_fixture_policy_max_permission": 2, "request_budget_unused": true}, "reason_codes": []}
+
+Exit code: 0
+
+--- Stage B command/chunk ---
+PS> .\.venv\Scripts\python.exe -m pytest backend/tests/test_live_validation.py
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\project\sentinel_ladder_v2
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collected 24 items
+
+backend\tests\test_live_validation.py ........................           [100%]
+
+============================= 24 passed in 3.09s ==============================
+
+Exit code: 0
+
+--- Stage B command/chunk ---
+PS> .\.venv\Scripts\python.exe -m pip check
+No broken requirements found.
+
+Exit code: 0
+
+--- Stage B command/chunk ---
+PS> $env:GEMINI_MODEL = 'gemini-3.8-flash'
+$env:SENTINEL_PROVIDER_MODE = 'LIVE_GEMINI'
+$env:SENTINEL_ALLOW_BILLABLE = 'true'
+$env:SENTINEL_PROVIDER_ATTEMPTS = '1'
+$env:SENTINEL_PROVIDER_TIMEOUT_SECONDS = '60'
+.\.venv\Scripts\python.exe -m backend.tools.smoke_gemini --env-file .env --image fixtures/live_inputs/gemini_3_8_validation/pump_inspection.png --ground-truth fixtures/live_inputs/gemini_3_8_validation/ground_truth.json --output tracking/LIVE_GEMINI_VALIDATION.local.json --allow-billable --confirm-fictional-consent
+{"status": "FAILED", "validation_result": "FAILED - LIVE API OR SCHEMA ERROR", "requested_model_id": "gemini-3.8-flash", "reason_codes": ["PROVIDER_UNAVAILABLE"], "authorization_decision": "DENY", "provider_mode": "LIVE_GEMINI", "network_called": true, "request_count": 1, "retry_count": 0, "elapsed_seconds": 4.6740025999988575, "input_media_type": "image/png", "provider_media_type": "image/png", "transport_metadata": {}, "scope": "OFFLINE_GROUND_TRUTH_COMPARISON_NOT_AUTHENTICATED_API_AUTHORIZATION", "limitation": "One synthetic sample is not real-world accuracy, authenticity, safety or workflow proof."}
+
+Exit code: 1
+
+--- Stage B command/chunk ---
+PS> .\.venv\Scripts\python.exe -m pytest
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\project\sentinel_ladder_v2
+configfile: pyproject.toml
+testpaths: backend/tests
+plugins: anyio-4.16.0
+collected 478 items
+
+backend\tests\phase01\test_challenges.py .............                   [  2%]
+backend\tests\phase01\test_http_boundary.py ..........                   [  4%]
+backend\tests\phase01\test_identity.py ..........................
+Process running at this chunk; see continuation.
+
+--- Stage B command/chunk ---
+PS> .\.venv\Scripts\python.exe -m pip check
+No broken requirements found.
+
+Exit code: 0
+
+--- Stage B command/chunk ---
+PS> @'
+from pathlib import Path
+from hashlib import sha256
+import json
+root=Path('fixtures/live_inputs/gemini_3_8_validation')
+expected=json.loads((root/'stage_b_baseline_hashes.local.json').read_text(encoding='utf-8'))
+bad=[name for name,digest in expected.items() if sha256(Path(name).read_bytes()).hexdigest()!=digest]
+truth=json.loads((root/'ground_truth.json').read_text(encoding='utf-8'))
+marker=json.loads((root/'one_live_attempt.local.json').read_text(encoding='utf-8'))
+result=json.loads(Path('tracking/LIVE_GEMINI_VALIDATION.local.json').read_text(encoding='utf-8'))
+assert not bad
+assert truth['human_reviewed'] is True
+assert result['request_count']==1 and result['retry_count']==0
+assert result['requested_model_id']=='gemini-3.8-flash'
+assert result['status']=='FAILED' and result['authorization_decision']=='DENY'
+assert 'observations' not in result
+print(json.dumps(dict(baseline_files_verified=len(expected),hash_mismatches=bad,
+    human_reviewed=truth['human_reviewed'],human_reviewed_at_utc=truth['human_reviewed_at_utc'],
+    budget_marker_preserved=True,marker_status=marker['status'],
+    requested_model_id=result['requested_model_id'],status=result['status'],
+    request_count=result['request_count'],retry_count=result['retry_count'],
+    reason_codes=result['reason_codes'],authorization_decision=result['authorization_decision'],
+    elapsed_seconds=result['elapsed_seconds'],transport_metadata=result['transport_metadata'])))
+'@ | .\.venv\Scripts\python.exe -X utf8 -
+{"baseline_files_verified": 37, "hash_mismatches": [], "human_reviewed": true, "human_reviewed_at_utc": "2026-11-12T16:16:45.498201+00:00", "budget_marker_preserved": true, "marker_status": "ONE_REQUEST_RESERVED_NO_AUTOMATIC_RETRY", "requested_model_id": "gemini-3.8-flash", "status": "FAILED", "request_count": 1, "retry_count": 0, "reason_codes": ["PROVIDER_UNAVAILABLE"], "authorization_decision": "DENY", "elapsed_seconds": 4.6740025999988575, "transport_metadata": {}}
+
+Exit code: 0
+
+--- Stage B command/chunk ---
+PS> git check-ignore .env fixtures/live_inputs/gemini_3_8_validation/ground_truth.json fixtures/live_inputs/gemini_3_8_validation/one_live_attempt.local.json fixtures/live_inputs/gemini_3_8_validation/stage_b_baseline_hashes.local.json tracking/LIVE_GEMINI_VALIDATION.local.json
+.env
+fixtures/live_inputs/gemini_3_8_validation/ground_truth.json
+fixtures/live_inputs/gemini_3_8_validation/one_live_attempt.local.json
+fixtures/live_inputs/gemini_3_8_validation/stage_b_baseline_hashes.local.json
+tracking/LIVE_GEMINI_VALIDATION.local.json
+
+Exit code: 0
+
+--- Stage B command/chunk ---
+PS> git diff -- backend
+(no output)
+
+Exit code: 0
+
+--- Stage B command/chunk ---
+Continuation: [Stage B post-request full regression continuation]
+....    [ 11%]
+backend\tests\phase01\test_persistence.py ..................             [ 14%]
+backend\tests\phase01\test_scope.py .........................            [ 20%]
+backend\tests\phase01\test_transactions.py .........                     [ 21%]
+backend\tests\phase01\test_workflow.py ................................. [ 28%]
+...............                                                          [ 32%]
+backend\tests\phase02\test_analysis_races.py ..........                  [ 34%]
+backend\tests\phase02\test_gemini.py .............                       [ 36%]
+backend\tests\phase02\test_media.py ...................................  [ 44%]
+backend\tests\phase02\test_observations.py ............................. [ 50%]
+.......                                                                  [ 51%]
+backend\tests\phase02\test_persistence_and_smoke_guards.py ............. [ 54%]
+..                                                                       [ 54%]
+backend\tests\phase03\test_audit_and_persistence.py ...........          [ 57%]
+backend\tests\phase03\test_queue_and_scope.py ................           [ 60%]
+backend\tests\phase03\test_recovery.py .....................             [ 64%]
+backend\tests\phase03\test_transactions.py ............                  [ 67%]
+backend\tests\phase03\test_workflow.py ...................               [ 71%]
+backend\tests\test_api.py ........                                       [ 73%]
+backend\tests\test_config.py ...................                         [ 76%]
+backend\tests\test_live_validation.py ........................           [ 82%]
+backend\tests\test_policy.py ........................................... [ 91%]
+..........................................                               [ 99%]
+backend\tests\test_security.py .                                         [100%]
+
+============================ 478 passed in 58.30s =============================
+
+Exit code: 0
+
+
+--- Stage B final documentation/Git verification ---
+
+PS> git status --short --untracked-files=all
+ M docs/media_and_gemini.md
+ M tracking/EXECUTION_LOG.md
+ M tracking/LIVE_GEMINI_VALIDATION_COMMAND_OUTPUT.txt
+ M tracking/LIVE_GEMINI_VALIDATION_REPORT.md
+ M tracking/REQUIREMENT_MATRIX.md
+ M tracking/STATUS_LEDGER.md
+
+Exit code: 0
+
+PS> git diff --check
+warning: in the working copy of 'docs/media_and_gemini.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/EXECUTION_LOG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/LIVE_GEMINI_VALIDATION_COMMAND_OUTPUT.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/LIVE_GEMINI_VALIDATION_REPORT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/REQUIREMENT_MATRIX.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/STATUS_LEDGER.md', LF will be replaced by CRLF the next time Git touches it
+
+Exit code: 0
+
+PS> git diff --stat
+warning: in the working copy of 'docs/media_and_gemini.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/EXECUTION_LOG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/LIVE_GEMINI_VALIDATION_COMMAND_OUTPUT.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/LIVE_GEMINI_VALIDATION_REPORT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/REQUIREMENT_MATRIX.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/STATUS_LEDGER.md', LF will be replaced by CRLF the next time Git touches it
+ docs/media_and_gemini.md                           |  11 +-
+ tracking/EXECUTION_LOG.md                          |  45 ++
+ tracking/LIVE_GEMINI_VALIDATION_COMMAND_OUTPUT.txt | 197 ++++++++
+ tracking/LIVE_GEMINI_VALIDATION_REPORT.md          | 528 ++++++++++-----------
+ tracking/REQUIREMENT_MATRIX.md                     |  20 +-
+ tracking/STATUS_LEDGER.md                          |  21 +-
+ 6 files changed, 526 insertions(+), 296 deletions(-)
+
+Exit code: 0
+
+PS> git diff --name-only --cached
+(no output)
+
+Exit code: 0
+
+PS> @'
+from pathlib import Path
+import re
+files=['docs/media_and_gemini.md','tracking/STATUS_LEDGER.md','tracking/REQUIREMENT_MATRIX.md','tracking/EXECUTION_LOG.md','tracking/LIVE_GEMINI_VALIDATION_REPORT.md']
+bad=[]
+for name in files:
+    for target in re.findall(r'\]\(([^)]+)\)',Path(name).read_text(encoding='utf-8')):
+        if target.startswith(('http:','https:','#','mailto:')):
+            continue
+        if not (Path(name).parent/target.split('#',1)[0]).exists():
+            bad.append((name,target))
+print(f'{len(files)} documentation files checked; missing relative targets={bad}')
+assert not bad
+'@ | .\.venv\Scripts\python.exe -X utf8 -
+5 documentation files checked; missing relative targets=[]
 
 Exit code: 0

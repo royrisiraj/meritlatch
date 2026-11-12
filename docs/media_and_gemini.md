@@ -192,8 +192,11 @@ The dedicated post-Phase-03 validation checkpoint targets **gemini-3.8-flash**
 through a temporary process `GEMINI_MODEL` override; the normal application default
 and `.env` are preserved. See
 [`LIVE_GEMINI_VALIDATION_REPORT.md`](../tracking/LIVE_GEMINI_VALIDATION_REPORT.md).
-One-call billing scope is authorized, but **human image/ground-truth review is
-pending**. No inference was sent during Stage A.
+The user confirmed the exact image and ground truth after Stage A. Stage B's
+**single authorized request failed with PROVIDER_UNAVAILABLE** (one counted send,
+zero retries, 4.6740s). No observations or usage were returned; no retry/fallback
+was attempted. Keep the private reservation/result. The one-call budget is used;
+do not remove the marker, change filenames or repeat inference under this approval.
 
 The existing runner now supports detailed **offline** `--check` with all paths.
 This form reads the ignored explicit env file securely, reports only key presence,
@@ -210,8 +213,8 @@ $env:SENTINEL_PROVIDER_TIMEOUT_SECONDS = '60'
 .\.venv\Scripts\python.exe -m backend.tools.smoke_gemini --check --env-file .env --image fixtures/live_inputs/gemini_3_8_validation/pump_inspection.png --ground-truth fixtures/live_inputs/gemini_3_8_validation/ground_truth.json --output tracking/LIVE_GEMINI_VALIDATION.local.json
 ```
 
-Until user confirmation, `human_reviewed` stays false and this returns BLOCKED,
-request_count=0. Do not toggle review fields on the user's behalf. After explicit
+During Stage A, `human_reviewed` stayed false and this returned BLOCKED,
+request_count=0. Never toggle review fields without actual user review. After explicit
 confirmation, record the reviewer, `human_reviewed: true` and `human_review_sha256`
 from the runner's `review_digest(truth)`, binding the exact expected observations,
 policy context, image SHA-256 and model. Changed reviewed inputs block execution.
