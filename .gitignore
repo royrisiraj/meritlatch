@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite*
+*.sqlite-wal
+*.sqlite-shm
+backend/private_media/
+node_modules/
+dist/
+*.egg-info/

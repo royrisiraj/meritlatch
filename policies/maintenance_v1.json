@@ -1,0 +1,14 @@
+{
+  "policy_id": "fictional-pump-inspection",
+  "version": "1.0.0",
+  "tenant_id": "synthetic-org-a",
+  "job_id": "synthetic-job-001",
+  "asset_id_expected": "PUMP-042",
+  "classification": "FICTIONAL_NOT_INDUSTRIAL_SAFETY_GUIDANCE",
+  "pressure_unit": "PSI",
+  "pressure_min": 30.0,
+  "pressure_max": 40.0,
+  "minimum_inclusive": true,
+  "maximum_inclusive": true,
+  "required_equipment_status": "RUNNING"
+}

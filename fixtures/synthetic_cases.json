@@ -1,0 +1,23 @@
+{
+  "artifact_mode": "SYNTHETIC",
+  "description": "Invented policy inputs only. No media, Gemini call or real safety assertion.",
+  "context": {
+    "tenant_id": "synthetic-org-a",
+    "job_id": "synthetic-job-001",
+    "asset_id_expected": "PUMP-042",
+    "approved_policy_version": "1.0.0",
+    "expected_challenge": "SYNTHETIC-TEST-ONLY-NOT-A-SERVER-TOKEN",
+    "challenge_expires_at": "2026-11-12T07:00:00Z",
+    "evaluated_at": "2026-11-12T06:00:00Z"
+  },
+  "valid_observation": {
+    "artifact_mode": "SYNTHETIC",
+    "asset_id_observed": "PUMP-042",
+    "challenge_text_observed": "SYNTHETIC-TEST-ONLY-NOT-A-SERVER-TOKEN",
+    "pressure_value": 35.0,
+    "pressure_unit": "PSI",
+    "equipment_status": "RUNNING",
+    "calibration_expiry_date": "2026-12-31",
+    "uncertain_fields": []
+  }
+}

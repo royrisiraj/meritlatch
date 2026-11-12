@@ -1,0 +1,11 @@
+[project]
+name = "sentinel-ladder"
+version = "0.0.0"
+description = "Phase 00 deterministic fictional inspection policy and health API"
+requires-python = ">=3.11"
+dependencies = ["fastapi==0.162.5", "pydantic==2.14.3", "uvicorn==0.54.0", "SQLAlchemy==2.1.8"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["."]
+addopts = "-ra"
