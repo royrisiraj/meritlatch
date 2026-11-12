@@ -1,5 +1,12 @@
 # Master Book requirement-to-code traceability
 
+**Live validation Stage A update — 12 November 2026:** 478 passed, zero failed
+(454 unchanged + 24 new offline tests). R-008/R-018/R-022 remain IN_PROGRESS:
+exact `gemini-3.8-flash` configured through temporary overrides, one-call billing
+scope authorized, ignored fictional image/ground truth prepared with human review
+false. Offline preflight blocks only on human confirmation; zero inference calls.
+See `LIVE_GEMINI_VALIDATION_REPORT.md`. No Phase 04 work or live accuracy claim.
+
 Updated 12 November 2026 after Phase 03 local execution. TESTED claims cover local SYNTHETIC/MOCK_AI, SDK stubs and SQLite only; no live Gemini result exists. **454 passed** (375 preserved + 79 new), zero failed; 20 baseline test file hashes unchanged. Focused authorization/concurrency: 28 passed; real TCP/HTTP valid, unsafe, wrong-asset and recovery journeys passed. Evidence: `tracking/EXECUTION_LOG.md`, `tracking/PHASE_03_REPORT.md`, `docs/workflow_phase03.md`. LIVE_GEMINI is BLOCKED - AWAITING AUTHORIZATION. Master Book pages are 1-indexed.
 
 | ID | Master Book | Must demonstrate | Phase | Status | Evidence field |

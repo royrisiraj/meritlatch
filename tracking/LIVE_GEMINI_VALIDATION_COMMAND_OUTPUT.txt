@@ -1,0 +1,487 @@
+# Controlled Gemini 3.8 validation: Stage A command evidence
+
+Date: 2026-11-12. Baseline HEAD 562e5eb. Initial git status --short: empty.
+Actual live inference count=0; retry_count=0. Human image/ground-truth review pending.
+Offline tests use SDK MockTransport/dummy keys, not live inference.
+Reads of source/specification text are omitted; validation stdout/stderr follows.
+
+--- Recorded command/chunk 1 ---
+PS> git log --oneline -4
+562e5eb feat: implementation of end-to-end workflow
+0727e05 feat: addition of evidence processing pipeline
+a7e7156 feat: completion of addition of backend capable of maintaining authorisation rules
+
+Exit code: 0
+
+--- Final Git/documentation checks ---
+
+PS> git status --short --untracked-files=all
+ M backend/app/gemini_provider.py
+ M backend/tools/smoke_gemini.py
+ M docs/media_and_gemini.md
+ M tracking/EXECUTION_LOG.md
+ M tracking/REQUIREMENT_MATRIX.md
+ M tracking/STATUS_LEDGER.md
+?? backend/tests/test_live_validation.py
+?? backend/tools/live_validation_guard.py
+?? backend/tools/prepare_live_sample.py
+?? tracking/LIVE_GEMINI_VALIDATION_COMMAND_OUTPUT.txt
+?? tracking/LIVE_GEMINI_VALIDATION_REPORT.md
+
+Exit code: 0
+
+PS> git diff --stat
+warning: in the working copy of 'backend/app/gemini_provider.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/tools/smoke_gemini.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/media_and_gemini.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/EXECUTION_LOG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/REQUIREMENT_MATRIX.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/STATUS_LEDGER.md', LF will be replaced by CRLF the next time Git touches it
+ backend/app/gemini_provider.py |   3 +
+ backend/tools/smoke_gemini.py  | 178 ++++++++++++++++++++++++++++++-----------
+ docs/media_and_gemini.md       |  48 +++++++++++
+ tracking/EXECUTION_LOG.md      |  50 ++++++++++++
+ tracking/REQUIREMENT_MATRIX.md |   7 ++
+ tracking/STATUS_LEDGER.md      |  24 +++++-
+ 6 files changed, 261 insertions(+), 49 deletions(-)
+
+Exit code: 0
+
+PS> git diff --name-only --cached
+(no output)
+
+Exit code: 0
+
+PS> @'
+from pathlib import Path
+import re
+files=['docs/media_and_gemini.md','tracking/STATUS_LEDGER.md','tracking/REQUIREMENT_MATRIX.md','tracking/EXECUTION_LOG.md','tracking/LIVE_GEMINI_VALIDATION_REPORT.md']
+bad=[]
+for name in files:
+    for target in re.findall(r'\]\(([^)]+)\)',Path(name).read_text(encoding='utf-8')):
+        if target.startswith(('https:','http:','#','mailto:')):
+            continue
+        if not (Path(name).parent/target.split('#',1)[0]).exists():
+            bad.append((name,target))
+print(f'{len(files)} documentation files checked; missing relative targets={bad}')
+assert not bad
+'@ | .\.venv\Scripts\python.exe -X utf8 -
+5 documentation files checked; missing relative targets=[]
+
+Exit code: 0
+
+--- Recorded command/chunk 7 ---
+PS> @'
+from pathlib import Path
+from dotenv import dotenv_values
+import os,subprocess
+p=Path('.env')
+v=dotenv_values(p) if p.is_file() else {}
+k=os.getenv('GEMINI_API_KEY') or v.get('GEMINI_API_KEY')
+print('GEMINI_API_KEY_PRESENT='+str(bool(k and k.strip())).lower())
+print('ENV_PATH_KIND='+('file' if p.is_file() else 'directory' if p.is_dir() else 'absent'))
+print('ENV_IGNORED='+str(subprocess.run(['git','check-ignore','-q','--','.env'],capture_output=True).returncode==0).lower())
+print('ENV_TRACKED='+str(bool(subprocess.run(['git','ls-files','--','.env'],capture_output=True,text=True).stdout.strip())).lower())
+assert k and k.strip(), 'No supported key configuration found'
+'@ | .\.venv\Scripts\python.exe -X utf8 -
+GEMINI_API_KEY_PRESENT=true
+ENV_PATH_KIND=file
+ENV_IGNORED=true
+ENV_TRACKED=false
+
+Exit code: 0
+
+--- Recorded command/chunk 8 ---
+PS> .\.venv\Scripts\python.exe -m pytest [before validation changes]
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\project\sentinel_ladder_v2
+configfile: pyproject.toml
+testpaths: backend/tests
+plugins: anyio-4.16.0
+collected 454 items
+
+backend\tests\phase01\test_challenges.py .............                   [  2%]
+backend\tests\phase01\test_http_boundary.py ..........                   [  5%]
+backend\tests\phase01\test_identity.py ..........................
+Running at this chunk; see continuation.
+
+--- Recorded command/chunk 9 ---
+PS> .\.venv\Scripts\python.exe -m backend.tools.prepare_live_sample
+{"image": "fixtures\\live_inputs\\gemini_3_8_validation\\pump_inspection.png", "ground_truth": "fixtures\\live_inputs\\gemini_3_8_validation\\ground_truth.json", "human_reviewed": false, "network_called": false, "origin": "LOCAL_PILLOW_SYNTHETIC_CARD"}
+
+Exit code: 0
+
+--- Recorded command/chunk 10 ---
+Continuation: [454-test validation baseline continuation]
+....    [ 11%]
+backend\tests\phase01\test_persistence.py ..................             [ 15%]
+backend\tests\phase01\test_scope.py .........................            [ 21%]
+backend\tests\phase01\test_transactions.py .........                     [ 23%]
+backend\tests\phase01\test_workflow.py ................................. [ 30%]
+...............                                                          [ 33%]
+backend\tests\phase02\test_analysis_races.py ..........                  [ 35%]
+backend\tests\phase02\test_gemini.py .............                       [ 38%]
+backend\tests\phase02\test_media.py ...................................  [ 46%]
+backend\tests\phase02\test_observations.py ............................. [ 52%]
+.......                                                                  [ 54%]
+backend\tests\phase02\test_persistence_and_smoke_guards.py ............. [ 57%]
+..                                                                       [ 57%]
+backend\tests\phase03\test_audit_and_persistence.py ...........          [ 60%]
+backend\tests\phase03\test_queue_and_scope.py ...............
+Running at this chunk; see continuation.
+
+--- Recorded command/chunk 11 ---
+Continuation: [454-test validation baseline final continuation]
+.           [ 63%]
+backend\tests\phase03\test_recovery.py .....................             [ 68%]
+backend\tests\phase03\test_transactions.py ............                  [ 70%]
+backend\tests\phase03\test_workflow.py ...................               [ 75%]
+backend\tests\test_api.py ........                                       [ 76%]
+backend\tests\test_config.py ...................                         [ 81%]
+backend\tests\test_policy.py ........................................... [ 90%]
+..........................................                               [ 99%]
+backend\tests\test_security.py .                                         [100%]
+
+======================= 454 passed in 60.34s (0:01:00) ========================
+
+Exit code: 0
+
+--- Recorded command/chunk 12 ---
+PS> .\.venv\Scripts\python.exe -m pytest backend/tests/test_live_validation.py -x
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\project\sentinel_ladder_v2
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collected 23 items
+
+backend\tests\test_live_validation.py F
+
+================================== FAILURES ===================================
+___ test_real_installed_sdk_uses_single_guarded_request_no_answers_or_tools ___
+
+    def test_real_installed_sdk_uses_single_guarded_request_no_answers_or_tools():
+        captured = []
+        def handler(request):
+            captured.append(json.loads(request.content))
+            return httpx2.Response(200, json=sdk_response())
+        guard = SingleRequestGuard(transport=httpx2.MockTransport(handler))
+>       result = invoke(guard)
+                 ^^^^^^^^^^^^^
+
+backend\tests\test_live_validation.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\tests\test_live_validation.py:47: in invoke
+    return asyncio.run(provider.inspect(PerceptionInput(b"OFFLINE_STUB_IMAGE_BYTES", "image/png", "offline-fixture")))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\asyncio\runners.py:204: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\asyncio\runners.py:60: in __enter__
+    self._lazy_init()
+C:\Python314\Lib\asyncio\runners.py:147: in _lazy_init
+    self._loop = events.new_event_loop()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\asyncio\events.py:847: in new_event_loop
+    return _get_event_loop_policy().new_event_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\asyncio\events.py:735: in new_event_loop
+    return self._loop_factory()
+           ^^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+C:\Python314\Lib\asyncio\proactor_events.py:635: in __init__
+    self._make_self_pipe()
+C:\Python314\Lib\asyncio\proactor_events.py:781: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+                               ^^^^^^^^^^^^^^^^^^^
+C:\Python314\Lib\socket.py:629: in _fallback_socketpair
+    csock.connect((addr, port))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = (<socket.socket [closed] fd=-1, family=2, type=1, proto=0>, ('127.0.0.1', 53093))
+kwargs = {}
+
+    def blocked(*args, **kwargs):
+>       raise AssertionError("Offline validation tests must not open network sockets")
+E       AssertionError: Offline validation tests must not open network sockets
+
+backend\tests\test_live_validation.py:30: AssertionError
+=========================== short test summary info ===========================
+FAILED backend/tests/test_live_validation.py::test_real_installed_sdk_uses_single_guarded_request_no_answers_or_tools
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+============================== 1 failed in 0.22s ==============================
+<sys>:0: RuntimeWarning: coroutine 'GeminiPerceptionProvider.inspect' was never awaited
+Exception ignored while calling deallocator <function BaseEventLoop.__del__ at 0x000001533457C670>:
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\base_events.py", line 761, in __del__
+  File "C:\Python314\Lib\asyncio\proactor_events.py", line 692, in close
+  File "C:\Python314\Lib\asyncio\proactor_events.py", line 773, in _close_self_pipe
+AttributeError: 'ProactorEventLoop' object has no attribute '_ssock'
+
+Exit code: 1
+
+--- Recorded command/chunk 13 ---
+PS> .\.venv\Scripts\python.exe -m pytest backend/tests/test_live_validation.py -x
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\project\sentinel_ladder_v2
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collected 23 items
+
+backend\tests\test_live_validation.py F
+
+================================== FAILURES ===================================
+___ test_real_installed_sdk_uses_single_guarded_request_no_answers_or_tools ___
+
+    def test_real_installed_sdk_uses_single_guarded_request_no_answers_or_tools():
+        captured = []
+        def handler(request):
+            captured.append(json.loads(request.content))
+            return httpx2.Response(200, json=sdk_response())
+        guard = SingleRequestGuard(transport=httpx2.MockTransport(handler))
+        result = invoke(guard)
+        assert guard.request_count == len(captured) == 1
+        assert result.model_id == "gemini-3.8-flash" and result.fields.pressure_value == 35
+        assert guard.response_metadata["usage"]["totalTokenCount"] == 34
+        config = captured[0]["generationConfig"]
+>       assert config["thinkingConfig"] == {"thinkingLevel": "LOW", "includeThoughts": False}
+E       AssertionError: assert {'include_tho...level': 'LOW'} == {'thinkingLev...ughts': False}
+E         
+E         Left contains 2 more items:
+E         {'include_thoughts': False, 'thinking_level': 'LOW'}
+E         Right contains 2 more items:
+E         {'includeThoughts': False, 'thinkingLevel': 'LOW'}
+E         Use -v to get more diff
+
+backend\tests\test_live_validation.py:67: AssertionError
+=========================== short test summary info ===========================
+FAILED backend/tests/test_live_validation.py::test_real_installed_sdk_uses_single_guarded_request_no_answers_or_tools
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+============================== 1 failed in 0.57s ==============================
+
+Exit code: 1
+
+--- Recorded command/chunk 14 ---
+PS> .\.venv\Scripts\python.exe -m pytest backend/tests/test_live_validation.py -x
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\project\sentinel_ladder_v2
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collected 23 items
+
+backend\tests\test_live_validation.py .......................            [100%]
+
+============================= 23 passed in 0.95s ==============================
+
+Exit code: 0
+
+--- Recorded command/chunk 15 ---
+PS> .\.venv\Scripts\python.exe -m pytest
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\project\sentinel_ladder_v2
+configfile: pyproject.toml
+testpaths: backend/tests
+plugins: anyio-4.16.0
+collected 477 items
+
+backend\tests\phase01\test_challenges.py .............                   [  2%]
+backend\tests\phase01\test_http_boundary.py ..........                   [  4%]
+backend\tests\phase01\test_identity.py ..........................
+Running at this chunk; see continuation.
+
+--- Recorded command/chunk 16 ---
+PS> $env:GEMINI_MODEL = 'gemini-3.8-flash'
+$env:SENTINEL_PROVIDER_MODE = 'LIVE_GEMINI'
+$env:SENTINEL_ALLOW_BILLABLE = 'true'
+$env:SENTINEL_PROVIDER_ATTEMPTS = '1'
+$env:SENTINEL_PROVIDER_TIMEOUT_SECONDS = '60'
+.\.venv\Scripts\python.exe -m backend.tools.smoke_gemini --check --env-file .env --image fixtures/live_inputs/gemini_3_8_validation/pump_inspection.png --ground-truth fixtures/live_inputs/gemini_3_8_validation/ground_truth.json --output tracking/LIVE_GEMINI_VALIDATION.local.json
+{"status": "BLOCKED", "provider_mode": "LIVE_GEMINI", "network_called": false, "request_count": 0, "retry_count": 0, "checks": {"GEMINI_API_KEY_PRESENT": true, "requested_model_id": "gemini-3.8-flash", "provider_mode": "LIVE_GEMINI", "model_exact": true, "one_attempt": true, "billing_scope_configured": true, "timeout_seconds": 60.0, "max_output_tokens": 2048, "thinking_level": "LOW", "sdk_retries": 0, "redirects": false, "automatic_continuation": false, "tools_enabled": false, "request_budget": 1, "image_valid": true, "image_sha256": "1d5cb9324088ec180cd70725f14ac33157f5a77c7a5935bd7ee85cf4c7c6046f", "width": 1800, "height": 1200, "private_inputs": true, "structured_schema_available": true, "human_reviewed": false, "expected_fixture_policy_max_permission": 2, "request_budget_unused": true}, "reason_codes": ["HUMAN_IMAGE_AND_GROUND_TRUTH_REVIEW_REQUIRED"]}
+
+Exit code: 1
+
+--- Recorded command/chunk 17 ---
+PS> .\.venv\Scripts\python.exe -m pip check
+No broken requirements found.
+
+Exit code: 0
+
+--- Recorded command/chunk 18 ---
+PS> git check-ignore .env fixtures/live_inputs/gemini_3_8_validation/pump_inspection.png fixtures/live_inputs/gemini_3_8_validation/ground_truth.json fixtures/live_inputs/gemini_3_8_validation/baseline_hashes.local.json tracking/LIVE_GEMINI_VALIDATION.local.json
+.env
+fixtures/live_inputs/gemini_3_8_validation/pump_inspection.png
+fixtures/live_inputs/gemini_3_8_validation/ground_truth.json
+fixtures/live_inputs/gemini_3_8_validation/baseline_hashes.local.json
+tracking/LIVE_GEMINI_VALIDATION.local.json
+
+Exit code: 0
+
+--- Recorded command/chunk 19 ---
+PS> @'
+from pathlib import Path
+from hashlib import sha256
+import json
+p=Path('fixtures/live_inputs/gemini_3_8_validation/baseline_hashes.local.json')
+expected=json.loads(p.read_text())
+bad=[name for name,digest in expected.items() if sha256(Path(name).read_bytes()).hexdigest()!=digest]
+print(f'{len(expected)} baseline test/policy/manager/dependency/config files verified; mismatches={bad}')
+assert not bad
+'@ | .\.venv\Scripts\python.exe -X utf8 -
+33 baseline test/policy/manager/dependency/config files verified; mismatches=[]
+
+Exit code: 0
+
+--- Recorded command/chunk 20 ---
+Continuation: [477-test validation full suite continuation]
+....    [ 11%]
+backend\tests\phase01\test_persistence.py ..................             [ 14%]
+backend\tests\phase01\test_scope.py .........................            [ 20%]
+backend\tests\phase01\test_transactions.py .........                     [ 22%]
+backend\tests\phase01\test_workflow.py ................................. [ 28%]
+...............                                                          [ 32%]
+backend\tests\phase02\test_analysis_races.py ..........                  [ 34%]
+backend\tests\phase02\test_gemini.py .............                       [ 36%]
+backend\tests\phase02\test_media.py ...................................  [ 44%]
+backend\tests\phase02\test_observations.py ............................. [ 50%]
+.......                                                                  [ 51%]
+backend\tests\phase02\test_persistence_and_smoke_guards.py ............. [ 54%]
+..                                                                       [ 54%]
+backend\tests\phase03\test_audit_and_persistence.py ...........          [ 57%]
+backend\tests\phase03\test_queue_and_scope.py ................           [ 60%]
+backend\tests\phase03\test_recovery.py .....................             [ 64%]
+backend\tests\phase03\test_transactions.py ............                  [ 67%]
+backend\tests\phase03\test_workflow.py ...................               [ 71%]
+backend\tests\test_api.py ........                                       [ 73%]
+backend\tests\test_config.py ...................                         [ 77%]
+backend\tests\test_live_validation.py .......................            [ 81%]
+backend\tests\test_policy.py ........................................... [ 90%]
+..........................................                               [ 99%]
+backend\tests\test_security.py .                                         [100%]
+
+======================= 477 passed in 66.45s (0:01:06) ========================
+
+Running at this chunk; see continuation.
+
+--- Recorded command/chunk 21 ---
+PS> .\.venv\Scripts\python.exe -m pytest backend/tests/test_live_validation.py -x
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\project\sentinel_ladder_v2
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collected 24 items
+
+backend\tests\test_live_validation.py ........................           [100%]
+
+============================= 24 passed in 0.92s ==============================
+
+Exit code: 0
+
+--- Recorded command/chunk 22 ---
+PS> .\.venv\Scripts\python.exe -m pytest
+============================= test session starts =============================
+platform win32 -- Python 3.14.7, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\project\sentinel_ladder_v2
+configfile: pyproject.toml
+testpaths: backend/tests
+plugins: anyio-4.16.0
+collected 478 items
+
+backend\tests\phase01\test_challenges.py .............                   [  2%]
+backend\tests\phase01\test_http_boundary.py ..........                   [  4%]
+backend\tests\phase01\test_identity.py .........................
+Running at this chunk; see continuation.
+
+--- Recorded command/chunk 23 ---
+Continuation: [478-test final regression continuation]
+.....    [ 11%]
+backend\tests\phase01\test_persistence.py ..................             [ 14%]
+backend\tests\phase01\test_scope.py .........................            [ 20%]
+backend\tests\phase01\test_transactions.py .........                     [ 21%]
+backend\tests\phase01\test_workflow.py ................................. [ 28%]
+...............                                                          [ 32%]
+backend\tests\phase02\test_analysis_races.py ..........                  [ 34%]
+backend\tests\phase02\test_gemini.py .............                       [ 36%]
+backend\tests\phase02\test_media.py ...................................  [ 44%]
+backend\tests\phase02\test_observations.py ............................. [ 50%]
+.......                                                                  [ 51%]
+backend\tests\phase02\test_persistence_and_smoke_guards.py ............. [ 54%]
+..                                                                       [ 54%]
+backend\tests\phase03\test_audit_and_persistence.py ...........          [ 57%]
+backend\tests\phase03\test_queue_and_scope.py ................           [ 60%]
+backend\tests\phase03\test_recovery.py .....................             [ 64%]
+backend\tests\phase03\test_transactions.py ............                  [ 67%]
+backend\tests\phase03\test_workflow.py ...................               [ 71%]
+backend\tests\test_api.py ........                                       [ 73%]
+backend\tests\test_config.py ...................                         [ 76%]
+backend\tests\test_live_validation.py ........................           [ 82%]
+backend\tests\test_policy.py ........................................... [ 91%]
+..........................................                               [ 99%]
+backend\tests\test_security.py .                                         [100%]
+
+======================= 478 passed in 66.26s (0:01:06) ========================
+
+Exit code: 0
+
+--- Recorded command/chunk 24 ---
+PS> $env:GEMINI_MODEL = 'gemini-3.8-flash'
+$env:SENTINEL_PROVIDER_MODE = 'LIVE_GEMINI'
+$env:SENTINEL_ALLOW_BILLABLE = 'true'
+$env:SENTINEL_PROVIDER_ATTEMPTS = '1'
+$env:SENTINEL_PROVIDER_TIMEOUT_SECONDS = '60'
+.\.venv\Scripts\python.exe -m backend.tools.smoke_gemini --check --env-file .env --image fixtures/live_inputs/gemini_3_8_validation/pump_inspection.png --ground-truth fixtures/live_inputs/gemini_3_8_validation/ground_truth.json --output tracking/LIVE_GEMINI_VALIDATION.local.json
+{"status": "BLOCKED", "provider_mode": "LIVE_GEMINI", "network_called": false, "request_count": 0, "retry_count": 0, "checks": {"GEMINI_API_KEY_PRESENT": true, "requested_model_id": "gemini-3.8-flash", "provider_mode": "LIVE_GEMINI", "model_exact": true, "one_attempt": true, "billing_scope_configured": true, "timeout_seconds": 60.0, "max_output_tokens": 2048, "thinking_level": "LOW", "sdk_retries": 0, "redirects": false, "automatic_continuation": false, "tools_enabled": false, "request_budget": 1, "image_valid": true, "image_sha256": "1d5cb9324088ec180cd70725f14ac33157f5a77c7a5935bd7ee85cf4c7c6046f", "width": 1800, "height": 1200, "private_inputs": true, "structured_schema_available": true, "human_reviewed": false, "expected_fixture_policy_max_permission": 2, "request_budget_unused": true}, "reason_codes": ["HUMAN_IMAGE_AND_GROUND_TRUTH_REVIEW_REQUIRED"]}
+
+Exit code: 1
+
+--- Recorded command/chunk 25 ---
+PS> @'
+from pathlib import Path
+from hashlib import sha256
+import json
+root=Path('fixtures/live_inputs/gemini_3_8_validation')
+expected=json.loads((root/'baseline_hashes.local.json').read_text())
+bad=[name for name,digest in expected.items() if sha256(Path(name).read_bytes()).hexdigest()!=digest]
+truth=json.loads((root/'ground_truth.json').read_text())
+print(f'{len(expected)} baseline files verified; mismatches={bad}')
+print('HUMAN_REVIEWED='+str(truth['human_reviewed']).lower())
+print('LIVE_ATTEMPT_MARKER_EXISTS='+str((root/'one_live_attempt.local.json').exists()).lower())
+print('LIVE_RESULT_EXISTS='+str(Path('tracking/LIVE_GEMINI_VALIDATION.local.json').exists()).lower())
+assert not bad and truth['human_reviewed'] is False
+assert not (root/'one_live_attempt.local.json').exists()
+assert not Path('tracking/LIVE_GEMINI_VALIDATION.local.json').exists()
+'@ | .\.venv\Scripts\python.exe -X utf8 -
+33 baseline files verified; mismatches=[]
+HUMAN_REVIEWED=false
+LIVE_ATTEMPT_MARKER_EXISTS=false
+LIVE_RESULT_EXISTS=false
+
+Exit code: 0
+
+--- Recorded command/chunk 26 ---
+PS> git diff --check
+warning: in the working copy of 'backend/app/gemini_provider.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/tools/smoke_gemini.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/media_and_gemini.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/EXECUTION_LOG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/REQUIREMENT_MATRIX.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tracking/STATUS_LEDGER.md', LF will be replaced by CRLF the next time Git touches it
+
+Exit code: 0
+
+--- Recorded command/chunk 27 ---
+PS> git diff -- backend/app/policy.py backend/app/models.py backend/app/case_service.py backend/requirements.txt pyproject.toml
+(no output)
+
+Exit code: 0
+
+--- Recorded command/chunk 28 ---
+PS> .\.venv\Scripts\python.exe -m pip check
+No broken requirements found.
+
+Exit code: 0

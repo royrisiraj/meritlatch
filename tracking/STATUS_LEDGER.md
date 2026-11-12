@@ -1,6 +1,8 @@
 # SENTINEL//LADDER V2 — status ledger
 
-**Updated 12 November 2026 — Phase 03.** Complete local suite: **454 passed, zero failed** (375 preserved + 79 new), 67.99s. All 20 baseline test files match pre-edit SHA-256; pure policy/models/providers/dependency pins unchanged. Focused authorization/concurrency: 28 passed. Actual authenticated TCP/HTTP JPEG completion, unsafe denial, wrong-asset denial and rejection/correction/provider-recovery journeys passed with labeled canned MOCK_AI. See [execution log](EXECUTION_LOG.md), [Phase 03 report](PHASE_03_REPORT.md) and [API](../docs/workflow_phase03.md). LIVE_GEMINI is **BLOCKED - AWAITING AUTHORIZATION**, independently of local Phase 03 acceptance. No live request, customer image, paid resource or deployment occurred. Prior reports remain historical evidence.
+**Current checkpoint — 12 November 2026: live validation Stage A.** **478 tests passed, zero failed** (454 preserved + 24 new offline checks), 66.26s. LIVE_GEMINI is **BLOCKED — awaiting human image/ground-truth review**; billing scope for at most one `gemini-3.8-flash` call is already authorized. Key presence=true, private configuration unchanged, zero inference requests/retries. See [validation report](LIVE_GEMINI_VALIDATION_REPORT.md) and [execution log](EXECUTION_LOG.md). Stop before Stage B until human confirmation; no Phase 04 authorization.
+
+Phase 03 historical local gate: 454 passed, zero failed (375 preserved + 79 new), 67.99s; actual authenticated TCP/HTTP completion, unsafe/wrong-asset denials and rejection/correction/recovery passed using labeled canned MOCK_AI. [Phase 03 report](PHASE_03_REPORT.md) remains its evidence; these were not live vision results. No customer image, paid resource or deployment occurred.
 
 | Deliverable | Status | Test/evidence link | Owner | Known risks |
 |---|---|---|---|---|
@@ -14,7 +16,7 @@
 | Persistent jobs, cases, migration and logical audit | TESTED | Workflow namespace v1 added; core/media v1 unchanged; legacy approval/history migration, restart/rejection/operation persistence and append-only tests passed | Codex / Phase 03 | Privileged DB owner can alter history; no downgrade/retention/orphan repair; old media current-only |
 | Safe media intake and SHA-256 lookup | TESTED | 35 media tests plus resource/provenance/persistence checks; JPEG/PNG HTTP smoke, scoped duplicates/private reads | Codex / Phase 02 | JPEG/PNG only; local ACLs/operator security; no authenticity/perceptual-hash claim |
 | Mock perception adapter | TESTED | Typed default UNKNOWN observer and internal positive fixtures, failure/schema/semantic tests; actual HTTP MOCK_AI L2 path | Codex / Phase 02 | Mock is not optical extraction or a real-world benchmark |
-| Live Gemini perception adapter | IN_PROGRESS | Official google-genai adapter; 13 SDK transport/config tests with stubs; docs-verified default `gemini-3.6-flash` | Codex / Phase 02 | **BLOCKED LIVE verification**: no approved call or supplied consented/manual-labeled image; no account availability/accuracy result |
+| Live Gemini perception adapter | IN_PROGRESS | Official SDK retained; current validation selects exact `gemini-3.8-flash` via temporary process override, LOW thinking, one-send guard; 24 new offline validation tests pass | Codex / controlled validation | **BLOCKED pending human image/ground-truth review**; one-call billing scope authorized, zero live requests; account availability/accuracy not verified |
 | Asynchronous analysis version safety | TESTED | 10 concurrent/late-result tests: both completion orders, expiry/logout/invoice/policy/assignment/challenge changes, pending L3 invalidation, rollback | Codex / Phase 02 | Process crashes can leave pending records/orphan files, never automatic permission promotion |
 | Contractor backend workflow | TESTED | New operation-bound upload replay, fresh-challenge corrected evidence and explicit bounded provider reanalysis; 21 recovery tests plus rejection/race tests and actual HTTP recovery | Codex / Phase 03 | No portal; mock is not optical extraction; no automatic retries/orphan repair |
 | Manager backend workflow | TESTED | Approved job defaults, queue/filter/paging, detailed review, durable rejection, current L2 sign-off and idempotent simulation; 19 workflow + 16 queue/scope tests | Codex / Phase 03 | No portal; queue scans 500/page, review history caps 100; no real payment |
@@ -28,4 +30,20 @@
 
 Allowed status values: `PLANNED`, `IN_PROGRESS`, `TESTED`, `DEPLOYED` (DEPLOYED only for running cloud artifacts). For interviews use `COMPLETED` only when actually performed and documented. Track `BLOCKED` in notes; don't silently downgrade tests. Attach actual commands/test stdout in `tracking/EXECUTION_LOG.md` (create as work begins).
 
-Phase 00/01: **ACCEPTED foundation**. User committed Phase 02 as `0727e05` and authorized Phase 03. Phase 03 local backend gate: **PASS / TESTED**, awaiting user review; stop here. LIVE_GEMINI remains **BLOCKED - AWAITING AUTHORIZATION**, not a local mock-test success or an authorized billable request. Python 3.11/3.12, remote CI, cloud and real image interpretation remain NOT RUN. No tests were weakened; no test failures occurred in recorded Phase 03 runs. No new commit, push, reset, remote, paid resource, real transfer, deployment, frontend or Phase 04 work occurred.
+Phase 00/01: **ACCEPTED foundation**. User committed Phase 02 as `0727e05` and authorized Phase 03. Phase 03 local backend gate: **PASS / TESTED**; subsequently user committed it as `562e5eb`. Historical Phase 03 live status was BLOCKED - AWAITING AUTHORIZATION. The new controlled live-validation checkpoint below records current authorization separately. Python 3.11/3.12, remote CI, cloud and real image interpretation remain NOT RUN. No tests were weakened; no test failures occurred in recorded Phase 03 runs. No agent commit, push, reset, remote, paid resource, real transfer, deployment, frontend or Phase 04 work occurred.
+
+## Controlled live validation — Stage A, 12 November 2026
+
+Status: **IN_PROGRESS / BLOCKED — HUMAN IMAGE AND GROUND-TRUTH REVIEW REQUIRED**.
+User authorized at most one `gemini-3.8-flash` inference; the billing scope does
+not need renewed approval. Key presence=true, ignored/untracked `.env` verified
+without disclosure or edits. Local Pillow synthetic card and original-schema
+expected fields are prepared in ignored `fixtures/live_inputs/gemini_3_8_validation/`.
+`human_reviewed=false`. Detailed offline preflight reports only that review block;
+request_count=0, retry_count=0, budget unused. No live call or model fallback.
+
+Offline one-send/error/redirect/review-binding/runner tests pass. The complete
+current regression count and actual stdout are in
+[`LIVE_GEMINI_VALIDATION_REPORT.md`](LIVE_GEMINI_VALIDATION_REPORT.md) and its
+command evidence. All 454 Phase 03 baseline tests, pure policy, manager logic,
+dependency pins and `.env` remain unchanged. No Phase 04 work authorized.

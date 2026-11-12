@@ -2631,3 +2631,53 @@ The first final `git diff --check` found one extra EOF blank in this appended lo
 removed it and reran successfully (exit 0; only Windows LF/CRLF notices).
 Final `git status --short --untracked-files=all`: 16 modified and 14 new files,
 no deletions, no staged changes. Full status is in the Phase 03 report and evidence.
+
+## Controlled Gemini 3.8 validation — Stage A (12 November 2026)
+
+User authorized at most ONE potentially billable gemini-3.8-flash inference,
+conditional on human review of the particular image/ground truth. Billing scope
+already authorized; image review has NOT occurred. STOP before Stage B.
+
+Git baseline: clean, HEAD 562e5eb (Phase 03). Preserved existing files/data,
+all 454 baseline tests, pure policy, manager approval logic, pins and .env.
+Secure check: GEMINI_API_KEY_PRESENT=true; .env is a file, ignored, untracked.
+No credential contents or auth headers printed; configuration not overwritten.
+
+Executed local Pillow preparation, inspected its synthetic PNG, and wrote the
+ignored draft ground truth with human_reviewed=false. Image is not a photograph.
+Expected draft: PUMP-042, DEMO-7C4A-9F2B, 35 PSI, RUNNING, 2099-12-31.
+No human confirmation is inferred from drawing construction or assistant review.
+
+Actual tests:
+- Before changes: 454 passed in 60.34s.
+- Final offline validation tests: 24 passed in 0.92s.
+- Final full suite: 478 passed in 66.26s (0:01:06), zero failed, exit 0.
+- pip check: No broken requirements found., exit 0.
+- Baseline hashes: 33 test/policy/manager/dependency/config files; mismatches=[].
+- All 27 previous test files unchanged; pure policy/models/case_service and pins
+  have empty Git diff. No dependencies installed.
+
+Two initial new-test setup/serialization assumptions failed and were corrected:
+Windows asyncio needs its loopback self-pipe; installed SDK uses original proto
+names for nested thinking keys. Final assertions still require LOW/no-thought
+settings, one-send count and no secret/error leak. All original tests untouched.
+
+Detailed offline --check uses temporary exact-model/provider/attempt/deadline
+overrides and explicit ignored .env file. BLOCKED only for
+HUMAN_IMAGE_AND_GROUND_TRUTH_REVIEW_REQUIRED; actual inference count=0, retries=0,
+budget unused, human_reviewed=false. Request flags for Stage B were NOT executed.
+Safe checks do not construct an SDK client or reserve an attempt. Default bare
+--check and missing live approvals retain original no-credential/no-network guard.
+
+Added tool-only single-send transport, exact destination/no redirects/no proxies/
+no retries, exclusive fsynced budget reservation, image/model/review binding,
+bounded LOW thinking for exact 3.8 and safe usage/counter reporting. Reused SDK
+adapter/prompt/schema; no independent integration or policy authority. Offline
+tests use dummy credentials/MockTransport only. No actual Gemini output, latency,
+usage, accuracy or billing total exists. Documentation verification is separate
+from account availability or live inference.
+
+See LIVE_GEMINI_VALIDATION_REPORT.md and
+LIVE_GEMINI_VALIDATION_COMMAND_OUTPUT.txt for actual commands, output, manifest,
+risks and next gate. Stage A ends awaiting human image/ground-truth confirmation.
+No commit, push, reset, deployment, resource provisioning or Phase 04 work.

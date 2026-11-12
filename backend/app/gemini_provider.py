@@ -38,6 +38,9 @@ class GeminiPerceptionProvider:
             max_output_tokens=2048, response_mime_type="application/json",
             response_json_schema=VisualObservation.model_json_schema(), tools=[],
             automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True), automatic_continuation=False)
+        if self.model_id == "gemini-3.8-flash":
+            # Supported LOW/MEDIUM/HIGH, not MINIMAL. Fixed before evaluation.
+            config.thinking_config = types.ThinkingConfig(thinking_level="LOW", include_thoughts=False)
         factory = self._client_factory or genai.Client
         try:
             async with asyncio.timeout(self.settings.provider_timeout_seconds):

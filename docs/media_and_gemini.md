@@ -188,6 +188,54 @@ Safe readiness check (no credentials read, no network):
 .\.venv\Scripts\python.exe -m backend.tools.smoke_gemini --check
 ```
 
+The dedicated post-Phase-03 validation checkpoint targets **gemini-3.8-flash**
+through a temporary process `GEMINI_MODEL` override; the normal application default
+and `.env` are preserved. See
+[`LIVE_GEMINI_VALIDATION_REPORT.md`](../tracking/LIVE_GEMINI_VALIDATION_REPORT.md).
+One-call billing scope is authorized, but **human image/ground-truth review is
+pending**. No inference was sent during Stage A.
+
+The existing runner now supports detailed **offline** `--check` with all paths.
+This form reads the ignored explicit env file securely, reports only key presence,
+validates bytes/schema/model/config/private paths/review binding/request budget,
+and never constructs a provider or reserves an attempt. Run in a disposable
+PowerShell terminal so the overrides do not affect another server:
+
+```powershell
+$env:GEMINI_MODEL = 'gemini-3.8-flash'
+$env:SENTINEL_PROVIDER_MODE = 'LIVE_GEMINI'
+$env:SENTINEL_ALLOW_BILLABLE = 'true'
+$env:SENTINEL_PROVIDER_ATTEMPTS = '1'
+$env:SENTINEL_PROVIDER_TIMEOUT_SECONDS = '60'
+.\.venv\Scripts\python.exe -m backend.tools.smoke_gemini --check --env-file .env --image fixtures/live_inputs/gemini_3_8_validation/pump_inspection.png --ground-truth fixtures/live_inputs/gemini_3_8_validation/ground_truth.json --output tracking/LIVE_GEMINI_VALIDATION.local.json
+```
+
+Until user confirmation, `human_reviewed` stays false and this returns BLOCKED,
+request_count=0. Do not toggle review fields on the user's behalf. After explicit
+confirmation, record the reviewer, `human_reviewed: true` and `human_review_sha256`
+from the runner's `review_digest(truth)`, binding the exact expected observations,
+policy context, image SHA-256 and model. Changed reviewed inputs block execution.
+This local binding detects edits; it is not a signed identity or authenticity proof.
+The original expected-observation/policy-context field names are retained;
+`validation_model`, `image_sha256` and review digest are additional safety metadata.
+The local Pillow preparation tool creates the ignored image/unreviewed draft and
+refuses to overwrite existing review artifacts. Its card is not a photograph.
+
+The validation runner reuses `GeminiPerceptionProvider` and its existing prompt/
+schema. A tool-only SDK transport permits exactly one attempted HTTPS POST to
+the exact 3.8 model endpoint, disables redirects/proxies/transport retries, rejects
+synchronous/other-destination/second sends, and records safe usage metadata when
+provided. SDK/application attempts are one; tools/function calling/continuation
+remain disabled. 3.8 uses documented LOW thinking, no thought summaries, and the
+existing 2048-token cap. No generation parameter is tuned against returned output.
+Before I/O, an exclusive fsynced `one_live_attempt.local.json` marker under the
+private input folder reserves the checkpoint. Preserve it after errors/crashes;
+changing output filenames does not authorize another call. Request count means
+local attempted sends, not proof of remote delivery/processing or billing.
+
+The older generic live example below requires these reviewed binding fields and
+the exact 3.8 override at this checkpoint. Do not execute without human confirmation.
+
 After explicit user approval for one potentially billable call, valid key/model
 configuration, reviewed fictional input and consent, the operator can run:
 
