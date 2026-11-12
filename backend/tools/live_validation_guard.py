@@ -5,8 +5,33 @@ automatic retry, proxy routing, redirect, or second outbound request is allowed.
 """
 
 import re
+import ssl
 
 import httpx2
+
+
+def http_error_category(status):
+    """Status only: never inspect untrusted response bodies or error messages."""
+    known = {400: "REQUEST_ERROR", 401: "AUTHENTICATION_FAILURE",
+             403: "PERMISSION_FAILURE", 404: "MODEL_OR_ENDPOINT_NOT_FOUND",
+             408: "REQUEST_TIMEOUT", 429: "RATE_LIMIT"}
+    return known.get(status, "SERVER_FAILURE" if 500 <= status <= 599 else
+                     "REDIRECT_BLOCKED" if 300 <= status <= 399 else "HTTP_ERROR")
+
+
+def transport_error_category(error):
+    """Recognize TLS by exception type/cause only; never stringify exceptions."""
+    current, seen = error, set()
+    for _ in range(8):
+        if current is None or id(current) in seen:
+            break
+        seen.add(id(current))
+        if isinstance(current, ssl.SSLError):
+            return "TLS_FAILURE"
+        current = current.__cause__ or current.__context__
+    if isinstance(error, httpx2.TimeoutException):
+        return "TRANSPORT_TIMEOUT"
+    return "TRANSPORT_FAILURE"
 
 
 class DenySyncTransport(httpx2.BaseTransport):
@@ -34,8 +59,15 @@ class SingleRequestGuard(httpx2.AsyncBaseTransport):
         # No await between checking/consuming the budget. Count attempted sends,
         # not proof of Google's processing, delivery, or billing.
         self.request_count += 1
-        response = await self.inner.handle_async_request(request)
-        await response.aread()
+        try:
+            response = await self.inner.handle_async_request(request)
+            if response.is_error or response.is_redirect:
+                self.response_metadata.update(http_status=response.status_code,
+                    error_category=http_error_category(response.status_code))
+            await response.aread()
+        except httpx2.TransportError as exc:
+            self.response_metadata["error_category"] = transport_error_category(exc)
+            raise
         # Keep only bounded numeric usage and a safe finish label, never payloads,
         # prompt text, headers, URLs, credentials, or reasoning traces.
         if response.is_success and len(response.content) <= 1_048_576:

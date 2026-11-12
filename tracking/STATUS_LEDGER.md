@@ -1,5 +1,23 @@
 # SENTINEL//LADDER V2 — status ledger
 
+**Latest checkpoint — final offline Gemini diagnostic, 12 November 2026.**
+Root cause of the historical PROVIDER_UNAVAILABLE: **UNKNOWN**. Local MockTransport
+reproduced diagnostic information loss (HTTP 400 became a generic unavailable
+error with no status). A small validation-transport change now retains numeric
+HTTP status and fixed safe error categories, preserving existing codes/authority/
+request behavior. No configuration/model/SDK changes or real network requests.
+See [GEMINI_FINAL_DIAGNOSTIC.md](GEMINI_FINAL_DIAGNOSTIC.md) for executed results.
+
+Final offline suite: **493 passed in 76.04s**, zero failed (478 unchanged + 15 new).
+Focused diagnostics/guard suite: 39 passed in 1.04s; pip check clean; 43 baseline
+test/source/private-file hashes unchanged. Safe metadata correction TESTED locally;
+live perception remains unsuccessful/unverified.
+
+**Sequencing:** Gemini troubleshooting is DEFERRED until Phases 04–07 are complete.
+Proceeding phases use explicitly labeled MOCK_AI/SYNTHETIC data; no fabricated
+LIVE_GEMINI artifacts. The consumed marker/private result are unchanged. Phase 04
+is the next separately authorized work, not implemented in this diagnostic.
+
 **Current checkpoint — 12 November 2026: live validation Stage B.** **FAILED — LIVE API OR SCHEMA ERROR**, reason `PROVIDER_UNAVAILABLE`. User human review recorded, offline preflight READY, then exactly one counted `gemini-3.8-flash` request attempt, zero retries/fallbacks, elapsed 4.6740s. No observations/usage returned; no permission elevation. The one-call budget is used and the private marker/result are preserved. See [validation report](LIVE_GEMINI_VALIDATION_REPORT.md) for current regressions and [execution log](EXECUTION_LOG.md). Stop here; no Phase 04 authorization.
 
 Phase 03 historical local gate: 454 passed, zero failed (375 preserved + 79 new), 67.99s; actual authenticated TCP/HTTP completion, unsafe/wrong-asset denials and rejection/correction/recovery passed using labeled canned MOCK_AI. [Phase 03 report](PHASE_03_REPORT.md) remains its evidence; these were not live vision results. No customer image, paid resource or deployment occurred.
@@ -16,7 +34,7 @@ Phase 03 historical local gate: 454 passed, zero failed (375 preserved + 79 new)
 | Persistent jobs, cases, migration and logical audit | TESTED | Workflow namespace v1 added; core/media v1 unchanged; legacy approval/history migration, restart/rejection/operation persistence and append-only tests passed | Codex / Phase 03 | Privileged DB owner can alter history; no downgrade/retention/orphan repair; old media current-only |
 | Safe media intake and SHA-256 lookup | TESTED | 35 media tests plus resource/provenance/persistence checks; JPEG/PNG HTTP smoke, scoped duplicates/private reads | Codex / Phase 02 | JPEG/PNG only; local ACLs/operator security; no authenticity/perceptual-hash claim |
 | Mock perception adapter | TESTED | Typed default UNKNOWN observer and internal positive fixtures, failure/schema/semantic tests; actual HTTP MOCK_AI L2 path | Codex / Phase 02 | Mock is not optical extraction or a real-world benchmark |
-| Live Gemini perception adapter | IN_PROGRESS | Human-reviewed exact 3.8 sample; preflight READY; one attempted request failed PROVIDER_UNAVAILABLE; 24 guard tests pass | Codex / controlled validation | Live success/perception remains unverified; budget used, no retry/fallback authorized; no specific HTTP status retained |
+| Live Gemini perception adapter | IN_PROGRESS | Historical one-attempt failure unchanged; final offline investigation cannot recover its status. New safe status/transport classification verified with local fixtures only | Codex / final diagnostic | DEFERRED until Phases 04–07 complete; root UNKNOWN, budget used, no more live calls; no verified perception result |
 | Asynchronous analysis version safety | TESTED | 10 concurrent/late-result tests: both completion orders, expiry/logout/invoice/policy/assignment/challenge changes, pending L3 invalidation, rollback | Codex / Phase 02 | Process crashes can leave pending records/orphan files, never automatic permission promotion |
 | Contractor backend workflow | TESTED | New operation-bound upload replay, fresh-challenge corrected evidence and explicit bounded provider reanalysis; 21 recovery tests plus rejection/race tests and actual HTTP recovery | Codex / Phase 03 | No portal; mock is not optical extraction; no automatic retries/orphan repair |
 | Manager backend workflow | TESTED | Approved job defaults, queue/filter/paging, detailed review, durable rejection, current L2 sign-off and idempotent simulation; 19 workflow + 16 queue/scope tests | Codex / Phase 03 | No portal; queue scans 500/page, review history caps 100; no real payment |

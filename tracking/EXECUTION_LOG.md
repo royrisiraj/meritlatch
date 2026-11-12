@@ -2726,3 +2726,41 @@ No costs/usage/remote processing, real-world accuracy or authenticity invented.
 
 Stop before Phase 04. No commit, push, deploy, history reset, runtime database/
 media deletion, actual payment, equipment control or cloud provisioning.
+
+## Final offline Gemini diagnostic — 12 November 2026
+
+Baseline 745a8a7, initially clean. User forbids all real Gemini/list-models/network
+diagnostics and defers further Gemini work until Phases 04–07 are complete.
+
+Original live root cause UNKNOWN. Captured exact installed SDK request through
+existing adapter/MockTransport with dummy key and original fictional pixels;
+external sockets blocked. Public snapshot redacts inline bytes, retains all other
+body fields. URL exact v1beta/gemini-3.8-flash; LOW/no-thought, 2048 tokens,
+temperature 0, strict existing schema; no fallback or configuration changes.
+Local SSL context: CERT_REQUIRED/check_hostname=true, not a real TLS handshake.
+Key presence=true, .env source, override=false; no secret printed/transmitted.
+
+One reproduced defect: canned HTTP 400 maps to old PROVIDER_UNAVAILABLE with
+empty diagnostics. Only guarded validation transport changed to retain numeric
+HTTP status/fixed HTTP/TLS/transport category without messages/bodies/headers.
+Existing public codes/retries/request/policy/authorization behavior preserved.
+This fixes observability loss, not the unknown old rejection. No more cause
+investigation or speculative patches after the focused pass.
+
+Actual verification:
+- .\.venv\Scripts\python.exe -m pytest backend/tests/test_gemini_final_diagnostic.py backend/tests/test_live_validation.py -x
+  => 39 passed in 1.04s, exit 0.
+- .\.venv\Scripts\python.exe -m pytest | Tee-Object -FilePath tracking/GEMINI_FINAL_PYTEST_OUTPUT.txt
+  followed by exit $LASTEXITCODE => 493 passed in 76.04s, exit 0.
+- .\.venv\Scripts\python.exe -m pip check => No broken requirements found., exit 0.
+- Hash verification => 43 baseline test/source/private files, mismatches=[], exit 0.
+- Protected backend/app/runner/dependency Git diff => empty, exit 0.
+
+All 478 old tests unchanged, 15 new offline tests. Historical live result FAILED,
+one send/zero retries; consumed marker/image/review/.env/result unchanged. New
+real request count zero; no live output fabricated. No SDK install/version/model
+change, commit, push, reset, deploy, paid resource or Phase 04 implementation.
+
+Evidence: GEMINI_FINAL_DIAGNOSTIC.md, GEMINI_FINAL_REQUEST_SNAPSHOT.json and
+GEMINI_FINAL_PYTEST_OUTPUT.txt. Future authorized phases use explicit MOCK_AI or
+SYNTHETIC fixtures. Gemini troubleshooting deferred through completion of 04–07.

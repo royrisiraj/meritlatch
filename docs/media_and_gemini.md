@@ -1,12 +1,22 @@
 # Phase 02 — private image evidence and untrusted perception
 
+**Current sequencing gate — final offline diagnostic, 12 November 2026:** the
+original live failure cause is UNKNOWN. No additional Gemini request or credentialed
+network diagnostic was made. The consumed attempt marker/result remain preserved.
+Gemini troubleshooting is **DEFERRED until Phases 04, 05, 06 and 07 are complete**.
+Those phases must use explicitly labeled MOCK_AI/SYNTHETIC data as needed;
+never fabricate LIVE_GEMINI observations or silently fall back from live.
+Phase 04 requires its own authorization and is not implemented here. The live
+commands below are historical/guarded references, not permission to rerun them.
+See [final diagnostic](../tracking/GEMINI_FINAL_DIAGNOSTIC.md).
+
 Use the existing `backend.app.api:create_app --factory`. No old backend rebuild,
 frontend, video, cloud adapter or real financial action is introduced.
 
 Phase 03 extends this retained intake with manager review/rejection, safely bound
 upload replay and explicit provider reanalysis. Current recovery/API contracts:
 [`workflow_phase03.md`](workflow_phase03.md). Live verification remains separately
-BLOCKED - AWAITING AUTHORIZATION.
+unsuccessful and deferred under the current sequencing gate above.
 
 ## Upload contract
 

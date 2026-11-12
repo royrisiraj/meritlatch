@@ -1,5 +1,14 @@
 # Master Book requirement-to-code traceability
 
+**Final offline Gemini diagnostic — 12 November 2026:** original live root cause
+UNKNOWN; no new Gemini/list-models/network diagnostic. One reproduced information-
+loss defect corrected only in validation transport: safe numeric HTTP status/
+fixed HTTP/TLS/transport category, original public codes and fail-closed behavior
+unchanged. R-008/R-018/R-022 remain IN_PROGRESS with live work DEFERRED until
+Phases 04–07 finish. Subsequent phases use explicit MOCK_AI/SYNTHETIC data only
+where needed; never fabricated LIVE_GEMINI. Evidence: GEMINI_FINAL_DIAGNOSTIC.md.
+No Phase 04 implementation or authorization is implied by this checkpoint.
+
 **Live validation Stage B update — 12 November 2026:** R-008/R-018/R-022 remain
 IN_PROGRESS. User confirmed the exact fictional image/ground truth; preflight
 READY. The one authorized `gemini-3.8-flash` attempt failed PROVIDER_UNAVAILABLE,
