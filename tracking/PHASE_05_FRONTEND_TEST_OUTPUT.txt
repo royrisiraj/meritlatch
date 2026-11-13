@@ -1,0 +1,13 @@
+
+> sentinel-ladder-portals@0.5.0 test
+> vitest run
+
+
+ RUN  v4.1.12 D:/project/sentinel_ladder_v2/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  36 passed (36)
+   Start at  09:48:35
+   Duration  6.47s (transform 276ms, setup 614ms, import 513ms, tests 5.51s, environment 1.41s)
+

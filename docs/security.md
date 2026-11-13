@@ -1,5 +1,12 @@
 # Security and limits
 
+Phase 05 adds [functional React portals](portals_phase05.md), in-memory bearer
+sessions, a loopback same-origin development proxy and three scoped read views.
+Server rules, provider/approval boundaries and all old tests remain unchanged.
+Browser tests cover version/tenant/role/session denial and explicit upload replay.
+No live inference, publication, payment or production deployment.
+
+
 Phase 04 assurance controls and scope are documented in
 [`assurance_phase04.md`](assurance_phase04.md). ENGINEER-only tenant-wide synthetic
 security access does not grant business-manager approval or access to another

@@ -16,4 +16,6 @@ fixtures/live_inputs/
 *.local.json
 node_modules/
 dist/
+frontend/test-results/
+frontend/playwright-report/
 *.egg-info/

@@ -1,0 +1,198 @@
+{
+  "source": "ISOLATED_CANNED_MOCK_AI_AND_SYNTHETIC",
+  "run_root": ".venv/phase05-browser-1794544569437",
+  "screenshots": [
+    {
+      "path": "screenshots/portals-browser-tenant-and-7cad1-ion-and-keyboard-navigation/revoked-session-login.png",
+      "pixels": [
+        1440,
+        1000
+      ],
+      "sha256": "0f76b7ba40ba2953d178fc67e342a2d9e41538d55bc5729692087eb2ad95fcab"
+    },
+    {
+      "path": "screenshots/portals-ordinary-MOCK-AI-r-2a86d-upload-and-responsive-views/contractor-unknown-1440.png",
+      "pixels": [
+        1440,
+        3749
+      ],
+      "sha256": "e5b4152a326c8eaa8f94f152ad39b98098cfeef8df74bfb3055c8b017793d846"
+    },
+    {
+      "path": "screenshots/portals-ordinary-MOCK-AI-r-2a86d-upload-and-responsive-views/contractor-unknown-375.png",
+      "pixels": [
+        375,
+        5317
+      ],
+      "sha256": "156ed0acf206608e1c6181435447aa83c97ec42c14c4d4a2786658eda6cfccad"
+    },
+    {
+      "path": "screenshots/portals-ordinary-MOCK-AI-r-2a86d-upload-and-responsive-views/contractor-unknown-768.png",
+      "pixels": [
+        768,
+        4127
+      ],
+      "sha256": "65d6387137baa450718615a00e43f69868e44e51c0fecc2f3ba3cd25493ed360"
+    },
+    {
+      "path": "screenshots/portals-real-browser-contr-64879-review-and-agent-simulation/contractor-mobile.png",
+      "pixels": [
+        375,
+        1145
+      ],
+      "sha256": "f88e5ebf680a97ee7a876c8ea564db0bd1a53921a78db1219b81a40297367cbf"
+    },
+    {
+      "path": "screenshots/portals-real-browser-contr-64879-review-and-agent-simulation/contractor-unsafe.png",
+      "pixels": [
+        375,
+        5774
+      ],
+      "sha256": "6a26a45b75b766f317ed75baf02f08e86c94b8e1b9fcdf30ec06320659e19a0f"
+    },
+    {
+      "path": "screenshots/portals-real-browser-contr-64879-review-and-agent-simulation/manager-approved.png",
+      "pixels": [
+        1440,
+        4684
+      ],
+      "sha256": "8aa4f5c2fe2d559b6f430112db68a2055d79f07d770bba245597f51d630070c4"
+    },
+    {
+      "path": "screenshots/portals-real-browser-contr-64879-review-and-agent-simulation/manager-audit.png",
+      "pixels": [
+        1440,
+        4684
+      ],
+      "sha256": "833fd94020ba3efca531add3f29b22350308cea1b5866d8d60c85e36ec065e8a"
+    },
+    {
+      "path": "screenshots/portals-real-browser-contr-64879-review-and-agent-simulation/manager-queue.png",
+      "pixels": [
+        1440,
+        1000
+      ],
+      "sha256": "bd4a9f7d41517aaae7fd6808215e09966395fa686fe401d52730460cea3e6917"
+    },
+    {
+      "path": "screenshots/portals-real-browser-contr-64879-review-and-agent-simulation/manager-rejected.png",
+      "pixels": [
+        1440,
+        4994
+      ],
+      "sha256": "5af9434f0253a787f9a799f633b4d04086629dd432e6992757596bebcabfa9ad"
+    },
+    {
+      "path": "screenshots/portals-real-browser-engin-81d8a-ndependent-review-and-gates/engineer-dashboard.png",
+      "pixels": [
+        1440,
+        1000
+      ],
+      "sha256": "0b8104d40f31fefdd2402bbef7feee7fc8e3658f31f723ce770de858391cac3e"
+    },
+    {
+      "path": "screenshots/portals-real-browser-engin-81d8a-ndependent-review-and-gates/engineer-finding.png",
+      "pixels": [
+        1440,
+        2208
+      ],
+      "sha256": "be88069eec5d7645f23d368af7e50026a71f050d853b2a9ab04ac572f30bd8ce"
+    },
+    {
+      "path": "screenshots/portals-real-browser-engin-81d8a-ndependent-review-and-gates/engineer-reviewed-gate.png",
+      "pixels": [
+        1440,
+        2684
+      ],
+      "sha256": "22a6000b793d9055f4dba06df3aef98962ccd9c7d112e9889483df364aaa3bd1"
+    },
+    {
+      "path": "screenshots/portals-real-HTTP-direct-d-f907c-version-and-network-failure/unauthorized.png",
+      "pixels": [
+        1440,
+        1000
+      ],
+      "sha256": "c15809f71902448d3fc7823b62bb2aa8a1b47b8db5039ad3d6bc545a3aa0f557"
+    }
+  ],
+  "executed_assurance": [
+    {
+      "run_id": "a3bd6464-bb69-4604-bb86-97d1d81d2b98",
+      "candidate_id": "8de2f97b-aaa3-4999-9b03-b2853f91563b",
+      "profile": "WEAK_TEST_ONLY",
+      "status": "COMPLETE",
+      "summary": {
+        "correctly_permitted_valid": 6,
+        "correctly_restricted_invalid": 25,
+        "failed": 2,
+        "false_approval_denominator": 26,
+        "false_approval_rate": 0.038461538461538464,
+        "false_approvals": 1,
+        "false_negative": 1,
+        "false_positive": 0,
+        "false_rejection_denominator": 6,
+        "false_rejection_rate": 0.0,
+        "false_rejections": 0,
+        "passed": 36,
+        "positive_class": "SHOULD_DENY",
+        "rates_scope": "BINARY_ONLY_EXCLUDES_REVIEW_AND_ABSTENTIONS",
+        "regression_failures": 2,
+        "review_abstentions": 0,
+        "review_bypasses": 1,
+        "review_expected": 6,
+        "skipped": 0,
+        "source": "SYNTHETIC",
+        "total_executed": 38,
+        "total_expected": 38,
+        "true_negative": 6,
+        "true_positive": 25,
+        "unevaluable": 0
+      }
+    },
+    {
+      "run_id": "6e183216-a5b6-4605-ac09-e721ddec2cbd",
+      "candidate_id": "d5365c08-fea4-42c6-876d-8c0f47305f71",
+      "profile": "SAFE_BASELINE",
+      "status": "COMPLETE",
+      "summary": {
+        "correctly_permitted_valid": 6,
+        "correctly_restricted_invalid": 26,
+        "failed": 0,
+        "false_approval_denominator": 26,
+        "false_approval_rate": 0.0,
+        "false_approvals": 0,
+        "false_negative": 0,
+        "false_positive": 0,
+        "false_rejection_denominator": 6,
+        "false_rejection_rate": 0.0,
+        "false_rejections": 0,
+        "passed": 38,
+        "positive_class": "SHOULD_DENY",
+        "rates_scope": "BINARY_ONLY_EXCLUDES_REVIEW_AND_ABSTENTIONS",
+        "regression_failures": 0,
+        "review_abstentions": 0,
+        "review_bypasses": 0,
+        "review_expected": 6,
+        "skipped": 0,
+        "source": "SYNTHETIC",
+        "total_executed": 38,
+        "total_expected": 38,
+        "true_negative": 6,
+        "true_positive": 26,
+        "unevaluable": 0
+      }
+    }
+  ],
+  "persisted_manager_review_counts": {
+    "APPROVED": 1,
+    "REJECTED": 1
+  },
+  "persisted_simulated_action_counts": {
+    "complete_simulated_action": 1,
+    "prepare_invoice": 1
+  },
+  "persisted_gate_counts": {
+    "BLOCKED": 1,
+    "READY_FOR_MANUAL_RELEASE": 1
+  }
+}

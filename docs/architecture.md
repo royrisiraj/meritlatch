@@ -1,5 +1,12 @@
 # Architecture
 
+Phase 05 adds [functional React portals](portals_phase05.md), in-memory bearer
+sessions, a loopback same-origin development proxy and three scoped read views.
+Server rules, provider/approval boundaries and all old tests remain unchanged.
+Browser tests cover version/tenant/role/session denial and explicit upload replay.
+No live inference, publication, payment or production deployment.
+
+
 Phase 04 adds a separate engineering plane within the existing factory:
 [`assurance_phase04.md`](assurance_phase04.md). Typed models/router, source-
 controlled input generator and independent labels, isolated SUT adapters/worker,

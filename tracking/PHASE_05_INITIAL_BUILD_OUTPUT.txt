@@ -1,0 +1,5 @@
+
+> sentinel-ladder-portals@0.5.0 build
+> tsc --noEmit && vite build
+
+src/features/cases.tsx(11,1473): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.

@@ -1,0 +1,59 @@
+
+> sentinel-ladder-portals@0.5.0 e2e
+> playwright test
+
+npm.cmd : [WebServer] (node:10856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:2 char:1
++ npm.cmd run e2e 2>&1 | Tee-Object -FilePath ..\tracking\PHASE_05_BROW ...
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([WebServer] (no... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:37448) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:16728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\portals.spec.ts:13:1 › real browser contractor correction, manager bound review and agent simulation (3.9s)
+  ok 2 e2e\portals.spec.ts:27:1 › real browser engineer weak finding, remediation, independent review and gates (8.5s)
+  ok 3 e2e\portals.spec.ts:36:1 › real HTTP direct denials plus browser wrong-role, stale version and network failure (1.6s)
+  ok 4 e2e\portals.spec.ts:47:1 › ordinary MOCK_AI remains UNKNOWN through real browser upload and responsive views (1.5s)
+  ok 5 e2e\portals.spec.ts:53:1 › ambiguous real upload is explicitly replayed with one evidence version (924ms)
+  x  6 e2e\portals.spec.ts:58:1 › browser tenant and assignment denial, revoked session and keyboard navigation (16.6s)
+
+
+  1) e2e\portals.spec.ts:58:1 › browser tenant and assignment denial, revoked session and keyboard navigation 
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Create test candidate' })
+        - locator resolved to <button>Create test candidate</button>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      - retrying click action
+        - waiting for element to be visible, enabled and stable
+      - element was detached from the DOM, retrying
+
+
+      59 |   const manager = await api(request, 'manager'), engineer = await api(request, 'engineer'); const cases = await request.get(manager.origin + '/v1/cases?attention_only=false', { headers: manager.headers }); const id = (await cases.json()).items[0].id; const alerts = await request.get(engineer.origin + '/v1/alerts', { headers: engineer.headers }); const finding = (await alerts.json()).items[0].id;
+      60 |   const context = await browser.newContext(); const page = await context.newPage(); await page.goto('/login'); await page.getByLabel('Tenant', { exact: true }).focus(); await page.keyboard.press('Tab'); await expect(page.getByLabel('Username', { exact: true })).toBeFocused(); await login(page, 'other_manager'); await navigate(page, `/manager/cases/${id}`); await expect(page.getByRole('alert').first()).toContainText('NOT_FOUND'); await page.getByRole('button', { name: 'Log out' }).click(); await login(page, 'unassigned'); await navigate(page, `/contractor/cases/${id}`); await expect(page.getByRole('alert').first()).toContainText('NOT_FOUND'); await page.getByRole('button', { name: 'Log out' }).click(); await login(page, 'other_engineer'); await navigate(page, `/engineer/findings/${finding}`); await expect(page.getByRole('alert')).toContainText('NOT_FOUND'); await page.getByRole('button', { name: 'Log out' }).click();
+    > 61 |   let authorization = ''; page.on('request', r => { if (r.url().endsWith('/v1/me')) authorization = r.headers()['authorization']; }); await login(page, 'engineer'); const before = await request.get(engineer.origin + '/v1/redteam/candidates', { headers: engineer.headers }); const count = (await before.json()).items.length; expect(authorization.startsWith('Bearer ')).toBe(true); expect((await request.post(engineer.origin + '/v1/auth/logout', { headers: { Authorization: authorization } })).status()).toBe(200); await page.getByRole('button', { name: 'Create test candidate' }).click(); await expect(page.getByRole('heading', { name: 'Sign in to your workspace' })).toBeVisible(); const after = await request.get(engineer.origin + '/v1/redteam/candidates', { headers: engineer.headers }); expect((await after.json()).items.length).toBe(count); await page.screenshot({ path: info.outputPath('revoked-session-login.png'), fullPage: true });
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+      62 |   await page.goto('/manager/queue'); await expect(page.getByRole('heading', { name: 'Sign in to your workspace' })).toBeVisible(); await context.close();
+      63 | });
+      64 |
+        at D:\project\sentinel_ladder_v2\frontend\e2e\portals.spec.ts:61:580
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.venv\phase05-browser-1794544424405\screenshots\portals-browser-tenant-and-7cad1-ion-and-keyboard-navigation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.venv\phase05-browser-1794544424405\screenshots\portals-browser-tenant-and-7cad1-ion-and-keyboard-navigation\error-context.md
+
+  1 failed
+    e2e\portals.spec.ts:58:1 › browser tenant and assignment denial, revoked session and keyboard navigation 
+  5 passed (40.9s)

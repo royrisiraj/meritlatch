@@ -2838,3 +2838,89 @@ Updated STATUS_LEDGER, REQUIREMENT_MATRIX, SECURITY_TEST_CATALOG and Phase 04 re
 Final diff/link/hash/Git checks and full file manifest appear in that report.
 Phase 04 local backend gate PASS / TESTED; human review and commit remain pending.
 Gemini remains deferred through completion of Phases 04–07.
+
+## Phase 05 functional portals - 13 November 2026
+
+User authorized Phase 05 only. Verified clean committed Phase 04 baseline
+09bd8d1e9f5605d90aadd4a428a71a1587e29a12 with git log --oneline -6,
+git status --short and git diff --check. Read controlling book, requested contracts,
+reports, code/tests and actual generated OpenAPI. No restart/reset/commit/deployment.
+
+Baseline command, with fresh GUID temp under ignored .venv and TEMP/TMP/TMPDIR set:
+python -m pytest -q -p no:cacheprovider --basetemp <fresh-root>/pytest
+=> 562 passed in 84.17s, exit 0 (PHASE_05_BASELINE_OUTPUT.txt).
+Captured 36 original test hashes plus ten protected source/private/dependency files.
+
+Created React/TypeScript/Vite/Tailwind/Router portals, typed bearer client,
+accessible status/form components, explicit upload replay/recovery, review/gate
+workspaces, isolated acknowledged canned demo and actual-browser tests. Added
+only three bounded authenticated read views; no business/security mutation changed.
+
+Actual dependency commands, in frontend:
+- npm.cmd install --no-fund --cache ..\.venv\phase05-npm-cache => installed;
+  initial npm registry EACCES required escalation, no application credentials used.
+- npm.cmd audit --json --cache ..\.venv\phase05-npm-cache => initial three
+  vulnerabilities; checked patched 4.1.12 and 5.1.0 compatibility with npm view.
+- npm.cmd install --save-dev --save-exact vitest@4.1.12 --no-fund --cache
+  ..\.venv\phase05-npm-cache => corrected new test dependency, zero vulnerabilities.
+- Final npm.cmd audit --json => zero known vulnerabilities, exit 0.
+- npm.cmd ls --depth=0 => exact versions recorded in PHASE_05_REPORT.md, exit 0.
+
+Preserved development failures: initial TypeScript conditional and encoding error;
+two baseline schema assertions exposed history route ignoring legacy assurance
+flag (570 passed, two failed). Corrected source flag, no old assertion edits.
+Browser found challenge discarded on refresh; retained same-entity form state.
+Other new browser-test corrections: accessible select locators, actual media code,
+in-memory SPA navigation, wait for visibly loaded stale version, scroll before
+viewport assertion. All initial outputs retained; no false final success claim.
+
+Final full backend command executed from root:
+
+```powershell
+$phase05Temp = Join-Path (Resolve-Path .venv).Path ('phase05-final-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $phase05Temp | Out-Null
+$env:TEMP = $phase05Temp
+$env:TMP = $phase05Temp
+$env:TMPDIR = $phase05Temp
+.\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider --basetemp (Join-Path $phase05Temp 'pytest') | Tee-Object -FilePath tracking/PHASE_05_BACKEND_TEST_OUTPUT.txt
+exit $LASTEXITCODE
+```
+
+Actual 572 passed in 99.01s, exit 0: 562 unchanged plus ten new read tests.
+Focused new reads earlier: 10 passed in 4.21s, exit 0.
+
+Final commands in frontend (each followed by exit $LASTEXITCODE):
+
+```powershell
+npm.cmd test 2>&1 | Tee-Object -FilePath ..\tracking\PHASE_05_FRONTEND_TEST_OUTPUT.txt
+npm.cmd run build 2>&1 | Tee-Object -FilePath ..\tracking\PHASE_05_BUILD_OUTPUT.txt
+npm.cmd run e2e 2>&1 | Tee-Object -FilePath ..\tracking\PHASE_05_BROWSER_OUTPUT.txt
+```
+
+Actual: 36 frontend passed, 3 files, 6.47s; build PASS, 47 modules, 755ms;
+six actual Chromium/React/FastAPI workflows passed in 24.5s, zero retries.
+Browser sandbox EPERM/WinError 5 required authorized local subprocess execution;
+all servers loopback, fictional data, new ignored .venv roots; no ACL changes.
+No mocked backend success responses in E2E; explicit fault tests abort real HTTP.
+
+Business browser run confirms unsafe L1, rejected L0, corrected canned L2,
+separate manager L3, assigned agent receipt replay, audit and logout invalidation.
+Engineer run executes real weak/safe corpus, reproduces false approval, triages/
+proposes remediation, denies self-review, then independent reviewer readiness;
+published=false. Ordinary separate mock remains UNKNOWN/below L2. Direct and SPA
+tenant/role/assignment denial, stale conflict/refetch, revoked mutation, lost-response
+upload replay, keyboard and 375/768/1440px overflow checks pass.
+
+Actual screenshot inspection: contractor mobile/evidence, manager queue/approval/
+audit, engineer dashboard/finding/review/gate and authorization/login captures.
+Files remain ignored, no fabricated screenshot or LIVE_GEMINI result. Expected HTTP
+denials/resource errors separated from unexpected page/console exceptions.
+
+pip check => No broken requirements found., exit 0. Old test and protected hashes
+match. Build/log secret checks, documentation links, final diff/status are recorded
+in PHASE_05_REPORT.md and PHASE_05_SECURITY_CHECKS.json. Updated ledger, requirement
+matrix, catalog, README and portal documentation. No Python pin/provider/policy/
+approval-service/.env/consumed-marker change. No inference, paid AI request, real
+transfer/control, publication, commit, push, deploy or Phase 06/07 implementation.
+
+Phase 05 local gate PASS / TESTED. Review before any commit. Gemini frozen through 07.

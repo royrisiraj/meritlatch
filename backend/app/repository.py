@@ -194,6 +194,7 @@ class UnitOfWork(Protocol):
     def case_page(self, tenant_id: str, cursor: str | None, limit: int, contractor_id: str | None) -> list[dict]: ...
     def audit_page(self, tenant_id: str, case_id: str, before: str | None, event_type: str | None, limit: int) -> list[dict]: ...
     def page(self, table: str, keys: dict, limit: int, before: str | None = None) -> list[dict]: ...
+    def identifier_page(self, table: str, keys: dict, limit: int, after: str | None = None) -> list[dict]: ...
 
 
 class Repository(Protocol):
@@ -263,6 +264,13 @@ class SQLiteUnitOfWork:
             stmt = stmt.where(or_(t.c.created_at < prior["created_at"],
                 and_(t.c.created_at == prior["created_at"],t.c.id < prior["id"])))
         return [dict(row) for row in self.connection.execute(stmt.order_by(t.c.created_at.desc(),t.c.id.desc()).limit(limit)).mappings()]
+
+    def identifier_page(self, table, keys, limit, after=None):
+        t = TABLES[table]
+        query = select(t).where(*(t.c[k] == v for k, v in keys.items()))
+        if after:
+            query = query.where(t.c.id > after)
+        return [dict(row) for row in self.connection.execute(query.order_by(t.c.id).limit(limit)).mappings()]
 
     def change(self, table, keys, values):
         if table in APPEND_ONLY:

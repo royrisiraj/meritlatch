@@ -1,0 +1,50 @@
+.............F.......................................................... [ 12%]
+........................................................................ [ 25%]
+........................................................................ [ 37%]
+........................................................................ [ 50%]
+........................................................................ [ 62%]
+..................F..................................................... [ 75%]
+........................................................................ [ 88%]
+....................................................................     [100%]
+================================== FAILURES ===================================
+__________ test_phase01_openapi_has_real_routes_and_bearer_security ___________
+
+world = <conftest.World object at 0x000002353C07DC50>
+
+    def test_phase01_openapi_has_real_routes_and_bearer_security(world):
+        response = world.client.get("/openapi.json")
+        assert response.status_code == 200
+        paths = response.json()["paths"]
+        assert "/v1/cases" in paths
+        assert "/v1/cases/{case_id}/approvals" in paths
+>       assert not any("fixture" in path or "redteam" in path or path.startswith("/api/") for path in paths)
+E       assert not True
+E        +  where True = any(<generator object test_phase01_openapi_has_real_routes_and_bearer_security.<locals>.<genexpr> at 0x000002353C0D6CE0>)
+
+backend\tests\phase01\test_http_boundary.py:12: AssertionError
+_ test_current_factory_documents_real_engineering_auth_and_legacy_factory_retains_historical_surface _
+
+sec = <phase04.conftest.SecurityWorld object at 0x000002353EEABD80>
+tmp_path = WindowsPath('D:/project/sentinel_ladder_v2/.venv/phase05-regression-7bef569fde59435292acf3d882405e8d/pytest/test_current_factory_documents0')
+
+    def test_current_factory_documents_real_engineering_auth_and_legacy_factory_retains_historical_surface(sec,tmp_path):
+        from fastapi.testclient import TestClient
+        from backend.testing import create_test_app
+        paths=sec.client.get("/openapi.json").json()["paths"]
+        assert "/v1/redteam/run" in paths and "/v1/redteam/suggest" in paths and "/v1/alerts" in paths
+        for path,methods in paths.items():
+            if path.startswith(("/v1/redteam","/v1/alerts")):
+                for operation in methods.values():
+                    assert operation["security"]==[{"HTTPBearer":[]}]
+        assert not any("fixture" in path or path.startswith("/api/") for path in paths)
+        with TestClient(create_test_app(tmp_path/"legacy-fixture.sqlite",sec.clock)) as legacy:
+            assert legacy.get("/v1/redteam/runs",headers=sec.headers()).status_code==404
+>           assert not any("redteam" in path for path in legacy.get("/openapi.json").json()["paths"])
+E           assert not True
+E            +  where True = any(<generator object test_current_factory_documents_real_engineering_auth_and_legacy_factory_retains_historical_surface.<locals>.<genexpr> at 0x000002353F8929B0>)
+
+backend\tests\phase04\test_scope.py:41: AssertionError
+=========================== short test summary info ===========================
+FAILED backend/tests/phase01/test_http_boundary.py::test_phase01_openapi_has_real_routes_and_bearer_security
+FAILED backend/tests/phase04/test_scope.py::test_current_factory_documents_real_engineering_auth_and_legacy_factory_retains_historical_surface
+2 failed, 570 passed in 103.04s (0:01:43)

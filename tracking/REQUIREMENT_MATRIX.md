@@ -1,5 +1,11 @@
 # Master Book requirement-to-code traceability
 
+**Phase 05 - 13 November 2026: TESTED / LOCAL PASS.** Baseline 09bd8d1 verified
+clean; 562 baseline passed (84.17s), 572 current backend passed (99.01s), 36 frontend
+passed, production build and real Chromium/HTTP journeys passed. All 36 original
+backend test files unchanged. Evidence: PHASE_05_REPORT.md and separate execution
+logs. MOCK_AI/SYNTHETIC only, Gemini frozen. Stop before Phase 06.
+
 **Phase 04 acceptance — 12 November 2026:** local backend gate PASS/TESTED. Actual
 fresh runs: 69 Phase 04 passed (24.93s), 562 complete passed (91.60s), zero failed;
 all 493 old tests unchanged. True HTTP smoke passed; safe 38/38, deliberately weak
@@ -40,10 +46,10 @@ Updated 12 November 2026 after Phase 03 local execution. TESTED claims cover loc
 | R-009 | pp.8,13,18 | Numeric+unit+date policy, unsafe readings restrict | 01–03 | TESTED | Original numeric/unit/date tests retained; `test_persisted_invalid_observation_stays_restricted` and typed intake rejection passed. Synthetic metadata only; no numeric vision accuracy tested. |
 | R-010 | pp.11,14 | Fully auditable permission evaluation and API | 01–03 | TESTED | Append-only case/job/review/recovery transitions, safe source/actor/version/reason/public review/receipt references; bounded scoped newest-first audit and filters tested. Actual HTTP completion/rejection/recovery audits passed. Logical local history, not tamper-proof. |
 | R-011 | pp.13–14,17 | Atomic versioned evidence update and approval invalidation | 01–03 | TESTED | Existing 9 transaction tests plus 10 actual asynchronous intake race/finalization tests. Upload clears L3 before provider I/O; all late results require matching current version/scope. SQLite only; filesystem/DB crash atomicity is not claimed. |
-| R-012 | pp.6–7,27 | Contractor+manager user flow and error feedback | 03,05 | IN_PROGRESS | Backend IMPLEMENTED AND TESTED: queue/review/rejection/correction/recovery and distinguishable feedback; actual HTTP valid+two invalid+recovery passed. Frontend/portals DEFERRED to authorized UI phase. |
-| R-013 | pp.6,16 | Security engineer view separate from business approval | 04–05 | IN_PROGRESS | Backend IMPLEMENTED AND TESTED: all engineering routes require current ENGINEER/tenant scope; denied contractor/manager/agent and engineer business approval. Portal/UI DEFERRED to Phase 05. |
+| R-012 | pp.6-7,27 | Contractor+manager user flow and error feedback | 03,05 | TESTED | React portals and actual Chromium/HTTP create/assign/challenge/upload, decoder denial, unsafe restriction, rejection/correction, private media, current L2/L3 review and restricted agent receipts/audit. UNKNOWN normal mock, stale/network/session/role/tenant denials tested. |
+| R-013 | pp.6,16 | Security engineer view separate from business approval | 04-05 | TESTED | Real authenticated portal uses actual backend corpus/results/metrics/findings/review/gate. Direct engineer invoice approval and manager engineering access denied. No role impersonation. |
 | R-014 | pp.16,20 | Red-team runner; human-labeled oracle, both error rates | 04 | TESTED | Independent fixed specification-reference SYNTHETIC oracle, 38 scenarios; labels separate from generation/execution; no additional human dataset review claimed. Safe/weak/strict real SUT execution measures binary FA/FR plus separate review/abstentions. |
-| R-015 | pp.16,19 | Reproducible, redacted vulnerability alert and review loop | 04–05 | IN_PROGRESS | Backend in-app feed TESTED: exact hashed finding dedup/occurrences, redacted repro/run links, triage CAS/audit, independent correction review. UI/external notifications DEFERRED; no mail sent. |
+| R-015 | pp.16,19 | Reproducible redacted finding and review loop | 04-05 | TESTED | React feed/filter/detail/triage/proposal/history; actual A02 false approval, independent safe review and readiness. No raw media/secret or external mail; publication remains false. |
 | R-016 | pp.16,20 | Pre-release regression gate; no auto policy mutation | 04 | TESTED | Exact current artifact/source/corpus/run/review bindings; mandatory failure/false approval/valid-case gates; source/change/rejection invalidates readiness. Unsafe BLOCKED, reviewed safe READY_FOR_MANUAL_RELEASE; no auto publication/deployment pipeline. |
 | R-017 | pp.19–20 | Privacy minimization, audit events, no immutability claim | All | IN_PROGRESS | Private raw media, stripped provider metadata, minimal untrusted EXIF/GPS flags, scoped attachment reads and append-only logical analyses tested. Local ACLs/retention/orphan recovery remain operator/later-phase work; no immutable ledger claim. |
 | R-018 | pp.20,26–27 | Real Gemini demo + failures; separate benchmark types | 02,06 | IN_PROGRESS | HTTP MOCK_AI workflow remains separately tested. User reviewed/authorized the Stage B image; one exact-model request failed in 4.6740s, PROVIDER_UNAVAILABLE, zero retries. No observations/usage/accuracy or successful inference latency/cost result. Private marker/result retained; authorization budget used. |

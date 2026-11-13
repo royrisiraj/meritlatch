@@ -1,4 +1,18 @@
-# SENTINEL//LADDER — Phase 04
+# SENTINEL//LADDER - Phase 05
+
+Functional contractor, manager and security-engineer portals use the authenticated
+FastAPI backend. Server decisions remain authoritative. Evidence correction,
+bound review, restricted agent simulation, synthetic findings/remediation and
+independent release readiness are verified locally. No role switcher or payment.
+
+[Windows portal startup](frontend/README.md), [architecture/API mapping](docs/portals_phase05.md),
+[Phase 05 evidence and limits](tracking/PHASE_05_REPORT.md).
+
+Gemini remains frozen; normal MOCK_AI stays UNKNOWN. Positive demonstrations use
+an acknowledged isolated canned fixture, explicitly not image extraction.
+Stop at Phase 05; no Phase 06 deployment or Phase 07 polish.
+
+## Retained Phase 04 backend
 
 Phase 04 adds isolated regression runs against a pinned independent synthetic
 oracle, an engineer-only in-app findings API, authenticated remediation review
@@ -13,7 +27,7 @@ See [engineering API and limits](docs/assurance_phase04.md),
 This runs a real local TCP/HTTP workflow with fictional users and isolated
 SYNTHETIC/MOCK_AI inputs. It reproduces a deliberately weak candidate, blocks its
 gate and checks a corrected safe candidate. Gemini troubleshooting remains
-deferred until Phases 04–07 finish; no live success is claimed. Stop at Phase 04.
+deferred until Phases 04–07 finish; no live success is claimed. Historical Phase 04 evidence is preserved.
 
 ## Retained Phase 03 workflow
 

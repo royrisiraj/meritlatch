@@ -1,0 +1,61 @@
+
+> sentinel-ladder-portals@0.5.0 e2e
+> playwright test
+
+npm.cmd : [WebServer] (node:17080) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:2 char:1
++ npm.cmd run e2e 2>&1 | Tee-Object -FilePath ..\tracking\PHASE_05_BROW ...
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([WebServer] (no... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:14344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:27980) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\portals.spec.ts:13:1 › real browser contractor correction, manager bound review and agent simulation (3.8s)
+  ok 2 e2e\portals.spec.ts:27:1 › real browser engineer weak finding, remediation, independent review and gates (9.9s)
+  x  3 e2e\portals.spec.ts:36:1 › real HTTP direct denials plus browser wrong-role, stale version and network failure (16.5s)
+(node:8104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 e2e\portals.spec.ts:46:1 › ordinary MOCK_AI remains UNKNOWN through real browser upload and responsive views (1.3s)
+  ok 5 e2e\portals.spec.ts:52:1 › ambiguous real upload is explicitly replayed with one evidence version (916ms)
+  ok 6 e2e\portals.spec.ts:57:1 › browser tenant and assignment denial, revoked session and keyboard navigation (1.9s)
+
+
+  1) e2e\portals.spec.ts:36:1 › real HTTP direct denials plus browser wrong-role, stale version and network failure 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "VERSION_CONFLICT"
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 15000ms
+      - waiting for getByRole('alert')
+
+
+      39 |   expect((await request.get(other.origin + `/v1/cases/${id}`, { headers: other.headers })).status()).toBe(404); expect((await request.get(unassigned.origin + `/v1/cases/${id}`, { headers: unassigned.headers })).status()).toBe(404); expect((await request.get(manager.origin + '/v1/alerts', { headers: manager.headers })).status()).toBe(403);
+      40 |   const cc = await request.patch(manager.origin + `/v1/cases/${id}/invoice`, { headers: manager.headers, data: { expected_case_version: value.version, invoice_amount_paise: 510000 } }); expect(cc.status()).toBe(200);
+    > 41 |   await page.getByText('Change invoice (invalidates approval)', { exact: true }).click(); await page.getByLabel('New simulated amount (INR)').fill('5200'); await page.getByRole('button', { name: 'Save invoice revision' }).click(); await expect(page.getByRole('alert')).toContainText('VERSION_CONFLICT'); await expect(page.getByText('2', { exact: true }).first()).toBeVisible(); expect((await state(request, manager, id)).invoice_amount_paise).toBe(510000);
+         |                                                                                                                                                                                                                                                                              ^
+      42 |   await navigate(page, '/engineer/findings'); await expect(page.getByRole('heading', { name: 'Unauthorized workspace' })).toBeVisible(); await page.screenshot({ path: info.outputPath('unauthorized.png'), fullPage: true }); await navigate(page, '/manager/queue'); await page.route('**/v1/cases?**', r => r.abort('failed')); await page.getByRole('button', { name: 'Refresh queue' }).click(); await expect(page.getByRole('alert')).toContainText('Connection unavailable'); await page.unrouteAll();
+      43 |   await request.post(manager.origin + '/v1/auth/logout', { headers: contractor.headers }); expect((await request.post(contractor.origin + `/v1/jobs/${value.job_id}/challenges`, { headers: contractor.headers, data: { case_id: id, expected_case_version: 2 } })).status()).toBe(401);
+      44 |   await page.getByRole('button', { name: 'Log out' }).click(); await expect(page.getByRole('heading', { name: 'Sign in to your workspace' })).toBeVisible(); await context.close();
+        at D:\project\sentinel_ladder_v2\frontend\e2e\portals.spec.ts:41:270
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.venv\phase05-browser-1794543101352\screenshots\portals-real-HTTP-direct-d-f907c-version-and-network-failure\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.venv\phase05-browser-1794543101352\screenshots\portals-real-HTTP-direct-d-f907c-version-and-network-failure\error-context.md
+
+  1 failed
+    e2e\portals.spec.ts:36:1 › real HTTP direct denials plus browser wrong-role, stale version and network failure 
+  5 passed (42.6s)

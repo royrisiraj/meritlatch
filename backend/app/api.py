@@ -26,6 +26,7 @@ from .workflow_models import RejectionRequest, ReanalysisRequest, VerificationQu
 from .models import InspectionStatus
 from .assurance_service import AssuranceService
 from .assurance_router import build_router as build_assurance_router
+from .portal_router import build_router as build_portal_router
 
 bearer = HTTPBearer(auto_error=False)
 
@@ -63,6 +64,7 @@ def create_app(settings: Settings | None = None, repository=None, clock=None, pe
     app.state.settings = settings
     app.state.media = media
     app.state.workflow = workflow
+    app.include_router(build_portal_router(service, bearer_token, enable_assurance=enable_assurance))
     if enable_assurance:
         app.state.assurance = AssuranceService(service)
         app.include_router(build_assurance_router(app.state.assurance,bearer_token))

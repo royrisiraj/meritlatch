@@ -1,6 +1,25 @@
 # Security and workflow test catalog
 
-Reference: Master Book chapters 4, 9, 12–15 and Appendix B. Expectations must be independent of Gemini. Latest executed local evidence: `PHASE_04_REPORT.md`, `EXECUTION_LOG.md` and acceptance logs — 562 passed, zero failed (493 unchanged + 69 Phase 04). Historical phase results below remain evidence for their scope. Live Gemini remains unsuccessful/deferred; production/deployment benchmarks unverified.
+## Phase 05 executed mapping - 13 November 2026
+
+Baseline: 562 passed; all 36 old backend test files retain their hashes. Current:
+572 backend passed (562 + 10), 36 frontend unit/component passed, build and real
+Chromium/HTTP workflows passed. [Evidence](PHASE_05_REPORT.md).
+
+| Suite | Tested boundary |
+|---|---|
+| backend/tests/phase05/test_portal_reads.py (10) | Actual TestClient auth, manager-only assignees/safe projection/tenant/cursor/bounds; assigned job-case paging and cross-job denial; scoped engineer-only candidate history. |
+| frontend/src/test/api.test.ts (5) | Mock fetch: bearer header/no storage/cookie/redirect, safe 401, no implicit mutation retry, external/path rejection. |
+| frontend/src/test/presentation.test.tsx (23) | Mock component data: exact L-levels and separate statuses, honest source, denominator/N/A/review metrics, public audit, safe errors/reasons, upload type/empty/size. |
+| frontend/src/test/session.test.tsx (8) | Mock fetch/jsdom: login/logout, four server-role landings, role guards, loading/failed login and expired session. |
+| frontend/e2e/portals.spec.ts | Actual Chromium/React/FastAPI with independent fictional accounts; job creation, decoder denial, unsafe restriction, rejection/correction, private media, exact L3, repeated agent receipt, logout invalidation; real weak/safe runs, finding/triage/proposal/self-review denial/independent gate; direct/SPA role/tenant/assignment denials; stale-state/refetch/network fault; lost-response upload replay; normal UNKNOWN at 375/768/1440; revoked-session mutation and keyboard focus. |
+
+Positive values are acknowledged canned MOCK_AI, not optical extraction. Normal
+mock stays UNKNOWN; assurance is SYNTHETIC. Expected denial/network resource errors
+are separated from unhandled page/console exceptions. No live AI, publication,
+production benchmark, cross-browser or screen-reader certification claimed.
+
+Reference: Master Book chapters 4, 9, 12–15 and Appendix B. Expectations must be independent of Gemini. Historical Phase 04 executed local evidence: `PHASE_04_REPORT.md`, `EXECUTION_LOG.md` and acceptance logs — 562 passed, zero failed (493 unchanged + 69 Phase 04). Historical phase results below remain evidence for their scope. Live Gemini remains unsuccessful/deferred; production/deployment benchmarks unverified.
 
 ## Phase 04 executed mapping
 

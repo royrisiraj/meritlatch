@@ -1,0 +1,150 @@
+
+> sentinel-ladder-portals@0.5.0 e2e
+> playwright test
+
+npm.cmd : [WebServer] (node:13508) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+At line:2 char:1
++ npm.cmd run e2e 2>&1 | Tee-Object -FilePath ..\tracking\PHASE_05_BROW ...
++ ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([WebServer] (no... env being set.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:27876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:35456) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e\portals.spec.ts:11:1 › real browser contractor correction, manager bound review and agent simulation (16.6s)
+(node:36348) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 e2e\portals.spec.ts:25:1 › real browser engineer weak finding, remediation, independent review and gates (22.3s)
+(node:34928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 e2e\portals.spec.ts:34:1 › real HTTP direct denials plus browser wrong-role, stale version and network failure (16.3s)
+(node:31376) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  4 e2e\portals.spec.ts:44:1 › ordinary MOCK_AI remains UNKNOWN through real browser upload and responsive views (1.3s)
+
+
+  1) e2e\portals.spec.ts:11:1 › real browser contractor correction, manager bound review and agent simulation 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "INVALID_IMAGE"
+    Received string:    "Request denied. Check the fields and current evidence before retrying. UNSUPPORTED_MEDIA_TYPE"
+    Timeout: 15000ms
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 15000ms
+      - waiting for getByRole('alert')
+        32 × locator resolved to <div role="alert" class="error">Request denied. Check the fields and current evid…</div>
+           - unexpected value "Request denied. Check the fields and current evidence before retrying. UNSUPPORTED_MEDIA_TYPE"
+
+
+      13 |  const errors:string[]=[];for(const p of [m,c,g])p.on('pageerror',e=>errors.push(e.message));
+      14 |  await login(m,'manager');await m.screenshot({path:info.outputPath('manager-queue.png'),fullPage:true});const id=await createJob(m);const auth=await api(request,'manager');let value=await state(request,auth,id);
+    > 15 |  await login(c,'contractor');await expect(c.getByRole('link',{name:'PUMP-042'})).toBeVisible();await c.screenshot({path:info.outputPath('contractor-mobile.png'),fullPage:true});await c.getByRole('link',{name:'PUMP-042'}).click();await c.getByRole('link',{name:`Case ${id}`,exact:true}).click();await c.getByRole('button',{name:'Issue fresh challenge'}).click();await expect(c.getByText(/Expires /)).toBeVisible();await c.getByLabel(/Inspection image/).setInputFiles(path.join(root(),'canned','invalid.png'));await c.getByRole('button',{name:'Upload evidence',exact:true}).click();await expect(c.getByRole('alert')).toContainText('INVALID_IMAGE');
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+      16 |  await c.getByLabel(/Inspection image/).setInputFiles(path.join(root(),'canned','evidence-1.png'));await c.getByRole('button',{name:'Upload evidence',exact:true}).click();await expect(c.getByText('Inspection: SAFETY_ALERT',{exact:true})).toBeVisible();value=await state(request,auth,id);expect(value.max_permission).toBe(1);expect(value.provider_mode).toBe('MOCK_AI');await c.screenshot({path:info.outputPath('contractor-unsafe.png'),fullPage:true});
+      17 |  await m.getByRole('button',{name:'Refresh current case'}).click();await expect(m.getByText('Inspection: SAFETY_ALERT',{exact:true})).toBeVisible();await m.getByRole('checkbox',{name:'Confirm rejection and request corrected new evidence.'}).check();await m.getByRole('button',{name:'Reject evidence',exact:true}).click();await expect(m.getByText('Business: REJECTED',{exact:true})).toBeVisible();expect((await state(request,auth,id)).max_permission).toBe(0);
+      18 |  await c.getByRole('button',{name:'Refresh current case'}).click();await expect(c.getByText('Business: REJECTED',{exact:true})).toBeVisible();await c.getByRole('button',{name:'Issue fresh challenge'}).click();await c.getByLabel(/Inspection image/).setInputFiles(path.join(root(),'canned','evidence-2.png'));await c.getByRole('button',{name:'Upload evidence',exact:true}).click();await expect(c.getByLabel('Server permission L2')).toBeVisible();value=await state(request,auth,id);expect(value.evidence_version).toBe(2);expect(value.max_permission).toBe(2);
+        at D:\project\sentinel_ladder_v2\frontend\e2e\portals.spec.ts:15:616
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.venv\phase05-browser-1794542584973\screenshots\portals-real-browser-contr-64879-review-and-agent-simulation\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.venv\phase05-browser-1794542584973\screenshots\portals-real-browser-contr-64879-review-and-agent-simulation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.venv\phase05-browser-1794542584973\screenshots\portals-real-browser-contr-64879-review-and-agent-simulation\test-failed-3.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.venv\phase05-browser-1794542584973\screenshots\portals-real-browser-contr-64879-review-and-agent-simulation\error-context.md
+
+  2) e2e\portals.spec.ts:25:1 › real browser engineer weak finding, remediation, independent review and gates 
+
+    TimeoutError: locator.selectOption: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByRole('combobox', { name: 'Proposed candidate', exact: true })
+
+
+      28 |  await a.getByRole('link',{name:'Findings',exact:true}).click();await a.getByRole('link',{name:'A02 — FALSE_APPROVAL',exact:true}).first().click();const finding=a.url().split('/').at(-1)!;await a.screenshot({path:info.outputPath('engineer-finding.png'),fullPage:true});await a.getByRole('button',{name:'Record triage',exact:true}).click();await expect(a.getByText('ACKNOWLEDGED',{exact:true}).first()).toBeVisible();
+      29 |  await a.getByRole('link',{name:'Assurance',exact:true}).click();await a.getByLabel('Test profile').selectOption('SAFE_BASELINE');await a.getByRole('button',{name:'Create test candidate'}).click();await a.getByRole('link',{name:/SAFE_BASELINE ·/}).first().click();const safe=a.url().split('/').at(-1)!;await a.getByRole('button',{name:'Run synthetic regression'}).click();await expect(a.getByRole('button',{name:'Run synthetic regression'})).toBeEnabled();const sr=await request.get(eng.origin+`/v1/redteam/runs?candidate_id=${safe}`,{headers:eng.headers});const safeRun=(await sr.json()).items[0];expect(safeRun.summary.passed).toBe(38);expect(safeRun.summary.failed).toBe(0);
+    > 30 |  await a.goto(`/engineer/findings/${finding}`);await a.getByRole('combobox',{name:'Proposed candidate',exact:true}).selectOption(safe);await a.getByRole('button',{name:'Record remediation proposal',exact:true}).click();await expect(a.getByRole('link',{name:/Review proposed candidate/})).toBeVisible();const details=await request.get(eng.origin+`/v1/alerts/${finding}`,{headers:eng.headers});const proposal=(await details.json()).proposals[0];
+         |                                                                                                                     ^
+      31 |  await a.getByRole('link',{name:/Review proposed candidate/}).click();await a.getByRole('combobox',{name:'Exact completed run',exact:true}).selectOption(safeRun.id);await a.getByRole('checkbox',{name:'I reviewed this exact candidate artifact, corpus and run binding.'}).check();await a.getByRole('button',{name:'Record independent review'}).click();await expect(a.getByRole('alert')).toContainText('INDEPENDENT_ENGINEERING_REVIEW_REQUIRED');
+      32 |  await login(b,'reviewer');await b.goto(`/engineer/candidates/${safe}?proposal=${proposal.id}`);await b.getByRole('combobox',{name:'Exact completed run',exact:true}).selectOption(safeRun.id);await b.getByRole('checkbox',{name:'I reviewed this exact candidate artifact, corpus and run binding.'}).check();await b.getByRole('button',{name:'Record independent review'}).click();await expect(b.getByText('review id',{exact:true})).toBeVisible();await b.getByRole('combobox',{name:'Gate run',exact:true}).selectOption(safeRun.id);await b.getByRole('button',{name:'Evaluate release readiness'}).click();await expect(b.getByRole('heading',{name:'READY_FOR_MANUAL_RELEASE',exact:true})).toBeVisible();await b.screenshot({path:info.outputPath('engineer-reviewed-gate.png'),fullPage:true});const history=await request.get(eng.origin+`/v1/redteam/candidates/${safe}/history`,{headers:eng.headers});const h=await history.json();expect(h.reviews[0].reviewer_id).toBe(users().reviewer.id);expect(h.gates[0].decision).toBe('READY_FOR_MANUAL_RELEASE');expect(h.gates[0].published).toBe(false);expect(errors).toEqual([]);await first.close();await second.close();
+      33 | });
+        at D:\project\sentinel_ladder_v2\frontend\e2e\portals.spec.ts:30:117
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.venv\phase05-browser-1794542584973\screenshots\portals-real-browser-engin-81d8a-ndependent-review-and-gates\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.venv\phase05-browser-1794542584973\screenshots\portals-real-browser-engin-81d8a-ndependent-review-and-gates\test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.venv\phase05-browser-1794542584973\screenshots\portals-real-browser-engin-81d8a-ndependent-review-and-gates\error-context.md
+
+  3) e2e\portals.spec.ts:34:1 › real HTTP direct denials plus browser wrong-role, stale version and network failure 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Unauthorized workspace' })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Unauthorized workspace' }) with timeout 15000ms
+      - waiting for getByRole('heading', { name: 'Unauthorized workspace' })
+
+
+      38 |  const cc=await request.patch(manager.origin+`/v1/cases/${id}/invoice`,{headers:manager.headers,data:{expected_case_version:value.version,invoice_amount_paise:510000}});expect(cc.status()).toBe(200);
+      39 |  await page.getByText('Change invoice (invalidates approval)',{exact:true}).click();await page.getByLabel('New simulated amount (INR)').fill('5200');await page.getByRole('button',{name:'Save invoice revision'}).click();await expect(page.getByRole('alert')).toContainText('VERSION_CONFLICT');await expect(page.getByText('2',{exact:true}).first()).toBeVisible();expect((await state(request,manager,id)).invoice_amount_paise).toBe(510000);
+    > 40 |  await page.goto('/engineer/findings');await expect(page.getByRole('heading',{name:'Unauthorized workspace'})).toBeVisible();await page.screenshot({path:info.outputPath('unauthorized.png'),fullPage:true});await page.goto('/manager/queue');await page.route('**/v1/cases?**',r=>r.abort('failed'));await page.getByRole('button',{name:'Refresh queue'}).click();await expect(page.getByRole('alert')).toContainText('Connection unavailable');await page.unrouteAll();
+         |                                                                                                                ^
+      41 |  await request.post(manager.origin+'/v1/auth/logout',{headers:contractor.headers});expect((await request.post(contractor.origin+`/v1/jobs/${value.job_id}/challenges`,{headers:contractor.headers,data:{case_id:id,expected_case_version:2}})).status()).toBe(401);
+      42 |  await page.getByRole('button',{name:'Log out'}).click();await expect(page.getByRole('heading',{name:'Sign in to your workspace'})).toBeVisible();await context.close();
+      43 | });
+        at D:\project\sentinel_ladder_v2\frontend\e2e\portals.spec.ts:40:112
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.venv\phase05-browser-1794542584973\screenshots\portals-real-HTTP-direct-d-f907c-version-and-network-failure\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.venv\phase05-browser-1794542584973\screenshots\portals-real-HTTP-direct-d-f907c-version-and-network-failure\error-context.md
+
+  4) e2e\portals.spec.ts:44:1 › ordinary MOCK_AI remains UNKNOWN through real browser upload and responsive views 
+
+    Error: expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not 200
+
+      46 |  await login(page,'contractor',true);await page.getByRole('link',{name:'PUMP-042',exact:true}).click();await page.getByRole('link',{name:`Case ${id}`,exact:true}).click();await page.getByRole('button',{name:'Issue fresh challenge'}).click();await expect(page.getByText(/Expires /)).toBeVisible();await page.getByLabel(/Inspection image/).setInputFiles(path.join(root(),'normal','evidence-1.png'));await page.getByRole('button',{name:'Upload evidence',exact:true}).click();await expect(page.getByText('Inspection: REVIEW_REQUIRED',{exact:true})).toBeVisible();const current=await state(request,m,id);expect(current.max_permission).toBeLessThan(2);expect(current.observation.pressure_value).toBeNull();expect(current.observation.equipment_status).toBe('UNKNOWN');expect(current.model_id).toBe('mock-observer-v1');
+      47 |  for(const width of [375,768,1440]){await page.setViewportSize({width,height:1000});await expect(page.getByRole('button',{name:'Issue fresh challenge'})).toBeInViewport();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);await page.screenshot({path:info.outputPath(`contractor-unknown-${width}.png`),fullPage:true});}
+    > 48 |  expect((await request.get('http://127.0.0.1:5176/.env')).status()).not.toBe(200);await context.close();
+         |                                                                         ^
+      49 | });
+      50 |
+        at D:\project\sentinel_ladder_v2\frontend\e2e\portals.spec.ts:48:73
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.venv\phase05-browser-1794542584973\screenshots\portals-ordinary-MOCK-AI-r-2a86d-upload-and-responsive-views\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.venv\phase05-browser-1794542584973\screenshots\portals-ordinary-MOCK-AI-r-2a86d-upload-and-responsive-views\error-context.md
+
+  4 failed
+    e2e\portals.spec.ts:11:1 › real browser contractor correction, manager bound review and agent simulation 
+    e2e\portals.spec.ts:25:1 › real browser engineer weak finding, remediation, independent review and gates 
+    e2e\portals.spec.ts:34:1 › real HTTP direct denials plus browser wrong-role, stale version and network failure 
+    e2e\portals.spec.ts:44:1 › ordinary MOCK_AI remains UNKNOWN through real browser upload and responsive views 

@@ -1,0 +1,13 @@
+
+> sentinel-ladder-portals@0.5.0 build
+> tsc --noEmit && vite build
+
+vite v7.3.8 building client environment for production...
+transforming...
+✓ 47 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.40 kB │ gzip:  0.28 kB
+dist/assets/index-BQPNHKVy.css    9.22 kB │ gzip:  2.92 kB
+dist/assets/index-BxpH4_cO.js   312.18 kB │ gzip: 96.78 kB
+✓ built in 755ms
