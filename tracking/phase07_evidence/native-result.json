@@ -1,0 +1,42 @@
+{
+  "classification": "ACTUAL_NATIVE_PHASE07_COMPILED_FRONTEND",
+  "started_at": "2026-11-13T13:19:16.872Z",
+  "provider": "ACKNOWLEDGED_CANNED_MOCK_AI",
+  "remote_deployment": "NOT_ATTEMPTED",
+  "archive": {
+    "status": "PACKAGE_VERIFIED",
+    "files": 52,
+    "bytes": 204609,
+    "sha256": "dae55106fa6b7c936b869a96a3b3b6d2a0bb71d85fe4fb934e2e3e7f4a638f69",
+    "base_commit": "e54be872a9a1397375db86ccf922f105e5feaf4b",
+    "remote_deployment": "NOT_ATTEMPTED"
+  },
+  "startup_seconds": 2.220076899997366,
+  "http": [
+    {
+      "route": "/healthz",
+      "status": 200
+    },
+    {
+      "route": "/readyz",
+      "status": 200
+    },
+    {
+      "route": "/login",
+      "status": 200
+    },
+    {
+      "route": "/v1/me",
+      "status": 401
+    },
+    {
+      "route": "/.env",
+      "status": 404
+    }
+  ],
+  "authenticated_api": "MANAGER_ME_200",
+  "browser_errors": [],
+  "status": "PASSED",
+  "shutdown": "STOPPED",
+  "finished_at": "2026-11-13T13:19:26.850Z"
+}

@@ -1,6 +1,22 @@
 # Master Book requirement-to-code traceability
 
-**Current Phase 06 - 13 November 2026: TESTED / LOCAL PASS.** Clean committed
+**Current Phase 07 — 13 November 2026: TESTED / LOCAL PASS.** Baseline e54be87;
+616 backend /53 frontend /8 Chromium tests passed. All earlier tests unchanged.
+[Report](PHASE_07_REPORT.md), [evidence](phase07_evidence/README.md).
+
+| Phase07 / controlling book requirement | Implementation | Executed evidence / limitation |
+|---|---|---|
+| Purposeful three-role operations UI | App/ui/style + cases/jobs/engineering presentation | Real source-labeled browser workflows and21 screenshots; no marketing/dashboard metrics invented. |
+| Ch.4 separate permission and inspection | Ladder/CaseState, separate semantic badges, explicit human boundary | Original level/status tests + new downward transition/safety/no-selector checks; backend ceiling only. |
+| Contractor evidence/correction | Reordered case/upload, asset-first worklist | Original unsafe/reject/fresh correction/replay/UNKNOWN tests;375px upload and320px reflow. |
+| Manager exact human authority | Single review form, visible digest/versions/amount/reviewer, evidence split | Original6 E2E/current conflict/role/tenant tests; single-form assertion; no manager execution/payment. |
+| Engineer independent verification | Expected/actual Comparison, exact MetricsView, sectioned review and GateResult | Actual weak finding, distinct review, READY unpublished; SHOULD_DENY and denominators retained. |
+| Accessibility/operational clarity | Shared labels/headings/disclosures/focus/reduced motion | 11new unit cases, actual keyboard and5 contrast samples; screen readers/forced colors/actual high zoom unverified. |
+| Native offline compatibility | Current compiled assets via unchanged Phase06 package/hosting | Verified52-file archive, byte match/current assets, actual authenticated native login and graceful stop. |
+| Preserve security and earlier proof | No backend/auth/api/domain/policy/pins change | 101baseline files and42business API expressions unchanged;616/42original/6original pass. |
+| Honest demo and phase gate | Source notices, simulated completion, published=false | No Gemini/private history access, deploy/paid resource/publication/commit; remote NOT ATTEMPTED. |
+
+**Historical Phase 06 - 13 November 2026: TESTED / LOCAL PASS.** Clean committed
 baseline 92bd728; actual baseline 572/36/6, current 616/42/6 passed. All original
 tests unchanged. Native package/local rehearsals passed; remote NOT ATTEMPTED,
 durable cloud adapters BLOCKED/DEFERRED. [Evidence](PHASE_06_REPORT.md).

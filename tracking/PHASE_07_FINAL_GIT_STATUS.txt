@@ -1,0 +1,77 @@
+ M frontend/src/App.tsx
+ M frontend/src/features/cases.tsx
+ M frontend/src/features/engineering.tsx
+ M frontend/src/features/jobs.tsx
+ M frontend/src/style.css
+ M frontend/src/ui.tsx
+ M tracking/EXECUTION_LOG.md
+ M tracking/REQUIREMENT_MATRIX.md
+ M tracking/SECURITY_TEST_CATALOG.md
+ M tracking/STATUS_LEDGER.md
+?? docs/design_system_phase07.md
+?? frontend/e2e/phase07.spec.ts
+?? frontend/rehearsal/phase07-native.mjs
+?? frontend/src/test/phase07.test.tsx
+?? tracking/PHASE_07_API_PRESERVATION.json
+?? tracking/PHASE_07_BACKEND_OUTPUT.txt
+?? tracking/PHASE_07_BASELINE_HASHES.json
+?? tracking/PHASE_07_BROWSER_ACCEPTANCE_OUTPUT.txt
+?? tracking/PHASE_07_BROWSER_FINAL_OUTPUT.txt
+?? tracking/PHASE_07_BROWSER_OUTPUT.txt
+?? tracking/PHASE_07_BUILD_FINAL_OUTPUT.txt
+?? tracking/PHASE_07_BUILD_OUTPUT.txt
+?? tracking/PHASE_07_CHECKPOINTS.md
+?? tracking/PHASE_07_FILE_MANIFEST.json
+?? tracking/PHASE_07_FINAL_GIT_STATUS.txt
+?? tracking/PHASE_07_FRONTEND_FINAL_OUTPUT.txt
+?? tracking/PHASE_07_FRONTEND_OUTPUT.txt
+?? tracking/PHASE_07_NATIVE_FIXED_OUTPUT.txt
+?? tracking/PHASE_07_NATIVE_OUTPUT.txt
+?? tracking/PHASE_07_NPM_AUDIT.json
+?? tracking/PHASE_07_PACKAGE_FINAL_OUTPUT.txt
+?? tracking/PHASE_07_PACKAGE_OUTPUT.txt
+?? tracking/PHASE_07_PASS1_BUILD.txt
+?? tracking/PHASE_07_PASS1_TESTS.txt
+?? tracking/PHASE_07_PASS1_TESTS_FIXED.txt
+?? tracking/PHASE_07_PASS2_BROWSER.txt
+?? tracking/PHASE_07_PASS2_BROWSER_FIXED.txt
+?? tracking/PHASE_07_PASS2_TESTS.txt
+?? tracking/PHASE_07_PASS3_BUILD.txt
+?? tracking/PHASE_07_PASS3_BUILD_FIXED.txt
+?? tracking/PHASE_07_PASS3_TESTS.txt
+?? tracking/PHASE_07_PIP_OUTPUT.txt
+?? tracking/PHASE_07_REFLOW_DIAGNOSTIC.txt
+?? tracking/PHASE_07_REFLOW_FIXED.txt
+?? tracking/PHASE_07_REPORT.md
+?? tracking/PHASE_07_SECURITY_CHECKS.json
+?? tracking/PHASE_07_VISUAL_BROWSER_FIXED.txt
+?? tracking/PHASE_07_VISUAL_BROWSER_INITIAL.txt
+?? tracking/phase07_evidence/01-login-desktop.png
+?? tracking/phase07_evidence/02-manager-queue-desktop.png
+?? tracking/phase07_evidence/03-contractor-dashboard-mobile.png
+?? tracking/phase07_evidence/04-contractor-unsafe-mobile.png
+?? tracking/phase07_evidence/05-contractor-correction-upload-mobile.png
+?? tracking/phase07_evidence/06-contractor-case-1440.png
+?? tracking/phase07_evidence/06-contractor-case-320.png
+?? tracking/phase07_evidence/06-contractor-case-375.png
+?? tracking/phase07_evidence/06-contractor-case-768.png
+?? tracking/phase07_evidence/07-manager-evidence-review-desktop.png
+?? tracking/phase07_evidence/08-manager-review-tablet.png
+?? tracking/phase07_evidence/09-manager-approved-desktop.png
+?? tracking/phase07_evidence/10-engineer-overview-desktop.png
+?? tracking/phase07_evidence/11-engineer-synthetic-metrics-desktop.png
+?? tracking/phase07_evidence/12-engineer-findings-desktop.png
+?? tracking/phase07_evidence/13-engineer-finding-comparison-desktop.png
+?? tracking/phase07_evidence/14-engineer-finding-375.png
+?? tracking/phase07_evidence/14-engineer-finding-768.png
+?? tracking/phase07_evidence/15-engineer-unpublished-gate-desktop.png
+?? tracking/phase07_evidence/16-engineer-gate-tablet.png
+?? tracking/phase07_evidence/17-native-manager.png
+?? tracking/phase07_evidence/MANIFEST.json
+?? tracking/phase07_evidence/README.md
+?? tracking/phase07_evidence/active-navigation-contrast.json
+?? tracking/phase07_evidence/current-permission-contrast.json
+?? tracking/phase07_evidence/login-button-contrast.json
+?? tracking/phase07_evidence/native-result.json
+?? tracking/phase07_evidence/safety-notice-contrast.json
+?? tracking/phase07_evidence/secondary-button-contrast.json

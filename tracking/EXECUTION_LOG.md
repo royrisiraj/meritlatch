@@ -3075,3 +3075,146 @@ Whitespace check caught one extra final blank line in this log; removed it and
 reran `git diff --check`, exit0, CRLF advisories only. Final status is 11 modified
 tracked files and 51 new files; none staged/deleted. Exact paths/status saved in
 PHASE_06_FILE_MANIFEST.json and PHASE_06_FINAL_GIT_STATUS.txt. No commit created.
+
+## Phase 07 — implementation and recovery, 13 November 2026
+
+Verified HEAD e54be872a9a1397375db86ccf922f105e5feaf4b. Original phase started
+clean; recovery read PHASE_07_CHECKPOINTS.md first and preserved five modified
+frontend files/nine untracked files. No reset/clean/delete/commit/push. Focused
+mandatory source/design/Phase05–06 readings retained; no second audit. All101
+public baseline hashes captured before edits. Private Gemini credentials/marker
+were not opened. Optional parallel work used independent business/engineering/
+new-test files; shared styles/components owned by parent. No Git mutation.
+
+All commands below actually executed; repository cwd unless noted. Every retained
+log is actual stdout/stderr, including development failures. Earlier checkpoints:
+
+```powershell
+git log -1 --oneline
+git status --short
+git diff --check
+npm.cmd test --prefix frontend
+npm.cmd run build --prefix frontend
+```
+
+Pass1 initial38passed4failed: current-rung text split caused original assertions;
+markup corrected,42passed6.06s/build47modules854ms. No original test changed.
+Recovery completed business layout CSS and engineer presentation. Pass2/3 tests
+53passed6.56s/6.38s. New tests' unsupported Testing Library `exact` option caused
+TypeScript errors; removed option (default matching remains exact), build passed.
+
+From frontend cwd, executed focused browser gates:
+
+```powershell
+npm.cmd run e2e -- portals.spec.ts --grep 'real browser contractor'
+npm.cmd run e2e -- phase07.spec.ts
+npm.cmd run e2e -- phase07.spec.ts --grep 'real business screens'
+```
+
+Initial sandbox fixture mkdir/process execution denied; approved rerun passed
+original business journey1/1 in14.9s. New engineering journey passed. New320px
+reflow failed (341pxscroll): long provider text, fixed overflow wrapping; an initial
+header-wrap attempt did not resolve it. One attempted append used wrong cwd and
+failed before writing; corrected path. Logs preserved. Final reflow passed.
+Initial combined suite6passed2failed: newfixture used same exact bytes as oldsuite,
+triggering correct EXACT_DUPLICATE; old stale-state assertion found hidden version
+fields. Newfixture now appends a distinct harmless PNG trailing marker; real safe
+decoder still runs. Restored visible exact review versions; originaltests unchanged.
+Next combined7passed1failed: source was edited during test, engineering page returned
+to sign-in (consistent with HMR clearing memory-only session). Held source fixed
+for final complete run; all8passed. No session/auth rule relaxed or auto-retry added.
+
+Final frontend commands and actual results:
+
+```powershell
+npm.cmd test --prefix frontend
+npm.cmd run build --prefix frontend
+```
+
+53passed6.13s, exit0; build47modules732ms, exit0. Outputs
+PHASE_07_FRONTEND_FINAL_OUTPUT.txt and PHASE_07_BUILD_FINAL_OUTPUT.txt. Compiled
+CSS21017B / JS322390B; gzip5.43kB/99.12kB. No dependency/lockfile change.
+
+From frontend cwd:
+
+```powershell
+npm.cmd run e2e
+```
+
+Final8passed39.2s, exit0 in PHASE_07_BROWSER_ACCEPTANCE_OUTPUT.txt. Sixoriginals
+and twonew workflows passed together. Actual unsafe/reject/correct/L2/agentprepare/
+managerL3/simulatedreceipt, role/tenant/session/stale/replay/UNKNOWN cases; weak
+and safe actual synthetic regressions, finding, self-review denied, independent
+review and gatepublishedfalse. Newvisualtest captures21safePNGs and5contrast JSONs
+in ignored `.venv/phase05-browser-1794575921056/screenshots`; copied scoped actual
+captures only under tracking/phase07_evidence. No raw credentials/DB uploaded.
+Actual375/768/1440 and320reflow, disclosureEnter/focus, loginTab order, reduced
+motion and44px touch target assertions passed.12screens visually inspected.
+
+Backend complete suite executed ONCE at final gate:
+
+```powershell
+$phase07Temp = Join-Path (Get-Location) ('.venv/phase07-regression-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $phase07Temp | Out-Null
+$env:TEMP = $phase07Temp
+$env:TMP = $phase07Temp
+$env:TMPDIR = $phase07Temp
+.\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider --basetemp "$phase07Temp/pytest"
+```
+
+Actual root suffix f1b65ee23fa742a181329775d5dc733b. **616passed113.39s exit0**,
+PHASE_07_BACKEND_OUTPUT.txt. All616accepted tests and backend source unchanged.
+No global filesystem permission changes or deletion of prior test data.
+
+Native packaging commands (repository root):
+
+```powershell
+.\.venv\Scripts\python.exe -m backend.tools.release_package build --package .venv/phase07-native-final.zip
+.\.venv\Scripts\python.exe -m backend.tools.release_package build --package .venv/phase07-native-repeat.zip
+```
+
+Both52files204609B, exact byte equality asserted via Python. SHA256
+dae55106fa6b7c936b869a96a3b3b6d2a0bb71d85fe4fb934e2e3e7f4a638f69.
+Existing packager/allowlist unchanged. Archive member index/currentCSS/currentJS
+compared byte-for-byte with current dist and manifest hashes verified.
+
+From frontend cwd:
+
+```powershell
+node rehearsal/phase07-native.mjs ../.venv/phase07-native-final.zip
+```
+
+Sandbox mkdir EPERM before work; approved native rerun passed. Driver actually
+invokes release_package verify/extract into fresh ignored destination and local_ops
+start/stop.2.220s readiness; health/ready/login200,noauthme401,private.env404,
+authenticatedmanagerme200, actual Chromium compiled-frontend login, navy token,
+zero page errors, STOPPED. No Docker/cloud/external provider. Result root
+.venv/phase07-native-6b6c3794-24db-4235-899f-3581beaad133; safe result/screenshot
+copied into evidence. Native source is a separate fresh isolated demo state.
+
+```powershell
+.\.venv\Scripts\python.exe -m pip check
+```
+
+No broken requirements found, exit0. Frontend cwd `npm.cmd audit --json` returned
+0vulnerabilities/exit0. No install or network diagnostic with credentials.
+
+Read-only installed-TypeScript AST comparison verified all42 api.get/post/patch/
+request expressions unchanged across App/cases/jobs/engineering. Public baseline
+hash verification:101unchanged, including87backendfiles/40backendtest-supportfiles,
+5frontendtest-supportfiles/originalbrowserfile,auth/api/domain/manifests and old
+Phase05–06reports. No originalfrontend42/originalbrowser6 test changes.
+
+Executed ignored `.venv/phase07_finish_checks.py`: reads only new fictional test
+account passwords, checks16exact values absent in public artifacts/native archive;
+no existing Gemini credential or attempt marker read. Static secret-pattern check
+also found0matches. These are bounded exclusion checks, not universal secret
+detection. Evidence checksums and document local links checked. Final diff/status
+and exact file manifest retained. No credentials printed.
+
+Required report/design document, checkpoints, ledger/matrix/catalog and evidence
+index updated. Existing operator/startup commands unchanged. Remaining limits:
+mobile scrolling, exact technical IDs, no exhaustive accessibility/realdevice/
+highzoom/production benchmark. RemoteCI NOTRUN, remote deploymentNOTATTEMPTED,
+durable cloudadaptersBLOCKED/DEFERRED. Gemini frozen, no publication/payment/
+equipmentcontrol/commit/push. StopPhase07 for review.

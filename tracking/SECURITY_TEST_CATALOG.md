@@ -1,5 +1,25 @@
 # Security and workflow test catalog
 
+## Phase 07 executed mapping — 13 November 2026
+
+616backend unchanged passed113.39s;53frontend (42original +11new) passed6.13s;
+8Chromium (6original unchanged +2new) passed39.2s. [Report](PHASE_07_REPORT.md).
+
+| Suite / check | Preserved or added assertion |
+|---|---|
+| frontend/src/test/phase07.test.tsx (11) | Single server-selected rung, downward authority change, no ladder action selectors, all4 semantics and human boundary; separate safety/source/unknown; stale vs fresh load; expected/actual separation; native full-binding disclosure; exact undefined-rate N/A/review abstention; BLOCKED/READY remains unpublished. Mock API/jsdom. |
+| frontend/e2e/phase07.spec.ts (2) | Actual new fictional business case with distinct bytes, unsafe/reject/correct/agent prepare/manager approve; one mounted approval form;375/768/1440 and320reflow,44px control, native disclosure Enter/focus, reduced motion and5actual contrast samples. Actual weak/safe subprocess runs, false approval1/26 and false rejection0/6, real finding, independent reviewer,published=false. |
+| Six original browser tests | Preserved unchanged, all pass: media decoder/private content, fresh challenge/correction, bound L3, agent-only simulation/replay, logout invalidation, self-review denial, manual gate; direct role/tenant/assignment/stale/session denials, UNKNOWN ordinary mock, lost-response replay and keyboard nav. |
+| Complete616 backend and42 original frontend | No old tests/source removed/changed; earlier permission/approval/challenge/concurrency/media/redteam invariants retained. |
+| Native compiled frontend smoke | Strict unchanged package verifier/extractor, new asset hash/byte match, live local health/ready/login/authme200; unauthorized401/private.env404; actual browser and graceful STOPPED. |
+| Static preservation/exclusion | 101baseline files unchanged;42business API expressions identical; no dependencies/key-loading/token storage/role switcher introduced. Static secret patterns and16generated fixture-password values absent in archive/review artifacts; limited check, no historical credentials read. |
+
+Failures caught before acceptance: nested current-level text, new-test TypeScript
+option,320px long provider label, newfixture exact-byte duplicate collision and
+hidden manager binding versions. Corrected code/newfixture without modifying any
+original test. Full browser clean run held source unchanged after HMR interruption.
+No production security or exhaustive accessibility certification implied by polish.
+
 ## Phase 06 executed mapping - 13 November 2026
 
 616 backend (572 unchanged + 44 new), 42 frontend (36 unchanged + 6), all six
