@@ -1,4 +1,24 @@
-# SENTINEL//LADDER - Phase 05
+# SENTINEL//LADDER - Phase 06 local demonstration
+
+Phase 06 adds a loopback native launcher, verified source/static package, safe
+readiness and three executed isolated Chromium rehearsals. Local demo and native
+package gates PASS; remote deployment NOT ATTEMPTED. Cloud database/media migration
+is BLOCKED/DEFERRED. Gemini remains frozen and Phase 07 is not authorized.
+
+```powershell
+Set-Location D:\project\sentinel_ladder_v2
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Demo.ps1 -Action Preflight
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Demo.ps1 -Action Start -AcknowledgeCanned -OpenBrowser
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Demo.ps1 -Action Stop
+```
+
+Use the existing Python environment and built frontend; the launcher never installs
+dependencies. Credentials stay in the private generated isolated root, valid for
+the one-hour demo lifetime. No normal data is reset. [Operations](docs/operations_phase06.md),
+[operator runbook](docs/demo_runbook_phase06.md), [three-minute script](docs/pitch_phase06.md),
+[evidence package](tracking/phase06_evidence/README.md), [report](tracking/PHASE_06_REPORT.md).
+
+## Retained Phase 05 functional portals
 
 Functional contractor, manager and security-engineer portals use the authenticated
 FastAPI backend. Server decisions remain authoritative. Evidence correction,
@@ -10,7 +30,8 @@ independent release readiness are verified locally. No role switcher or payment.
 
 Gemini remains frozen; normal MOCK_AI stays UNKNOWN. Positive demonstrations use
 an acknowledged isolated canned fixture, explicitly not image extraction.
-Stop at Phase 05; no Phase 06 deployment or Phase 07 polish.
+Phase 05 historical portal evidence is retained; Phase 06 does not deploy remotely
+or add Phase 07 polish.
 
 ## Retained Phase 04 backend
 

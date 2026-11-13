@@ -1,0 +1,62 @@
+ M .github/workflows/tests.yml
+ M .gitignore
+ M README.md
+ M frontend/README.md
+ M frontend/src/features/cases.tsx
+ M frontend/src/ui.tsx
+ M frontend/vite.config.ts
+ M tracking/EXECUTION_LOG.md
+ M tracking/REQUIREMENT_MATRIX.md
+ M tracking/SECURITY_TEST_CATALOG.md
+ M tracking/STATUS_LEDGER.md
+?? .github/workflows/frontend.yml
+?? backend/app/hosting.py
+?? backend/tests/phase06/test_hosting.py
+?? backend/tests/phase06/test_operations.py
+?? backend/tests/phase06/test_package.py
+?? backend/tools/local_ops.py
+?? backend/tools/release_package.py
+?? docs/demo_runbook_phase06.md
+?? docs/deployment_decision_phase06.md
+?? docs/operations_phase06.md
+?? docs/pitch_phase06.md
+?? docs/security_deployment_review_phase06.md
+?? frontend/config/loopback.ts
+?? frontend/rehearsal/inspect.mjs
+?? frontend/rehearsal/run.mjs
+?? frontend/src/test/hosting.test.ts
+?? scripts/Demo.ps1
+?? tracking/PHASE_06_BACKEND_TEST_OUTPUT.txt
+?? tracking/PHASE_06_BASELINE_BACKEND_OUTPUT.txt
+?? tracking/PHASE_06_BASELINE_BROWSER_OUTPUT.txt
+?? tracking/PHASE_06_BASELINE_BUILD_OUTPUT.txt
+?? tracking/PHASE_06_BASELINE_FRONTEND_OUTPUT.txt
+?? tracking/PHASE_06_BASELINE_NPM_AUDIT.json
+?? tracking/PHASE_06_BASELINE_PIP_OUTPUT.txt
+?? tracking/PHASE_06_BASELINE_TEST_HASHES.json
+?? tracking/PHASE_06_BROWSER_OUTPUT.txt
+?? tracking/PHASE_06_BUILD_OUTPUT.txt
+?? tracking/PHASE_06_FILE_MANIFEST.json
+?? tracking/PHASE_06_FINAL_GIT_STATUS.txt
+?? tracking/PHASE_06_FINAL_NPM_AUDIT.json
+?? tracking/PHASE_06_FINAL_PACKAGE_SMOKE_OUTPUT.txt
+?? tracking/PHASE_06_FINAL_PIP_OUTPUT.txt
+?? tracking/PHASE_06_FOCUSED_TEST_OUTPUT.txt
+?? tracking/PHASE_06_FRONTEND_TEST_OUTPUT.txt
+?? tracking/PHASE_06_INITIAL_FOCUSED_TEST_OUTPUT.txt
+?? tracking/PHASE_06_INSPECTION_OUTPUT.txt
+?? tracking/PHASE_06_LAUNCH_OUTPUT.txt
+?? tracking/PHASE_06_PACKAGE_OUTPUT.txt
+?? tracking/PHASE_06_REHEARSAL_OUTPUT.txt
+?? tracking/PHASE_06_REPORT.md
+?? tracking/PHASE_06_SECURITY_CHECKS.json
+?? tracking/phase06_evidence/01-unsafe-canned.png
+?? tracking/phase06_evidence/02-simulated-completion.png
+?? tracking/phase06_evidence/03-reproduced-finding.png
+?? tracking/phase06_evidence/04-independent-unpublished-readiness.png
+?? tracking/phase06_evidence/05-synthetic-metrics.png
+?? tracking/phase06_evidence/MANIFEST.json
+?? tracking/phase06_evidence/README.md
+?? tracking/phase06_evidence/inspection.json
+?? tracking/phase06_evidence/performance.json
+?? tracking/phase06_evidence/rehearsals.json

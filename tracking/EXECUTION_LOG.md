@@ -2924,3 +2924,154 @@ approval-service/.env/consumed-marker change. No inference, paid AI request, rea
 transfer/control, publication, commit, push, deploy or Phase 06/07 implementation.
 
 Phase 05 local gate PASS / TESTED. Review before any commit. Gemini frozen through 07.
+# Phase 06 — 13 November 2026 (local native gate)
+
+Current authorization attachment: Phase 06 deployment readiness/reproducibility/
+three-minute demo. Starting HEAD 92bd728fcf38bb59c9a09e633480042bd3dcb86a,
+clean status. No commit/push/remote/deploy/cloud/model action. Full readings and
+actual architecture inventory recorded in PHASE_06_REPORT.md. No subagents used.
+
+Executed command invocations below use Windows PowerShell, repository root unless
+frontend cwd is specified. TEMP/TMP/TMPDIR were set to each new ignored test root,
+not system Temp; no global ACL change. Values resolved for the actual pytest runs:
+
+```powershell
+git log --oneline -8
+git status --short
+git diff --check
+.\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider --basetemp .venv/phase06-baseline-1d07676e7e3a4d1f80ebf9e681f33c77/pytest
+.\.venv\Scripts\python.exe -m pip check
+```
+
+Results: Git status empty/diff-check 0; baseline pytest 572 passed108.88s exit0;
+pip check no broken requirements exit0. Hashes captured for 42 original test
+files and 15 protected files; private-file hashes retained only in ignored
+`.venv/phase06-protected.local.json`. PDF pypdf inspection confirmed 35 pages;
+consulted deployment/demo pages and extracted reference. Read paths/prompts and
+existing entrypoints/config/CI/harness/lockfiles before edits. Read-only public
+primary Cloud Run/Firestore/Cloud SQL/Storage/Windows ACL docs; no credentials.
+
+From frontend cwd, before edits, stdout retained under tracking:
+
+```powershell
+npm.cmd test
+npm.cmd run build
+npm.cmd run e2e
+npm.cmd audit --json
+```
+
+Results: 36 passed18.25s; build47modules870ms; original6 Chromium passed32.3s;
+audit total vulnerabilities0, each exit0. No dependency manifest/lock/pin change.
+
+Added native wrapper/ops/allowlist packager, new Phase06 tests, PowerShell entry,
+loopback-only dev proxy validation, honest source notices and standalone browser
+driver; five architecture/operations/pitch docs. No changes to policy, auth,
+case-service, settings/provider or accepted harness. Source allowlist initially
+omitted policy.py; instance mismatch initially caused stop side effect. New tests
+caught both; fixed allowlist and validate instance before control side effects.
+Initial focused output retained, no old test modified.
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest backend/tests/phase06 -q -p no:cacheprovider --basetemp .venv/phase06-focused-0728db033618416aa474514ec9170f33/pytest
+.\.venv\Scripts\python.exe -m pytest backend/tests/phase06 -q -p no:cacheprovider --basetemp .venv/phase06-focused-fixed-e7fef124640b47a3927ecfead5aff863/pytest
+.\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider --basetemp .venv/phase06-regression-352ae36e340f4ca4b7ad1fea1479312e/pytest
+```
+
+Actual results: 3failed40passed13.93s; corrected43passed13.47s; after additional
+missing-backup-source regression, complete **616passed106.29s**, all exit0 except
+initial expected development failure exit1. Final stdout PHASE_06_BACKEND_TEST_OUTPUT.txt.
+Final frontend cwd `npm.cmd test`, `npm.cmd run build`, `npm.cmd run e2e`:
+**42passed6.09s**, build47modules684ms, **6passed25.3s**, exit0. Logs retained.
+No further business/hosting source changes after full regression.
+
+PowerShell Restricted policy initially refused direct script invocation. Corrected
+operator command uses process-only ExecutionPolicy Bypass, never Set-ExecutionPolicy.
+PowerShell ACL approach failed SeSecurityPrivilege; new-directory DACL-only Windows
+API works under ordinary execution. Actual commands:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Demo.ps1 -Action Preflight -Port 0
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Demo.ps1 -Action Start -Port 0 -AcknowledgeCanned
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Demo.ps1 -Action Status
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Demo.ps1 -Action Stop
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Demo.ps1 -Action Backup
+.\.venv\Scripts\python.exe -m backend.tools.release_package build --package .venv/phase06-native-rehearsal.zip
+.\.venv\Scripts\python.exe -m backend.tools.release_package verify --package .venv/phase06-native-rehearsal.zip
+```
+
+Actual local launcher example port49289 READY startup2.2297s, stop0.3085s;
+safe preflight/dependency/status and stopped backup passed. Existing data preserved.
+Verified rehearsed archive52files198963B SHA596a6ca1400adaeadaba0114a6b1f3abf04afbeedf6edf870dbd2dd6d6c99037.
+Early defective51-file archive preserved but not accepted.
+
+From frontend cwd:
+
+```powershell
+node rehearsal/run.mjs --package ../.venv/phase06-native-rehearsal.zip --runs 3
+node rehearsal/inspect.mjs ../.venv/phase06-rehearsals-77c43a17-afa7-4956-910e-89941ac23769/summary.json ../.venv/phase06-browser-inspection
+```
+
+First: **3completed3passed**,20.882/20.350/19.795s total;11.695/11.756/11.359s
+pitch visual actions. All actual step/start/finish/auth/permission/run/finding/gate
+results in reviewed redacted evidence and raw ignored data. No exceeded step
+budget/unexpected browser error. Each stopped and backed up. Human narration
+UNVERIFIED. Second: sandbox EPERM before work, rerun with sandbox exception
+passed actual stored weak-run read-only browser inspection and stopped service;
+login screen ready73.290ms,n1,Chromium158.0.8127.18. This is not fourth full pitch.
+Screenshots visually inspected and only five safe copies included in evidence.
+
+After final runbook/pitch documentation, rebuilt and separately smoke-tested the
+final package. Only two docs plus manifest differ from rehearsed archive; actual
+Python/policy/corpus/scripts/assets unchanged (ZIP member byte comparison passed).
+
+```powershell
+.\.venv\Scripts\python.exe -m backend.tools.release_package build --package .venv/phase06-native-final.zip
+.\.venv\Scripts\python.exe -m backend.tools.release_package verify --package .venv/phase06-native-final.zip
+.\.venv\Scripts\python.exe -m backend.tools.release_package extract --package .venv/phase06-native-final.zip --destination .venv/phase06-final-extracted
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .venv/phase06-final-extracted/scripts/Demo.ps1 -Action Preflight -Port 0 -PythonPath 'D:/project/sentinel_ladder_v2/.venv/Scripts/python.exe'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .venv/phase06-final-extracted/scripts/Demo.ps1 -Action Start -Port 0 -AcknowledgeCanned -PythonPath 'D:/project/sentinel_ladder_v2/.venv/Scripts/python.exe'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .venv/phase06-final-extracted/scripts/Demo.ps1 -Action Status -PythonPath 'D:/project/sentinel_ladder_v2/.venv/Scripts/python.exe'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .venv/phase06-final-extracted/scripts/Demo.ps1 -Action Stop -PythonPath 'D:/project/sentinel_ladder_v2/.venv/Scripts/python.exe'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .venv/phase06-final-extracted/scripts/Demo.ps1 -Action Backup -PythonPath 'D:/project/sentinel_ladder_v2/.venv/Scripts/python.exe'
+.\.venv\Scripts\python.exe -m backend.tools.release_package build --package .venv/phase06-native-final-repeat.zip
+```
+
+All exit0. Final52files199828B SHA24512bc1bc664d68d840b08c512835a6fc7e40942eb2d80842453384c8e5d396.
+Final second build byte-for-byte equal. Actual port54583 startup1.63365s,
+health/ready/login200,me401,private.env/unknownAPI404,CSPall; statusREADY;
+stop0.31086s; stopped backup complete. Smoke uses actual httpx trust_env=False;
+stdout in PHASE_06_FINAL_PACKAGE_SMOKE_OUTPUT.txt. No Docker/container/cloud claim.
+
+```powershell
+.\.venv\Scripts\python.exe -m pip check
+```
+
+Final no broken requirements, exit0, PHASE_06_FINAL_PIP_OUTPUT.txt. Frontend cwd
+`npm.cmd audit --json` final total vulnerabilities0 exit0. Runtime3.14.7 onWindows11
+26300,node24.20.0,npm11.19.0. CIM hardware queries denied; RAM not measured;
+CPU environment/logical processor count recorded without invented memory figures.
+
+Executed private local evidence preparer `.\.venv\Scripts\python.exe
+.venv/phase06_prepare_evidence.py` (sandbox read of protected private fixture
+initially denied, then approved exception). It verifies all42oldtest/15protected
+hashes and exact28private values absent from both tested archives; public new/
+changed artifacts checked, no values printed. Creates reviewed redacted timing/
+performance JSON/copies five actual screenshots only. No DB/rawmedia/credentials
+published. Limits recorded; not a universal secret detector or signed provenance.
+
+Updated ledger/matrix/catalog/README/frontendREADME; required five docs/report,
+file manifest, final status/diff checks. CI additions are local-equivalent verified,
+remote NOTRUN; no deployment/credential steps. Local demoPASS/nativepackagePASS,
+remoteNOTATTEMPTED, durable cloudadaptersBLOCKED/DEFERRED. StopPhase06. Gemini
+frozen, consumed marker and private history unchanged. No commit/push/deploy/07.
+
+Final read-only checks: 13 changed/new Markdown documents have no missing local
+links; evidence manifest hashes match; 62 public review artifacts contain none of
+28 checked private values. Source launcher/final extracted smoke roots are STOPPED
+under the sandbox owner; three rehearsal roots STOPPED under their owning account.
+An attempted cross-owner private-state read was denied by the new Windows ACL;
+checked each under its existing owner instead, never broadened permissions.
+Whitespace check caught one extra final blank line in this log; removed it and
+reran `git diff --check`, exit0, CRLF advisories only. Final status is 11 modified
+tracked files and 51 new files; none staged/deleted. Exact paths/status saved in
+PHASE_06_FILE_MANIFEST.json and PHASE_06_FINAL_GIT_STATUS.txt. No commit created.

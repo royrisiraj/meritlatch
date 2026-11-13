@@ -1,0 +1,3463 @@
+{
+  "classification": "THREE_SEPARATE_AUTOMATED_VISUAL_REHEARSALS_NOT_HUMAN_NARRATION",
+  "package": {
+    "status": "PACKAGE_VERIFIED",
+    "files": 52,
+    "bytes": 198963,
+    "sha256": "596a6ca1400adaeadaba0114a6b1f3abf04afbeedf6edf870dbd2dd6d6c99037",
+    "base_commit": "92bd728fcf38bb59c9a09e633480042bd3dcb86a",
+    "remote_deployment": "NOT_ATTEMPTED"
+  },
+  "completed": 3,
+  "passed": 3,
+  "spoken_delivery": "UNVERIFIED",
+  "rehearsals": [
+    {
+      "round": 1,
+      "classification": "AUTOMATED_CHROMIUM_VISUAL_REHEARSAL",
+      "spoken_delivery": "NOT_OBSERVED",
+      "source": "CANNED_MOCK_AI_AND_FIXED_SYNTHETIC_CORPUS",
+      "prepared_state": "ACCOUNTS_AND_IMAGES_ONLY; ALL BUSINESS_AND_ASSURANCE_TRANSITIONS_EXECUTED_NOW",
+      "package_sha256": "596a6ca1400adaeadaba0114a6b1f3abf04afbeedf6edf870dbd2dd6d6c99037",
+      "started_at": "2026-11-13T05:52:17.841Z",
+      "api_measurements": [
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 99.879,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 5.403,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases",
+          "method": "GET",
+          "elapsed_ms": 6.908,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/assignees",
+          "method": "GET",
+          "elapsed_ms": 11.431,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/assignees",
+          "method": "GET",
+          "elapsed_ms": 28.215,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/policy-templates",
+          "method": "GET",
+          "elapsed_ms": 31.979,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/assignees",
+          "method": "GET",
+          "elapsed_ms": 47.942,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs",
+          "method": "POST",
+          "elapsed_ms": 9.792,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases",
+          "method": "POST",
+          "elapsed_ms": 12.802,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.536,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 5.775,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 25.736,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 9.228,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 6.509599999999409,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/evaluate",
+          "method": "POST",
+          "status": 200,
+          "elapsed_ms": 6.0156000000006316,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 95.454,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 3.633,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs",
+          "method": "GET",
+          "elapsed_ms": 3.96,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/cases",
+          "method": "GET",
+          "elapsed_ms": 6.497,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}",
+          "method": "GET",
+          "elapsed_ms": 3.72,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/cases",
+          "method": "GET",
+          "elapsed_ms": 6.115,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.096,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 6.172,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/challenges",
+          "method": "POST",
+          "elapsed_ms": 10.263,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 5.721,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 5.594,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence",
+          "method": "POST",
+          "elapsed_ms": 11.296,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 5.176,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence",
+          "method": "POST",
+          "elapsed_ms": 39.499,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.837,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 13.44,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 21.081,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 11.573599999999715,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 10.358,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 9.778,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 11.311,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 31.37,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/rejections",
+          "method": "POST",
+          "elapsed_ms": 12.135,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.307,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 10.422,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 10.29,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 8.409300000000258,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.632,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 7.856,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/challenges",
+          "method": "POST",
+          "elapsed_ms": 6.416,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 5.584,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 5.757,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence",
+          "method": "POST",
+          "elapsed_ms": 24.402,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.409,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 9.732,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 24.731,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 7.857199999999466,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 100.324,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 2.711,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/execute",
+          "method": "POST",
+          "elapsed_ms": 10.614,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 10.647,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 9.745,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 10.112,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 17.196,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "elapsed_ms": 19.734,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 10.292,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 10.85,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 8.959,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 10.460299999999734,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/execute",
+          "method": "POST",
+          "elapsed_ms": 9.743,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/execute",
+          "method": "POST",
+          "elapsed_ms": 5.818,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 9.54320000000007,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 11.08,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 10.316,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 92.424,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 3.07,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 5.548,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 3.842,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 4.597,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 3.882,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "POST",
+          "elapsed_ms": 20.699,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 7.397,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 4.026,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 4.172,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 3.409,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.433,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 3.867,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 5.596,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/run",
+          "method": "POST",
+          "elapsed_ms": 2331.992,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.099,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 7.268,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 4.439,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 7.625899999999092,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/release-gate",
+          "method": "POST",
+          "elapsed_ms": 23.935,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.921,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 10.217,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 10.126,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 5.365,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.895,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 7.621,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}/triage",
+          "method": "POST",
+          "elapsed_ms": 7.793,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.137,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 9.233,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 8.374,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 9.025,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 4.45,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.63,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "POST",
+          "elapsed_ms": 15.15,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 11.23,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 9.456,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 4.248,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.417,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 10.474,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 5.954,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 6.126,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/run",
+          "method": "POST",
+          "elapsed_ms": 2662.187,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.616,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 6.986,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 4.108,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 9.39429999999993,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 5.296,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 11.269,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}/remediations",
+          "method": "POST",
+          "elapsed_ms": 17.205,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.884,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 13.364,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 7.176100000000588,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.186,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 9.165,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 4.711,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/reviews",
+          "method": "POST",
+          "elapsed_ms": 7.454,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.528,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 7.305,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 6.738,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 135.077,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 3.679,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 12.285,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 11.13,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 4.386,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.598,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.163,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 8.6,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 4.87,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/reviews",
+          "method": "POST",
+          "elapsed_ms": 14.984,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.835,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 8.595,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 5.493,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/release-gate",
+          "method": "POST",
+          "elapsed_ms": 19.281,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.396,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 11.327100000000428,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 21.456,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 13.088,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 13.423800000000483,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 19.64900000000125,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 10.20089999999982,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 8.626399999997375,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/invoice",
+          "method": "PATCH",
+          "status": 200,
+          "elapsed_ms": 8.078700000001845,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "status": 409,
+          "elapsed_ms": 2.7766999999985273,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "status": 403,
+          "elapsed_ms": 2.8889000000017404,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "status": 403,
+          "elapsed_ms": 1.9344999999993888,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 404,
+          "elapsed_ms": 2.2960999999995693,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 404,
+          "elapsed_ms": 3.9827000000004773,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        }
+      ],
+      "errors": [],
+      "pitch_visual_actions_seconds": 11.694604,
+      "restart_url_changed": true,
+      "status": "PASSED",
+      "shutdown": {
+        "status": "STOPPED",
+        "shutdown_seconds": 0.21031000000039057
+      },
+      "finished_at": "2026-11-13T05:52:38.723Z",
+      "elapsed_seconds": 20.882172299999997,
+      "steps": [
+        {
+          "name": "native_start_and_readiness",
+          "started_at": "2026-11-13T05:52:17.841Z",
+          "finished_at": "2026-11-13T05:52:21.145Z",
+          "elapsed_ms": 3304.3337,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "startup_seconds": 2.2209149000009347
+        },
+        {
+          "name": "manager_create_assigned_job_and_l0",
+          "started_at": "2026-11-13T05:52:21.146Z",
+          "finished_at": "2026-11-13T05:52:22.316Z",
+          "elapsed_ms": 1170.2111999999997,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "case_id": "1306904b-eed5-4fbe-878e-59f0c1683025",
+          "permission": 0,
+          "l0_invoice_denied": true
+        },
+        {
+          "name": "contractor_decoder_denial_and_unsafe_inspection",
+          "started_at": "2026-11-13T05:52:22.316Z",
+          "finished_at": "2026-11-13T05:52:23.325Z",
+          "elapsed_ms": 1009.1118999999999,
+          "visual_action_budget_ms": 15000,
+          "exceeded_budget": false,
+          "inspection_status": "SAFETY_ALERT",
+          "permission": 1,
+          "source": "MOCK_AI",
+          "decoder_denied": true
+        },
+        {
+          "name": "manager_reject_and_contractor_correct_to_l2",
+          "started_at": "2026-11-13T05:52:23.325Z",
+          "finished_at": "2026-11-13T05:52:23.861Z",
+          "elapsed_ms": 535.9899000000005,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "rejected_permission": 0,
+          "corrected_permission": 2,
+          "evidence_version": 2
+        },
+        {
+          "name": "agent_prepare_manager_approve_and_simulated_receipt",
+          "started_at": "2026-11-13T05:52:23.861Z",
+          "finished_at": "2026-11-13T05:52:24.932Z",
+          "elapsed_ms": 1070.8140000000003,
+          "visual_action_budget_ms": 15000,
+          "exceeded_budget": false,
+          "permission": 3,
+          "business_status": "COMPLETED",
+          "simulated": true,
+          "duplicate_receipt_replayed": true
+        },
+        {
+          "name": "weak_synthetic_run_genuine_finding_and_blocked_gate",
+          "started_at": "2026-11-13T05:52:24.932Z",
+          "finished_at": "2026-11-13T05:52:28.491Z",
+          "elapsed_ms": 3559.1940999999997,
+          "visual_action_budget_ms": 30000,
+          "exceeded_budget": false,
+          "run_id": "692261d1-91b1-46b9-9db4-b2c33584062b",
+          "summary": {
+            "correctly_permitted_valid": 6,
+            "correctly_restricted_invalid": 25,
+            "failed": 2,
+            "false_approval_denominator": 26,
+            "false_approval_rate": 0.038461538461538464,
+            "false_approvals": 1,
+            "false_negative": 1,
+            "false_positive": 0,
+            "false_rejection_denominator": 6,
+            "false_rejection_rate": 0,
+            "false_rejections": 0,
+            "passed": 36,
+            "positive_class": "SHOULD_DENY",
+            "rates_scope": "BINARY_ONLY_EXCLUDES_REVIEW_AND_ABSTENTIONS",
+            "regression_failures": 2,
+            "review_abstentions": 0,
+            "review_bypasses": 1,
+            "review_expected": 6,
+            "skipped": 0,
+            "source": "SYNTHETIC",
+            "total_executed": 38,
+            "total_expected": 38,
+            "true_negative": 6,
+            "true_positive": 25,
+            "unevaluable": 0
+          },
+          "finding_id": "24cd9890-2158-4099-bb80-63893ee5e742",
+          "gate": "BLOCKED"
+        },
+        {
+          "name": "safe_regression_proposal_and_denied_self_review",
+          "started_at": "2026-11-13T05:52:28.491Z",
+          "finished_at": "2026-11-13T05:52:32.062Z",
+          "elapsed_ms": 3571.1523000000016,
+          "visual_action_budget_ms": 30000,
+          "exceeded_budget": false,
+          "run_id": "0af4e157-b51f-4cb8-91d6-2af4cf7d8885",
+          "summary": {
+            "correctly_permitted_valid": 6,
+            "correctly_restricted_invalid": 26,
+            "failed": 0,
+            "false_approval_denominator": 26,
+            "false_approval_rate": 0,
+            "false_approvals": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "false_rejection_denominator": 6,
+            "false_rejection_rate": 0,
+            "false_rejections": 0,
+            "passed": 38,
+            "positive_class": "SHOULD_DENY",
+            "rates_scope": "BINARY_ONLY_EXCLUDES_REVIEW_AND_ABSTENTIONS",
+            "regression_failures": 0,
+            "review_abstentions": 0,
+            "review_bypasses": 0,
+            "review_expected": 6,
+            "skipped": 0,
+            "source": "SYNTHETIC",
+            "total_executed": 38,
+            "total_expected": 38,
+            "true_negative": 6,
+            "true_positive": 26,
+            "unevaluable": 0
+          },
+          "proposal_id": "b8e27ca9-258d-4b25-b28b-5cda17fd1986",
+          "self_review_denied": true
+        },
+        {
+          "name": "independent_engineer_review_authoritative_unpublished_gate",
+          "started_at": "2026-11-13T05:52:32.063Z",
+          "finished_at": "2026-11-13T05:52:32.840Z",
+          "elapsed_ms": 777.5720000000001,
+          "visual_action_budget_ms": 30000,
+          "exceeded_budget": false,
+          "gate_id": "755fd1ea-b7c8-47ca-a6da-f4ff8e2aab95",
+          "decision": "READY_FOR_MANUAL_RELEASE",
+          "published": false,
+          "reviewer_id": "cfa7f70b-e5ae-471e-a044-71ab44241764"
+        },
+        {
+          "name": "ordinary_restart_preserves_evidence_session_audit_and_receipt",
+          "started_at": "2026-11-13T05:52:32.840Z",
+          "finished_at": "2026-11-13T05:52:36.221Z",
+          "elapsed_ms": 3380.5975,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "persisted_case_id": "1306904b-eed5-4fbe-878e-59f0c1683025",
+          "persisted_permission": 3,
+          "persisted_completion": "COMPLETED",
+          "shutdown_seconds": 0.20912800000041898
+        },
+        {
+          "name": "invoice_invalidation_stale_role_tenant_and_reviewer_denials",
+          "started_at": "2026-11-13T05:52:36.221Z",
+          "finished_at": "2026-11-13T05:52:36.513Z",
+          "elapsed_ms": 291.78340000000026,
+          "visual_action_budget_ms": 15000,
+          "exceeded_budget": false,
+          "invoice_revision": 2,
+          "obsolete_approval_invalid": true,
+          "permission_after_change": 2,
+          "stale_and_role_and_tenant_denials": true
+        }
+      ],
+      "backup": {
+        "status": "BACKUP_COMPLETE",
+        "location": "PRIVATE_IGNORED_RUNTIME"
+      }
+    },
+    {
+      "round": 2,
+      "classification": "AUTOMATED_CHROMIUM_VISUAL_REHEARSAL",
+      "spoken_delivery": "NOT_OBSERVED",
+      "source": "CANNED_MOCK_AI_AND_FIXED_SYNTHETIC_CORPUS",
+      "prepared_state": "ACCOUNTS_AND_IMAGES_ONLY; ALL BUSINESS_AND_ASSURANCE_TRANSITIONS_EXECUTED_NOW",
+      "package_sha256": "596a6ca1400adaeadaba0114a6b1f3abf04afbeedf6edf870dbd2dd6d6c99037",
+      "started_at": "2026-11-13T05:52:39.190Z",
+      "api_measurements": [
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 93.194,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 3.667,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases",
+          "method": "GET",
+          "elapsed_ms": 6.088,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/assignees",
+          "method": "GET",
+          "elapsed_ms": 8.705,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/assignees",
+          "method": "GET",
+          "elapsed_ms": 9.715,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/assignees",
+          "method": "GET",
+          "elapsed_ms": 22.508,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/policy-templates",
+          "method": "GET",
+          "elapsed_ms": 33.118,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs",
+          "method": "POST",
+          "elapsed_ms": 7.822,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases",
+          "method": "POST",
+          "elapsed_ms": 12.932,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.43,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 5.423,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 6.402,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 4.543700000001991,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/evaluate",
+          "method": "POST",
+          "status": 200,
+          "elapsed_ms": 5.427899999998772,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 89.627,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 3.313,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs",
+          "method": "GET",
+          "elapsed_ms": 4.979,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/cases",
+          "method": "GET",
+          "elapsed_ms": 6.138,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}",
+          "method": "GET",
+          "elapsed_ms": 5.041,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/cases",
+          "method": "GET",
+          "elapsed_ms": 7.029,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.536,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 20.705,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/challenges",
+          "method": "POST",
+          "elapsed_ms": 10.166,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 6.789,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 7.653,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence",
+          "method": "POST",
+          "elapsed_ms": 12.13,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.786,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence",
+          "method": "POST",
+          "elapsed_ms": 42.493,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 15.744,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 15.541,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 28.577,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 12.197800000001735,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 13.291,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 13.678,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 12.398,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 31.741,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/rejections",
+          "method": "POST",
+          "elapsed_ms": 20.349,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 12.325,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 11.892,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 9.97,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 10.924599999998463,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 10.261,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 10.405,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/challenges",
+          "method": "POST",
+          "elapsed_ms": 13.044,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.392,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 8.491,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence",
+          "method": "POST",
+          "elapsed_ms": 28.318,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 10.906,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 12.075,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 31.015,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 9.516700000000128,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 131.513,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 4.184,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/execute",
+          "method": "POST",
+          "elapsed_ms": 12.641,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 13.066,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 12.211,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 13.827,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 31.84,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "elapsed_ms": 17.82,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 12.803,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 13.852,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 11.49,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 11.673099999999977,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/execute",
+          "method": "POST",
+          "elapsed_ms": 11.688,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/execute",
+          "method": "POST",
+          "elapsed_ms": 7.012,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 10.099699999998847,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 13.296,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 12.328,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 141.568,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 6.148,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 7.908,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 6.209,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 5.108,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 5.037,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "POST",
+          "elapsed_ms": 23.375,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 8.549,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 4.756,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 4.67,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.199,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.963,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 5.043,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 7.969,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/run",
+          "method": "POST",
+          "elapsed_ms": 2406.552,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.63,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 8.719,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 4.376,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 9.606999999999971,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/release-gate",
+          "method": "POST",
+          "elapsed_ms": 21.125,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.442,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 10.856,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 11.305,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 5.896,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.958,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 9.358,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}/triage",
+          "method": "POST",
+          "elapsed_ms": 7.138,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 6.406,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 8.743,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 10.084,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 9.303,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 4.769,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 6.945,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "POST",
+          "elapsed_ms": 13.727,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 11.397,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 8.56,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 5.417,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.824,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.07,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 5.66,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 5.364,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/run",
+          "method": "POST",
+          "elapsed_ms": 2362.033,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.245,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 8.094,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 4.149,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 8.859600000003411,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 5.245,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 10.494,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}/remediations",
+          "method": "POST",
+          "elapsed_ms": 10.521,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 6.202,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 10.181,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 5.423800000004121,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.232,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 7.276,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 5.042,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/reviews",
+          "method": "POST",
+          "elapsed_ms": 6.386,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.407,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 9.096,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 5.343,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 138.651,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 3.622,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 9.441,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 14.129,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 4.916,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.199,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.681,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 7.91,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 4.554,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/reviews",
+          "method": "POST",
+          "elapsed_ms": 14.007,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.366,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 7.662,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 5.096,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/release-gate",
+          "method": "POST",
+          "elapsed_ms": 21.588,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.51,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 11.003099999994447,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 22.221,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 11.822,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 12.800600000002305,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 20.18019999999524,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 8.972300000001269,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 7.759400000002643,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/invoice",
+          "method": "PATCH",
+          "status": 200,
+          "elapsed_ms": 7.4421000000002095,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "status": 409,
+          "elapsed_ms": 3.475700000002689,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "status": 403,
+          "elapsed_ms": 2.084000000002561,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "status": 403,
+          "elapsed_ms": 2.5240000000048894,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 404,
+          "elapsed_ms": 2.5636999999987893,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 404,
+          "elapsed_ms": 2.173399999999674,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        }
+      ],
+      "errors": [],
+      "pitch_visual_actions_seconds": 11.7561527,
+      "restart_url_changed": true,
+      "status": "PASSED",
+      "shutdown": {
+        "status": "STOPPED",
+        "shutdown_seconds": 0.20955310000135796
+      },
+      "finished_at": "2026-11-13T05:52:59.540Z",
+      "elapsed_seconds": 20.350184600000002,
+      "steps": [
+        {
+          "name": "native_start_and_readiness",
+          "started_at": "2026-11-13T05:52:39.190Z",
+          "finished_at": "2026-11-13T05:52:42.518Z",
+          "elapsed_ms": 3327.7668999999987,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "startup_seconds": 2.2000418000006903
+        },
+        {
+          "name": "manager_create_assigned_job_and_l0",
+          "started_at": "2026-11-13T05:52:42.518Z",
+          "finished_at": "2026-11-13T05:52:43.366Z",
+          "elapsed_ms": 848.4965000000011,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "case_id": "7e7887e5-af73-4f48-9d2e-def09f15c57f",
+          "permission": 0,
+          "l0_invoice_denied": true
+        },
+        {
+          "name": "contractor_decoder_denial_and_unsafe_inspection",
+          "started_at": "2026-11-13T05:52:43.366Z",
+          "finished_at": "2026-11-13T05:52:44.231Z",
+          "elapsed_ms": 864.575200000003,
+          "visual_action_budget_ms": 15000,
+          "exceeded_budget": false,
+          "inspection_status": "SAFETY_ALERT",
+          "permission": 1,
+          "source": "MOCK_AI",
+          "decoder_denied": true
+        },
+        {
+          "name": "manager_reject_and_contractor_correct_to_l2",
+          "started_at": "2026-11-13T05:52:44.231Z",
+          "finished_at": "2026-11-13T05:52:44.737Z",
+          "elapsed_ms": 505.66589999999997,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "rejected_permission": 0,
+          "corrected_permission": 2,
+          "evidence_version": 2
+        },
+        {
+          "name": "agent_prepare_manager_approve_and_simulated_receipt",
+          "started_at": "2026-11-13T05:52:44.737Z",
+          "finished_at": "2026-11-13T05:52:45.896Z",
+          "elapsed_ms": 1158.9098000000013,
+          "visual_action_budget_ms": 15000,
+          "exceeded_budget": false,
+          "permission": 3,
+          "business_status": "COMPLETED",
+          "simulated": true,
+          "duplicate_receipt_replayed": true
+        },
+        {
+          "name": "weak_synthetic_run_genuine_finding_and_blocked_gate",
+          "started_at": "2026-11-13T05:52:45.896Z",
+          "finished_at": "2026-11-13T05:52:49.998Z",
+          "elapsed_ms": 4102.7346,
+          "visual_action_budget_ms": 30000,
+          "exceeded_budget": false,
+          "run_id": "d2cfe12b-644f-45a7-a4f3-0011127f2d17",
+          "summary": {
+            "correctly_permitted_valid": 6,
+            "correctly_restricted_invalid": 25,
+            "failed": 2,
+            "false_approval_denominator": 26,
+            "false_approval_rate": 0.038461538461538464,
+            "false_approvals": 1,
+            "false_negative": 1,
+            "false_positive": 0,
+            "false_rejection_denominator": 6,
+            "false_rejection_rate": 0,
+            "false_rejections": 0,
+            "passed": 36,
+            "positive_class": "SHOULD_DENY",
+            "rates_scope": "BINARY_ONLY_EXCLUDES_REVIEW_AND_ABSTENTIONS",
+            "regression_failures": 2,
+            "review_abstentions": 0,
+            "review_bypasses": 1,
+            "review_expected": 6,
+            "skipped": 0,
+            "source": "SYNTHETIC",
+            "total_executed": 38,
+            "total_expected": 38,
+            "true_negative": 6,
+            "true_positive": 25,
+            "unevaluable": 0
+          },
+          "finding_id": "25842377-0f78-41a8-aa45-500af75f5286",
+          "gate": "BLOCKED"
+        },
+        {
+          "name": "safe_regression_proposal_and_denied_self_review",
+          "started_at": "2026-11-13T05:52:49.998Z",
+          "finished_at": "2026-11-13T05:52:53.541Z",
+          "elapsed_ms": 3542.8824000000022,
+          "visual_action_budget_ms": 30000,
+          "exceeded_budget": false,
+          "run_id": "431fa408-9c30-4ca7-8188-e385f8db1ce2",
+          "summary": {
+            "correctly_permitted_valid": 6,
+            "correctly_restricted_invalid": 26,
+            "failed": 0,
+            "false_approval_denominator": 26,
+            "false_approval_rate": 0,
+            "false_approvals": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "false_rejection_denominator": 6,
+            "false_rejection_rate": 0,
+            "false_rejections": 0,
+            "passed": 38,
+            "positive_class": "SHOULD_DENY",
+            "rates_scope": "BINARY_ONLY_EXCLUDES_REVIEW_AND_ABSTENTIONS",
+            "regression_failures": 0,
+            "review_abstentions": 0,
+            "review_bypasses": 0,
+            "review_expected": 6,
+            "skipped": 0,
+            "source": "SYNTHETIC",
+            "total_executed": 38,
+            "total_expected": 38,
+            "true_negative": 6,
+            "true_positive": 26,
+            "unevaluable": 0
+          },
+          "proposal_id": "a7e8de9c-5122-4513-bba3-0acf856dab97",
+          "self_review_denied": true
+        },
+        {
+          "name": "independent_engineer_review_authoritative_unpublished_gate",
+          "started_at": "2026-11-13T05:52:53.541Z",
+          "finished_at": "2026-11-13T05:52:54.274Z",
+          "elapsed_ms": 732.3076999999976,
+          "visual_action_budget_ms": 30000,
+          "exceeded_budget": false,
+          "gate_id": "03232506-9d4f-4256-862d-12eca63ad1a0",
+          "decision": "READY_FOR_MANUAL_RELEASE",
+          "published": false,
+          "reviewer_id": "cf7bafeb-5d1b-4273-a85d-51f3aaff5ba4"
+        },
+        {
+          "name": "ordinary_restart_preserves_evidence_session_audit_and_receipt",
+          "started_at": "2026-11-13T05:52:54.274Z",
+          "finished_at": "2026-11-13T05:52:57.296Z",
+          "elapsed_ms": 3022.4827000000005,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "persisted_case_id": "7e7887e5-af73-4f48-9d2e-def09f15c57f",
+          "persisted_permission": 3,
+          "persisted_completion": "COMPLETED",
+          "shutdown_seconds": 0.20774270000038086
+        },
+        {
+          "name": "invoice_invalidation_stale_role_tenant_and_reviewer_denials",
+          "started_at": "2026-11-13T05:52:57.296Z",
+          "finished_at": "2026-11-13T05:52:57.576Z",
+          "elapsed_ms": 279.9762000000046,
+          "visual_action_budget_ms": 15000,
+          "exceeded_budget": false,
+          "invoice_revision": 2,
+          "obsolete_approval_invalid": true,
+          "permission_after_change": 2,
+          "stale_and_role_and_tenant_denials": true
+        }
+      ],
+      "backup": {
+        "status": "BACKUP_COMPLETE",
+        "location": "PRIVATE_IGNORED_RUNTIME"
+      }
+    },
+    {
+      "round": 3,
+      "classification": "AUTOMATED_CHROMIUM_VISUAL_REHEARSAL",
+      "spoken_delivery": "NOT_OBSERVED",
+      "source": "CANNED_MOCK_AI_AND_FIXED_SYNTHETIC_CORPUS",
+      "prepared_state": "ACCOUNTS_AND_IMAGES_ONLY; ALL BUSINESS_AND_ASSURANCE_TRANSITIONS_EXECUTED_NOW",
+      "package_sha256": "596a6ca1400adaeadaba0114a6b1f3abf04afbeedf6edf870dbd2dd6d6c99037",
+      "started_at": "2026-11-13T05:52:59.933Z",
+      "api_measurements": [
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 90.482,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 4.08,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases",
+          "method": "GET",
+          "elapsed_ms": 4.818,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/assignees",
+          "method": "GET",
+          "elapsed_ms": 9.873,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/policy-templates",
+          "method": "GET",
+          "elapsed_ms": 10.82,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/assignees",
+          "method": "GET",
+          "elapsed_ms": 25.664,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/assignees",
+          "method": "GET",
+          "elapsed_ms": 33.699,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs",
+          "method": "POST",
+          "elapsed_ms": 7.343,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases",
+          "method": "POST",
+          "elapsed_ms": 11.129,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 8.417,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 24.346,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 5.983,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 7.611,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 5.3994000000020606,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/evaluate",
+          "method": "POST",
+          "status": 200,
+          "elapsed_ms": 6.2946999999985565,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 88.836,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 3.705,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs",
+          "method": "GET",
+          "elapsed_ms": 4.157,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/cases",
+          "method": "GET",
+          "elapsed_ms": 5.793,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}",
+          "method": "GET",
+          "elapsed_ms": 5.024,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/cases",
+          "method": "GET",
+          "elapsed_ms": 6.761,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.497,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 6.174,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/challenges",
+          "method": "POST",
+          "elapsed_ms": 10.17,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.091,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 6.534,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence",
+          "method": "POST",
+          "elapsed_ms": 11.597,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.29,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence",
+          "method": "POST",
+          "elapsed_ms": 40.172,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.492,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 10.625,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 22.992,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 11.902699999998731,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 11.894,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 9.785,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 12.117,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 18.896,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/rejections",
+          "method": "POST",
+          "elapsed_ms": 14.148,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 12.095,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 9.839,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 8.867,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 10.58650000000489,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.217,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 7.943,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/jobs/{id}/challenges",
+          "method": "POST",
+          "elapsed_ms": 8.173,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 6.762,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 8.162,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence",
+          "method": "POST",
+          "elapsed_ms": 27.2,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 11.248,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 9.382,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 29.426,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 9.313399999999092,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 134.667,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 4.134,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/execute",
+          "method": "POST",
+          "elapsed_ms": 11.485,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 11.531,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 10.478,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 12.004,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/evidence/{id}/content",
+          "method": "GET",
+          "elapsed_ms": 18.269,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "elapsed_ms": 15.26,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 10.94,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 10.519,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "elapsed_ms": 11.978,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 9.643700000000536,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/execute",
+          "method": "POST",
+          "elapsed_ms": 10.886,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/actions/execute",
+          "method": "POST",
+          "elapsed_ms": 8.111,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 10.546200000004319,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "elapsed_ms": 15.145,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/review",
+          "method": "GET",
+          "elapsed_ms": 12.877,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 129.58,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 4.35,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 5.955,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 4.816,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 5.385,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.578,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "POST",
+          "elapsed_ms": 25.517,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 8.603,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 4.433,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 5.009,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.24,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.194,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 5.06,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 7.126,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/run",
+          "method": "POST",
+          "elapsed_ms": 2245.97,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.222,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 7.943,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 5.054,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 8.177100000000792,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/release-gate",
+          "method": "POST",
+          "elapsed_ms": 17.439,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.766,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 7.766,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 11.604,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 6.149,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.875,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 8.24,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}/triage",
+          "method": "POST",
+          "elapsed_ms": 7.792,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 6.148,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 8.358,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 8.807,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 10.38,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 4.5,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.783,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "POST",
+          "elapsed_ms": 10.091,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 10.651,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 7.885,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 5.102,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.539,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.938,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 4.652,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 5.101,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/run",
+          "method": "POST",
+          "elapsed_ms": 2359.569,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.955,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 9.088,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 4.957,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 8.694999999999709,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 6.33,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 10.213,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}/remediations",
+          "method": "POST",
+          "elapsed_ms": 12.622,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "elapsed_ms": 6.151,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 9.541,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 4.749000000003434,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.728,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 7.754,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 4.88,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/reviews",
+          "method": "POST",
+          "elapsed_ms": 7.233,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 9.183,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 10.663,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 6.101,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/auth/login",
+          "method": "POST",
+          "elapsed_ms": 95.24,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/me",
+          "method": "GET",
+          "elapsed_ms": 4.839,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates",
+          "method": "GET",
+          "elapsed_ms": 11.171,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 17.744,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/alerts",
+          "method": "GET",
+          "elapsed_ms": 4.681,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/audit",
+          "method": "GET",
+          "elapsed_ms": 4.159,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.666,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 8.988,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 5.183,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/reviews",
+          "method": "POST",
+          "elapsed_ms": 14.612,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 8.965,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 10.655,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 8.259,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/release-gate",
+          "method": "POST",
+          "elapsed_ms": 21.271,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}",
+          "method": "GET",
+          "elapsed_ms": 7.987,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 11.427999999999884,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/redteam/runs",
+          "method": "GET",
+          "elapsed_ms": 16.956,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/redteam/candidates/{id}/history",
+          "method": "GET",
+          "elapsed_ms": 10.87,
+          "kind": "BROWSER_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 13.003399999994144,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 18.208699999995588,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/audit",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 10.445899999998801,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 200,
+          "elapsed_ms": 8.769800000001851,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/invoice",
+          "method": "PATCH",
+          "status": 200,
+          "elapsed_ms": 8.44419999999809,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "status": 409,
+          "elapsed_ms": 2.881999999997788,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "status": 403,
+          "elapsed_ms": 2.820799999994051,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}/approvals",
+          "method": "POST",
+          "status": 403,
+          "elapsed_ms": 2.2620000000024447,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 404,
+          "elapsed_ms": 2.493499999996857,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        },
+        {
+          "path": "/v1/cases/{id}",
+          "method": "GET",
+          "status": 404,
+          "elapsed_ms": 2.9596999999994296,
+          "kind": "AUTHORITATIVE_VERIFICATION_HTTP"
+        }
+      ],
+      "errors": [],
+      "pitch_visual_actions_seconds": 11.359354200000002,
+      "restart_url_changed": true,
+      "status": "PASSED",
+      "shutdown": {
+        "status": "STOPPED",
+        "shutdown_seconds": 0.2089630999998917
+      },
+      "finished_at": "2026-11-13T05:53:19.728Z",
+      "elapsed_seconds": 19.794770000000003,
+      "steps": [
+        {
+          "name": "native_start_and_readiness",
+          "started_at": "2026-11-13T05:52:59.933Z",
+          "finished_at": "2026-11-13T05:53:02.593Z",
+          "elapsed_ms": 2659.5118999999977,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "startup_seconds": 1.6167864999988524
+        },
+        {
+          "name": "manager_create_assigned_job_and_l0",
+          "started_at": "2026-11-13T05:53:02.593Z",
+          "finished_at": "2026-11-13T05:53:03.461Z",
+          "elapsed_ms": 868.3983000000007,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "case_id": "bf0e8f50-5d0a-4ff6-bb43-1e07e65e2981",
+          "permission": 0,
+          "l0_invoice_denied": true
+        },
+        {
+          "name": "contractor_decoder_denial_and_unsafe_inspection",
+          "started_at": "2026-11-13T05:53:03.462Z",
+          "finished_at": "2026-11-13T05:53:04.410Z",
+          "elapsed_ms": 948.5679000000018,
+          "visual_action_budget_ms": 15000,
+          "exceeded_budget": false,
+          "inspection_status": "SAFETY_ALERT",
+          "permission": 1,
+          "source": "MOCK_AI",
+          "decoder_denied": true
+        },
+        {
+          "name": "manager_reject_and_contractor_correct_to_l2",
+          "started_at": "2026-11-13T05:53:04.410Z",
+          "finished_at": "2026-11-13T05:53:04.951Z",
+          "elapsed_ms": 540.5954999999958,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "rejected_permission": 0,
+          "corrected_permission": 2,
+          "evidence_version": 2
+        },
+        {
+          "name": "agent_prepare_manager_approve_and_simulated_receipt",
+          "started_at": "2026-11-13T05:53:04.951Z",
+          "finished_at": "2026-11-13T05:53:06.031Z",
+          "elapsed_ms": 1079.6805999999997,
+          "visual_action_budget_ms": 15000,
+          "exceeded_budget": false,
+          "permission": 3,
+          "business_status": "COMPLETED",
+          "simulated": true,
+          "duplicate_receipt_replayed": true
+        },
+        {
+          "name": "weak_synthetic_run_genuine_finding_and_blocked_gate",
+          "started_at": "2026-11-13T05:53:06.031Z",
+          "finished_at": "2026-11-13T05:53:09.609Z",
+          "elapsed_ms": 3578.172200000001,
+          "visual_action_budget_ms": 30000,
+          "exceeded_budget": false,
+          "run_id": "e2928694-de63-47b6-bd6b-88dbc4935c9a",
+          "summary": {
+            "correctly_permitted_valid": 6,
+            "correctly_restricted_invalid": 25,
+            "failed": 2,
+            "false_approval_denominator": 26,
+            "false_approval_rate": 0.038461538461538464,
+            "false_approvals": 1,
+            "false_negative": 1,
+            "false_positive": 0,
+            "false_rejection_denominator": 6,
+            "false_rejection_rate": 0,
+            "false_rejections": 0,
+            "passed": 36,
+            "positive_class": "SHOULD_DENY",
+            "rates_scope": "BINARY_ONLY_EXCLUDES_REVIEW_AND_ABSTENTIONS",
+            "regression_failures": 2,
+            "review_abstentions": 0,
+            "review_bypasses": 1,
+            "review_expected": 6,
+            "skipped": 0,
+            "source": "SYNTHETIC",
+            "total_executed": 38,
+            "total_expected": 38,
+            "true_negative": 6,
+            "true_positive": 25,
+            "unevaluable": 0
+          },
+          "finding_id": "fb01cc88-345c-43a2-900a-07f28e55c1ed",
+          "gate": "BLOCKED"
+        },
+        {
+          "name": "safe_regression_proposal_and_denied_self_review",
+          "started_at": "2026-11-13T05:53:09.609Z",
+          "finished_at": "2026-11-13T05:53:13.141Z",
+          "elapsed_ms": 3532.591499999995,
+          "visual_action_budget_ms": 30000,
+          "exceeded_budget": false,
+          "run_id": "f96b8bc4-395a-4c67-8005-e802a8728bc1",
+          "summary": {
+            "correctly_permitted_valid": 6,
+            "correctly_restricted_invalid": 26,
+            "failed": 0,
+            "false_approval_denominator": 26,
+            "false_approval_rate": 0,
+            "false_approvals": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "false_rejection_denominator": 6,
+            "false_rejection_rate": 0,
+            "false_rejections": 0,
+            "passed": 38,
+            "positive_class": "SHOULD_DENY",
+            "rates_scope": "BINARY_ONLY_EXCLUDES_REVIEW_AND_ABSTENTIONS",
+            "regression_failures": 0,
+            "review_abstentions": 0,
+            "review_bypasses": 0,
+            "review_expected": 6,
+            "skipped": 0,
+            "source": "SYNTHETIC",
+            "total_executed": 38,
+            "total_expected": 38,
+            "true_negative": 6,
+            "true_positive": 26,
+            "unevaluable": 0
+          },
+          "proposal_id": "8d636058-6dbe-489d-ad0f-50269b09760a",
+          "self_review_denied": true
+        },
+        {
+          "name": "independent_engineer_review_authoritative_unpublished_gate",
+          "started_at": "2026-11-13T05:53:13.141Z",
+          "finished_at": "2026-11-13T05:53:13.952Z",
+          "elapsed_ms": 810.8727999999974,
+          "visual_action_budget_ms": 30000,
+          "exceeded_budget": false,
+          "gate_id": "123331c7-3ef0-42ca-a266-7106ec851c39",
+          "decision": "READY_FOR_MANUAL_RELEASE",
+          "published": false,
+          "reviewer_id": "3d1e89a7-71d2-445c-8933-1568d05afc74"
+        },
+        {
+          "name": "ordinary_restart_preserves_evidence_session_audit_and_receipt",
+          "started_at": "2026-11-13T05:53:13.952Z",
+          "finished_at": "2026-11-13T05:53:17.322Z",
+          "elapsed_ms": 3369.5172999999995,
+          "visual_action_budget_ms": 20000,
+          "exceeded_budget": false,
+          "persisted_case_id": "bf0e8f50-5d0a-4ff6-bb43-1e07e65e2981",
+          "persisted_permission": 3,
+          "persisted_completion": "COMPLETED",
+          "shutdown_seconds": 0.3100560000002588
+        },
+        {
+          "name": "invoice_invalidation_stale_role_tenant_and_reviewer_denials",
+          "started_at": "2026-11-13T05:53:17.322Z",
+          "finished_at": "2026-11-13T05:53:17.614Z",
+          "elapsed_ms": 291.96600000000035,
+          "visual_action_budget_ms": 15000,
+          "exceeded_budget": false,
+          "invoice_revision": 2,
+          "obsolete_approval_invalid": true,
+          "permission_after_change": 2,
+          "stale_and_role_and_tenant_denials": true
+        }
+      ],
+      "backup": {
+        "status": "BACKUP_COMPLETE",
+        "location": "PRIVATE_IGNORED_RUNTIME"
+      }
+    }
+  ]
+}

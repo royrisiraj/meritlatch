@@ -1,5 +1,20 @@
 # Phase 05 functional portals
 
+Phase 06 native demo alternative (existing dependencies and production build):
+
+```powershell
+Set-Location D:\project\sentinel_ladder_v2
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Demo.ps1 -Action Start -AcknowledgeCanned -OpenBrowser
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Demo.ps1 -Action Stop
+```
+
+One loopback process serves compiled React and FastAPI. The isolated private root
+is printed; credentials are never printed or embedded in the package. It does not
+provision normal users. [Full operations](../docs/operations_phase06.md),
+[runbook](../docs/demo_runbook_phase06.md), [Phase 06 report](../tracking/PHASE_06_REPORT.md).
+The development-server workflow below remains available. Its proxy target now
+accepts loopback HTTP origins only; native hosting needs no Vite proxy.
+
 React/TypeScript/Vite/Tailwind, React Router, typed same-origin API client,
 Vitest/Testing Library and Playwright. No role switcher, payment, live inference
 or policy publication. [Architecture/API mapping](../docs/portals_phase05.md),

@@ -1,5 +1,30 @@
 # Security and workflow test catalog
 
+## Phase 06 executed mapping - 13 November 2026
+
+616 backend (572 unchanged + 44 new), 42 frontend (36 unchanged + 6), all six
+unchanged original Chromium tests passed. Three additional standalone packaged
+demonstrations passed; they are not counted as extra unit tests. All input is
+fictional MOCK_AI/SYNTHETIC. [Report](PHASE_06_REPORT.md).
+
+| Suite / execution | Boundary verified |
+|---|---|
+| backend/tests/phase06/test_hosting.py | Real ASGI auth/Host/CORS/CSP/private paths; SPA deep links; ready vs live; removed/modified bundle and file-as-media-directory failures; injected DB exception and failed worker timeout cannot pass gate; rejects live/key/billable config. DB/worker error substitutions are explicitly mocked. |
+| backend/tests/phase06/test_operations.py | Actual native TCP/process startup/stop, separate operator secret and instance verification before side effects, wrong-instance cannot stop; occupied port owner untouched; leases reject live backup/overwrite; identity/session/case/audit persist after ordinary restart; stopped SQLite/media backup; expired resume and missing backup source denied; controlled environment excludes credential/proxy variables. |
+| backend/tests/phase06/test_package.py | Actual allowlisted bundle is byte-reproducible; explicit fake .env/media/history/private-source canaries excluded; altered policy payload/extra paths/traversal rejected; bounded safe extraction and overwrite denial; missing frontend fails. |
+| frontend/src/test/hosting.test.ts | Six pure tests enforce loopback HTTP proxy and reject credentials, remote host, path/query/hash/scheme. |
+| Original full suites | All earlier role/tenant/assignment/auth/session/replay/challenge/CAS/evidence/policy/invoice/approval/concurrency/security-gate tests preserved. Baseline backend 572, frontend 36, E2E 6. |
+| Three actual native rehearsals | Actual invalid decoder, unsafe L1 -> rejected L0 -> corrected L2 -> separate manager L3 -> assigned agent simulated receipt; weak finding/BLOCKED; safe regression/distinct reviewer/READY unpublished; ordinary restart + invoice invalidation and direct role/tenant/stale denials; stopped backup. |
+| Read-only supplementary inspection | Actual Chromium metrics/source notice, 1/26 and 0/6, truthful stored-run provenance; page-error monitoring, measured load, graceful shutdown. |
+
+Failure-injection coverage: unavailable backend/network abort and ambiguous upload
+use original real-browser route faults; missing frontend/unwritable media use real
+isolated filesystem faults; DB unavailability/worker timeout use marked injections.
+Original auth tests cover invalid login/expired or revoked sessions; original
+security tests cover stale/rejected reviews and unfinished/failed runs. New native
+rehearsals cover changed invoice/stale versions after restart. No old test weakened.
+No abrupt-kill crash durability or destructive restore certification is claimed.
+
 ## Phase 05 executed mapping - 13 November 2026
 
 Baseline: 562 passed; all 36 old backend test files retain their hashes. Current:

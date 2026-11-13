@@ -1,6 +1,28 @@
 # SENTINEL//LADDER V2 — status ledger
 
-**Current checkpoint - Phase 05, 13 November 2026: TESTED / LOCAL PASS.**
+**Current checkpoint - Phase 06, 13 November 2026: TESTED / LOCAL PASS.**
+Starting clean HEAD 92bd728fcf38bb59c9a09e633480042bd3dcb86a. Baseline actually
+572 backend / 36 frontend / 6 browser passed. Current 616 backend / 42 frontend /
+6 original browser tests passed; 42 original test files and 15 protected files
+unchanged. Three native-package Chromium demonstrations passed, 20.882s / 20.350s /
+19.795s. Human spoken timing UNVERIFIED. [Report](PHASE_06_REPORT.md).
+
+| Phase 06 deliverable | Status | Evidence and limits |
+|---|---|---|
+| Loopback launcher/readiness/shutdown | TESTED | Real Windows PowerShell and native processes; private owned roots, one-hour expiry, instance-bound graceful stop, stopped backup and ordinary restart. |
+| Native source/static package | TESTED | 52 files, reproducible ZIP, allowlist/digests, safe extraction and actual final-archive HTTP smoke; needs existing Python runtime. |
+| Isolated complete demonstrations | TESTED | Three fresh extracted packages; actual auth/business and engineer flows; MOCK_AI canned/SYNTHETIC only. |
+| Script, pitch and evidence | TESTED | Actual visual timings and five reviewed local screenshots; human narration UNVERIFIED, current event criteria unverified. |
+| CI verification additions | PLANNED | Reviewed workflows and local equivalents executed; remote CI NOT RUN. No deployment pipeline. |
+| Durable cloud database/media adapters | PLANNED | BLOCKED/DEFERRED; migration, transaction parity, recovery, IAM/access/cost review require separate work. |
+| Remote deployment | PLANNED | NOT ATTEMPTED; no resource, billing, cloud credential or public endpoint. |
+| Phase 07 | PLANNED | NOT AUTHORIZED; stop at Phase 06 gate. |
+
+No policy/approval/provider/dependency-pin/.env/consumed-marker changes, no Gemini
+request, publication, real transfer/control, commit, push or deployment. Local demo
+and native package PASS are separate from remote NOT ATTEMPTED.
+
+**Historical checkpoint - Phase 05, 13 November 2026: TESTED / LOCAL PASS.**
 Committed Phase 04 baseline verified clean at 09bd8d1. Baseline 562 passed in
 84.17s. Backend now 572 passed in 99.01s (562 unchanged + 10 portal-read tests);
 frontend 36 passed; production bundle built. Actual Chromium/HTTP contractor,

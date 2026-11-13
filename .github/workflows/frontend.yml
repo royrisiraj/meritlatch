@@ -1,0 +1,38 @@
+name: Frontend and native package verification
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  browser-and-package:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: python -m venv .venv
+      - run: .\.venv\Scripts\python.exe -m pip install -r backend/requirements.txt
+      - run: .\.venv\Scripts\python.exe -m pip check
+      - run: npm.cmd ci
+        working-directory: frontend
+      - run: npm.cmd audit --audit-level=moderate
+        working-directory: frontend
+      - run: npm.cmd test
+        working-directory: frontend
+      - run: npm.cmd run build
+        working-directory: frontend
+      - run: npx.cmd playwright install chromium
+        working-directory: frontend
+      - run: npm.cmd run e2e
+        working-directory: frontend
+      - run: .\.venv\Scripts\python.exe -m backend.tools.release_package build --package .venv\phase06-native.zip
+      - run: .\.venv\Scripts\python.exe -m backend.tools.release_package verify --package .venv\phase06-native.zip
+      - run: node rehearsal/run.mjs --package ../.venv/phase06-native.zip
+        working-directory: frontend
+      - run: git diff --check
+      # No cloud credentials, deploy step or private screenshot/runtime upload.

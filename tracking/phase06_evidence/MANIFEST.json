@@ -1,0 +1,11 @@
+{
+  "01-unsafe-canned.png": "28f27d9aba8dbd21d0b105aafbbf2f95e7309a35dacf971ce4526cff64b9f898",
+  "02-simulated-completion.png": "6bb1a4ed6df66faa3e4a38c3ac56823b60ffa61ed411b94cffcb7986598e150b",
+  "03-reproduced-finding.png": "39c3b00091d35e93b74b0ed45d11cb5bf61303369bd352b2be627d01d7de7ac5",
+  "04-independent-unpublished-readiness.png": "e906f9ec966e5f28bd7309b1321395d0321baf5583e550cc520febee7dab1e07",
+  "05-synthetic-metrics.png": "158ad7fa4dd424dbe239d77b62db01d562ba51cdfa561ce435e36fae9f3b52b0",
+  "inspection.json": "58a4c34fb2db2e0fb0a0e20d6d9045b1ac3f4db86b2a3da7ddc7f6778ca34067",
+  "performance.json": "655d25f32ebafac4d14f5214972798efa5306e62bdb225f83803710af6fd2d7c",
+  "README.md": "3553a215a22ccd93f538959fa2f81237356457647c4e63cfdd3d31b50ba2a7a4",
+  "rehearsals.json": "10ba324945bdaf0f5f66a185b88c54dd26ce327648c2ee5635b0271c72269efe"
+}

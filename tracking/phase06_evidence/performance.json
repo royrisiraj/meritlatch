@@ -1,0 +1,292 @@
+{
+  "environment": {
+    "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "os": "Windows-11-10.0.26300-SP0",
+    "cpu": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "logical_processors": 32,
+    "node": "24.20.0",
+    "npm": "11.19.0",
+    "chromium": "158.0.8127.18",
+    "hardware_memory": "CIM_QUERY_ACCESS_DENIED_NOT_MEASURED"
+  },
+  "scope": "SERIAL_LOCAL_FICTIONAL_DATA_NOT_PRODUCTION_SLA",
+  "startup": {
+    "samples": 3,
+    "min_ms": 1616.7864999988524,
+    "median_ms": 2200.0418000006903,
+    "max_ms": 2220.9149000009347
+  },
+  "frontend_readiness": "Same-origin compiled assets checked by /readyz; no separate Vite process",
+  "http": [
+    {
+      "method": "GET",
+      "path": "/v1/alerts",
+      "samples": 18,
+      "min_ms": 4.172,
+      "median_ms": 4.8425,
+      "max_ms": 6.149
+    },
+    {
+      "method": "GET",
+      "path": "/v1/alerts/{id}",
+      "samples": 12,
+      "min_ms": 5.245,
+      "median_ms": 6.368,
+      "max_ms": 8.958
+    },
+    {
+      "method": "GET",
+      "path": "/v1/assignees",
+      "samples": 9,
+      "min_ms": 8.705,
+      "median_ms": 22.508,
+      "max_ms": 47.942
+    },
+    {
+      "method": "GET",
+      "path": "/v1/cases",
+      "samples": 3,
+      "min_ms": 4.818,
+      "median_ms": 6.088,
+      "max_ms": 6.908
+    },
+    {
+      "method": "GET",
+      "path": "/v1/cases/{id}",
+      "samples": 39,
+      "min_ms": 5.176,
+      "median_ms": 9.837,
+      "max_ms": 24.346
+    },
+    {
+      "method": "GET",
+      "path": "/v1/cases/{id}/audit",
+      "samples": 35,
+      "min_ms": 5.594,
+      "median_ms": 9.97,
+      "max_ms": 25.736
+    },
+    {
+      "method": "GET",
+      "path": "/v1/cases/{id}/evidence/{id}/content",
+      "samples": 12,
+      "min_ms": 9.732,
+      "median_ms": 25.7845,
+      "max_ms": 31.84
+    },
+    {
+      "method": "GET",
+      "path": "/v1/cases/{id}/review",
+      "samples": 18,
+      "min_ms": 5.423,
+      "median_ms": 10.45,
+      "max_ms": 13.852
+    },
+    {
+      "method": "GET",
+      "path": "/v1/jobs",
+      "samples": 3,
+      "min_ms": 3.96,
+      "median_ms": 4.157,
+      "max_ms": 4.979
+    },
+    {
+      "method": "GET",
+      "path": "/v1/jobs/{id}",
+      "samples": 3,
+      "min_ms": 3.72,
+      "median_ms": 5.024,
+      "max_ms": 5.041
+    },
+    {
+      "method": "GET",
+      "path": "/v1/jobs/{id}/cases",
+      "samples": 6,
+      "min_ms": 5.793,
+      "median_ms": 6.3175,
+      "max_ms": 7.029
+    },
+    {
+      "method": "GET",
+      "path": "/v1/me",
+      "samples": 15,
+      "min_ms": 2.711,
+      "median_ms": 3.705,
+      "max_ms": 6.148
+    },
+    {
+      "method": "GET",
+      "path": "/v1/policy-templates",
+      "samples": 3,
+      "min_ms": 10.82,
+      "median_ms": 31.979,
+      "max_ms": 33.118
+    },
+    {
+      "method": "GET",
+      "path": "/v1/redteam/audit",
+      "samples": 15,
+      "min_ms": 3.409,
+      "median_ms": 4.539,
+      "max_ms": 6.945
+    },
+    {
+      "method": "GET",
+      "path": "/v1/redteam/candidates",
+      "samples": 27,
+      "min_ms": 5.548,
+      "median_ms": 9.358,
+      "max_ms": 13.364
+    },
+    {
+      "method": "GET",
+      "path": "/v1/redteam/candidates/{id}",
+      "samples": 30,
+      "min_ms": 7.245,
+      "median_ms": 8.227,
+      "max_ms": 10.474
+    },
+    {
+      "method": "GET",
+      "path": "/v1/redteam/candidates/{id}/history",
+      "samples": 30,
+      "min_ms": 4.108,
+      "median_ms": 5.3535,
+      "max_ms": 13.088
+    },
+    {
+      "method": "GET",
+      "path": "/v1/redteam/runs",
+      "samples": 45,
+      "min_ms": 3.842,
+      "median_ms": 8.094,
+      "max_ms": 22.221
+    },
+    {
+      "method": "POST",
+      "path": "/v1/alerts/{id}/remediations",
+      "samples": 3,
+      "min_ms": 10.521,
+      "median_ms": 12.622,
+      "max_ms": 17.205
+    },
+    {
+      "method": "POST",
+      "path": "/v1/alerts/{id}/triage",
+      "samples": 3,
+      "min_ms": 7.138,
+      "median_ms": 7.792,
+      "max_ms": 7.793
+    },
+    {
+      "method": "POST",
+      "path": "/v1/auth/login",
+      "samples": 15,
+      "min_ms": 88.836,
+      "median_ms": 99.879,
+      "max_ms": 141.568
+    },
+    {
+      "method": "POST",
+      "path": "/v1/cases",
+      "samples": 3,
+      "min_ms": 11.129,
+      "median_ms": 12.802,
+      "max_ms": 12.932
+    },
+    {
+      "method": "POST",
+      "path": "/v1/cases/{id}/actions/execute",
+      "samples": 9,
+      "min_ms": 5.818,
+      "median_ms": 10.614,
+      "max_ms": 12.641
+    },
+    {
+      "method": "POST",
+      "path": "/v1/cases/{id}/approvals",
+      "samples": 3,
+      "min_ms": 15.26,
+      "median_ms": 17.82,
+      "max_ms": 19.734
+    },
+    {
+      "method": "POST",
+      "path": "/v1/cases/{id}/evidence",
+      "samples": 9,
+      "min_ms": 11.296,
+      "median_ms": 27.2,
+      "max_ms": 42.493
+    },
+    {
+      "method": "POST",
+      "path": "/v1/cases/{id}/rejections",
+      "samples": 3,
+      "min_ms": 12.135,
+      "median_ms": 14.148,
+      "max_ms": 20.349
+    },
+    {
+      "method": "POST",
+      "path": "/v1/jobs",
+      "samples": 3,
+      "min_ms": 7.343,
+      "median_ms": 7.822,
+      "max_ms": 9.792
+    },
+    {
+      "method": "POST",
+      "path": "/v1/jobs/{id}/challenges",
+      "samples": 6,
+      "min_ms": 6.416,
+      "median_ms": 10.168,
+      "max_ms": 13.044
+    },
+    {
+      "method": "POST",
+      "path": "/v1/redteam/candidates",
+      "samples": 6,
+      "min_ms": 10.091,
+      "median_ms": 17.924500000000002,
+      "max_ms": 25.517
+    },
+    {
+      "method": "POST",
+      "path": "/v1/redteam/candidates/{id}/release-gate",
+      "samples": 6,
+      "min_ms": 17.439,
+      "median_ms": 21.198,
+      "max_ms": 23.935
+    },
+    {
+      "method": "POST",
+      "path": "/v1/redteam/candidates/{id}/reviews",
+      "samples": 6,
+      "min_ms": 6.386,
+      "median_ms": 10.7305,
+      "max_ms": 14.984
+    },
+    {
+      "method": "POST",
+      "path": "/v1/redteam/run",
+      "samples": 6,
+      "min_ms": 2245.97,
+      "median_ms": 2360.801,
+      "max_ms": 2662.187
+    }
+  ],
+  "bundle": [
+    {
+      "path": "frontend/dist/assets/index-BQPNHKVy.css",
+      "bytes": 9224
+    },
+    {
+      "path": "frontend/dist/assets/index-D8y5oHH9.js",
+      "bytes": 312219
+    },
+    {
+      "path": "frontend/dist/index.html",
+      "bytes": 404
+    }
+  ]
+}

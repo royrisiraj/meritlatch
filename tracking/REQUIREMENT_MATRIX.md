@@ -1,6 +1,27 @@
 # Master Book requirement-to-code traceability
 
-**Phase 05 - 13 November 2026: TESTED / LOCAL PASS.** Baseline 09bd8d1 verified
+**Current Phase 06 - 13 November 2026: TESTED / LOCAL PASS.** Clean committed
+baseline 92bd728; actual baseline 572/36/6, current 616/42/6 passed. All original
+tests unchanged. Native package/local rehearsals passed; remote NOT ATTEMPTED,
+durable cloud adapters BLOCKED/DEFERRED. [Evidence](PHASE_06_REPORT.md).
+
+| Phase 06 requirement / book alignment | Implementation | Verification | State / limitation |
+|---|---|---|---|
+| Ch.20-23 credible deployment/persistence | docs/deployment_decision_phase06.md | Actual SQL/filesystem inventory; primary cloud docs; all data categories mapped | TESTED local; external adapters/IAM/recovery deferred |
+| Reproducible Windows native operation | scripts/Demo.ps1; backend/tools/local_ops.py | Real clean-shell Start/Status/Stop/Backup; occupied ports, lease/instance mismatch, no secrets inherited | TESTED; existing environment required, HTTP loopback only |
+| Honest health vs ready | backend/app/hosting.py | SQLite begin/media probe/asset integrity, status-only readiness, negative storage/asset tests | TESTED; not durability certification |
+| Auth/tenant/job and exact bound human approval | Existing unchanged auth/case/policy plus hosting wrapper | All 572 baseline tests; actual native direct denials and invoice invalidation | TESTED; no frontend/launcher authority |
+| Isolated acknowledged MOCK_AI | Existing unchanged portal_demo.py via launcher | Fresh UUID roots/accounts, ordinary mock UNKNOWN, unsafe/correction/manager/agent simulation | TESTED; no optical/live perception |
+| Native safe build/export | backend/tools/release_package.py | Determinism, canaries, tamper/path/overwrite limits, 52-file final archive and actual HTTP startup | TESTED; no bundled runtime/container/signature |
+| Independent findings and manual gate | Existing security worker/API + rehearsal/run.mjs | Three weak/safe full runs each, real finding, denied self-review, distinct reviewer; published=false | TESTED fixed SYNTHETIC only |
+| Three timed demonstrations | frontend/rehearsal/run.mjs; tracking/phase06_evidence | Three fresh actual Chromium/native executions and per-step records | TESTED visual; human speech UNVERIFIED |
+| Honest source labels | cases.tsx and ui.tsx text only | Actual screenshots/browser inspection and unchanged baseline component tests | TESTED; no UI redesign |
+| Loopback dev proxy only | frontend/config/loopback.ts; vite.config.ts | Six new tests reject external/credential/path/query targets | TESTED |
+| Buildathon pitch/evidence/risks | docs/pitch_phase06.md; runbook/operations/security review; evidence README | Book-recorded criteria, 180s plan, measured timings/screenshots, explicit gaps | TESTED artifacts; no founder/market/live claims invented |
+| Regression/CI/secret exclusion | phase06 tests; two workflows; PHASE_06_SECURITY_CHECKS.json | 616/42/6, pip check, npm audit; 42 old files/15 protected hashes, 28 private exact values absent in packages | TESTED local; remote CI NOT RUN |
+| Phase gate/no cloud/no model | Preserved protected hashes; ledger/report | No model/credential/cloud/deploy/commit action; remote NOT ATTEMPTED | TESTED local scope; Phase 07 not authorized |
+
+**Historical Phase 05 - 13 November 2026: TESTED / LOCAL PASS.** Baseline 09bd8d1 verified
 clean; 562 baseline passed (84.17s), 572 current backend passed (99.01s), 36 frontend
 passed, production build and real Chromium/HTTP journeys passed. All 36 original
 backend test files unchanged. Evidence: PHASE_05_REPORT.md and separate execution
