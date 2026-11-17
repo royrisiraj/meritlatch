@@ -1,4 +1,13 @@
-# Phase 05 functional portals
+# MeritLatch React frontend
+
+The application uses the supplied Strata Obsidian Cobalt theme throughout auth,
+contractor, manager, engineer and restricted agent screens. Real FastAPI session/
+authorization behavior and existing Windows startup commands are unchanged.
+[Strata report](../tracking/STRATA_VISUAL_OVERHAUL_REPORT.md),
+[design tokens/components](../docs/strata_design_system.md),
+[actual browser evidence](../tracking/strata_evidence/README.md).
+
+## Retained functional portal setup
 
 Phase 06 native demo alternative (existing dependencies and production build):
 

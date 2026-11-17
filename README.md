@@ -1,9 +1,19 @@
-# SENTINEL//LADDER - Phase 06 local demonstration
+# MeritLatch — Autonomy must be earned.
+
+Public application now uses the supplied **Strata Obsidian Cobalt** system across
+all role portals. SENTINEL//LADDER remains the internal engine/repository name.
+Real auth/permissions/approval bindings and native startup are unchanged.
+[Strata acceptance report](tracking/STRATA_VISUAL_OVERHAUL_REPORT.md),
+[actual screenshots](tracking/strata_evidence/README.md),
+[implemented design system](docs/strata_design_system.md).
+
+## Retained Phase 06 local demonstration
 
 Phase 06 adds a loopback native launcher, verified source/static package, safe
 readiness and three executed isolated Chromium rehearsals. Local demo and native
 package gates PASS; remote deployment NOT ATTEMPTED. Cloud database/media migration
-is BLOCKED/DEFERRED. Gemini remains frozen and Phase 07 is not authorized.
+is BLOCKED/DEFERRED. Gemini remains frozen. Phase 07 authorization and its later
+Strata implementation are recorded in the current report linked above.
 
 ```powershell
 Set-Location D:\project\sentinel_ladder_v2

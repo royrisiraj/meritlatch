@@ -1,0 +1,178 @@
+{
+  "01-login-desktop.png": {
+    "bytes": 412599,
+    "sha256": "45cf15fc22a41535c6e3ffdd38e24b56e4641044bc390f76178ee6414065d983"
+  },
+  "02-manager-queue-desktop.png": {
+    "bytes": 71084,
+    "sha256": "b4612fe90e83c1bd87d723633fc21e7f9a429842d283d699d74ec22100287663"
+  },
+  "03-contractor-dashboard-mobile.png": {
+    "bytes": 45676,
+    "sha256": "e3cf4dcbf3d9d99add2a5cedd447866efcd3c8b898676d8a1020156fb961e140"
+  },
+  "04-contractor-unsafe-mobile.png": {
+    "bytes": 223448,
+    "sha256": "62896ba2fb6b9d7a45427c19b97ec6a3ca55ae3ae4a58fd3bfb52b5d402eabda"
+  },
+  "05-contractor-correction-upload-mobile.png": {
+    "bytes": 269158,
+    "sha256": "5e940a318d9ef4ee6bdc864d0a731af959a150987ab77d69ab29cbea5f59164a"
+  },
+  "06-contractor-case-1440.png": {
+    "bytes": 307926,
+    "sha256": "410c45e9588f4c01f0cf86e7bc168d6e6b4d08d53809189133b06ceaaa80eab6"
+  },
+  "06-contractor-case-320.png": {
+    "bytes": 273368,
+    "sha256": "b929c6f3be96f78124484c33b4bf0aea6491dea54ef996a80134c94ccf775cb9"
+  },
+  "06-contractor-case-375.png": {
+    "bytes": 276618,
+    "sha256": "6b7cfb81dc08b491a8bba3f8403bd338ca4b6a0c78e39e77fdecbb1e17fe0d57"
+  },
+  "06-contractor-case-768.png": {
+    "bytes": 295950,
+    "sha256": "516d04c5e22f0d3e4a2157096de8937bdf4b768c8240482fb62d1129c193a2b7"
+  },
+  "07-manager-evidence-review-desktop.png": {
+    "bytes": 363163,
+    "sha256": "2a80687d150219982c30135507d3a3160d4b023f6988afc8a020e9a74e4246e7"
+  },
+  "08-manager-review-tablet.png": {
+    "bytes": 346360,
+    "sha256": "69e51b797ab0f0b04f1e2e975c2c7d24e92460d498a48662e11642075e809b8f"
+  },
+  "09-manager-approved-desktop.png": {
+    "bytes": 359552,
+    "sha256": "efed19e9b575dcf1d59d05216cfefd98324c87b8e033b1221b2ab008d4aee7e2"
+  },
+  "10-engineer-overview-desktop.png": {
+    "bytes": 90138,
+    "sha256": "495201a1db742ec5e7ba854826e85967afe31a6d8478e0004e9ab7ba69b7a566"
+  },
+  "11-engineer-synthetic-metrics-desktop.png": {
+    "bytes": 125540,
+    "sha256": "e0746f48731d88e1e9afaa8ddfb84e30c9e4c157b2912f54f0984181713a2a81"
+  },
+  "12-engineer-findings-desktop.png": {
+    "bytes": 48872,
+    "sha256": "603203f1de153fb4dda6a0da418c01e74a25838c67e3b2faf22bc84e3750cd45"
+  },
+  "13-engineer-finding-comparison-desktop.png": {
+    "bytes": 146479,
+    "sha256": "b0a80caca0b8a4bf8e9d68a368fc1cbded0c443fa1d2be3e1ae2790ead0319aa"
+  },
+  "14-engineer-finding-375.png": {
+    "bytes": 137211,
+    "sha256": "d3339b692ea8e64f5a01c0a395945d63efad631726287a230b959557a7e41b22"
+  },
+  "14-engineer-finding-768.png": {
+    "bytes": 137659,
+    "sha256": "1313852012787eb3b821920a11561985f8492b9ef1ef7cb4d9395c1d52bf702b"
+  },
+  "15-engineer-unpublished-gate-desktop.png": {
+    "bytes": 213619,
+    "sha256": "82becf1ace4deaadb02f6bd82f74f03c1af9bb647f94442a193b097a172efe4a"
+  },
+  "16-engineer-gate-tablet.png": {
+    "bytes": 203812,
+    "sha256": "e243ee98f23eaba869c69ce7157f680c44519355db2a603cb6c6a91421e405ca"
+  },
+  "active-navigation-contrast.json": {
+    "bytes": 108,
+    "sha256": "65045b55bedad1de976b7b5e53060fb5dbe60ae9ad05b95ab7fd8d1a44ac09a3"
+  },
+  "current-permission-contrast.json": {
+    "bytes": 100,
+    "sha256": "47506265c03a8e8c7ba31f5632c2a429cf21b934596c988712fef0968e9ff9aa"
+  },
+  "input-boundary-contrast.json": {
+    "bytes": 64,
+    "sha256": "815d9f8ec6490bceb6007326e84eb4b4d54333a50f37eac3ecb8f31795bd8666"
+  },
+  "login-button-contrast.json": {
+    "bytes": 90,
+    "sha256": "7c307e6ce35c93d8ba6fdbf0c32fefa5bc027fecd7e718da623af0193c094f0f"
+  },
+  "native-login.png": {
+    "bytes": 413395,
+    "sha256": "a144156cac17a72c0ffd5b7cf7e06f6a1fc9d6ffddd8c2cb41e141dbaa0a1fcf"
+  },
+  "native-manager.png": {
+    "bytes": 57834,
+    "sha256": "f0c21f212ca7ca57342c3584f391d1179b1fb0708b245608018e37c009f36d79"
+  },
+  "README.md": {
+    "bytes": 4477,
+    "sha256": "a486dca99d6dc75d09e0ee0ef18eddde88d57bd6a2bf39c6a33919ae78ce61e5"
+  },
+  "result.json": {
+    "bytes": 976,
+    "sha256": "bec7f84df68ec07bb74d5ea9c8c910c370905593a1d36ad8d909915f0876c337"
+  },
+  "safety-notice-contrast.json": {
+    "bytes": 98,
+    "sha256": "95b3eb0dfacf6cf42ca4c1594a91589beb3aa454bb605ab933878c31e0f8c98f"
+  },
+  "secondary-button-contrast.json": {
+    "bytes": 101,
+    "sha256": "34918d8c6f3dff5c7f4bb90c62aad2d744c2f45713501bd53804ed17cdb8a946"
+  },
+  "strata-agent-1440.png": {
+    "bytes": 50466,
+    "sha256": "070c6500aa03bf7b9cd7fda48ed5d17513a14d306eeb13269cbb2a7fd9b5d021"
+  },
+  "strata-agent-375.png": {
+    "bytes": 44269,
+    "sha256": "8069f66d828eb949d6a76f69e0658ae971bdae8f14065341221ab4fec65be363"
+  },
+  "strata-contractor-shell-1440.png": {
+    "bytes": 85048,
+    "sha256": "96eadf08562fbbe6206a93001783e9d7784965329e8efb83e041ca4798549e35"
+  },
+  "strata-contractor-shell-375.png": {
+    "bytes": 91698,
+    "sha256": "84e184628520ec239e40f5c1bf5e645b10fd517387e8687b080c8576518a0c37"
+  },
+  "strata-job-form-1440.png": {
+    "bytes": 64261,
+    "sha256": "db50449d43b5a6a7b29cef54d813b6fd83b31d8ce2aab8f6e5ec1f7f6d3a1791"
+  },
+  "strata-job-form-320.png": {
+    "bytes": 53676,
+    "sha256": "356fb37815bed0ba0a89504edddbd86ea290c852bd615dc7e252cf8dfb5fb585"
+  },
+  "strata-job-form-375.png": {
+    "bytes": 54083,
+    "sha256": "89d691dc2cd1397a7ea72ee2b21bd3295eb362b144a6457985c1d273829e60ec"
+  },
+  "strata-job-form-768.png": {
+    "bytes": 57262,
+    "sha256": "229a4c6811932fb3614189a4633d8d3b1a981659a2503cf0485d12dec18c1af5"
+  },
+  "strata-login-1440.png": {
+    "bytes": 413395,
+    "sha256": "a144156cac17a72c0ffd5b7cf7e06f6a1fc9d6ffddd8c2cb41e141dbaa0a1fcf"
+  },
+  "strata-login-320.png": {
+    "bytes": 154846,
+    "sha256": "e9914dbb7287b48c45bbf0e34510876002944ec0c881431b71e038bd21ca237e"
+  },
+  "strata-login-375.png": {
+    "bytes": 151038,
+    "sha256": "1e2aee3cd84a84241ca65b91b03654424e31347f9ea626fe15ddd4e4a7c9790e"
+  },
+  "strata-login-768.png": {
+    "bytes": 218839,
+    "sha256": "f8afd6f4e7d835dbe94fd8d9da81027379cd8fd8c9d7f54504cebd0395fa7ad0"
+  },
+  "strata-manager-shell-1440.png": {
+    "bytes": 107309,
+    "sha256": "6302620a7d7896e25fabdb385521fec9b68157bb125e792fe415030693078bbc"
+  },
+  "strata-manager-shell-375.png": {
+    "bytes": 114650,
+    "sha256": "cc42e0bdd8034b0154e33b736416751f9681929ad350dda2433b4a25089bb829"
+  }
+}
